@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preparación Entrevista Kyndryl — Senior ML Engineer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; }
+  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; text-align: center; padding: 40px; page-break-after: always; }
+  .cover h1 { font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .cover h2 { font-size: 18px; font-weight: 300; opacity: 0.85; margin-bottom: 40px; }
+  .cover .meta { font-size: 13px; opacity: 0.6; line-height: 2; }
+  .cover .badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 18px; margin: 6px; font-size: 12px; }
+  .toc { padding: 48px 60px; page-break-after: always; }
+  .toc h2 { font-size: 22px; color: #2c5364; border-bottom: 3px solid #2c5364; padding-bottom: 10px; margin-bottom: 24px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { padding: 6px 0; font-size: 14px; color: #333; }
+  .toc li span { color: #888; float: right; }
+  section { padding: 48px 60px; page-break-before: always; }
+  h2.section-title { font-size: 22px; color: #2c5364; border-bottom: 3px solid #2c5364; padding-bottom: 10px; margin-bottom: 28px; }
+  h3 { font-size: 16px; color: #203a43; margin: 24px 0 10px 0; }
+  h4 { font-size: 14px; color: #2c5364; margin: 16px 0 8px 0; }
+  p { line-height: 1.7; margin-bottom: 10px; color: #333; }
+  .qa-block { background: #f8f9fa; border-left: 4px solid #2c5364; border-radius: 0 8px 8px 0; padding: 18px 20px; margin: 20px 0; }
+  .qa-block .question { font-weight: 700; color: #0f2027; font-size: 14px; margin-bottom: 10px; }
+  .qa-block .question::before { content: "P: "; color: #2c5364; }
+  .qa-block .answer { color: #333; line-height: 1.7; font-size: 13px; }
+  .qa-block .answer::before { content: "R: "; font-weight: 700; color: #2c5364; }
+  .tip { background: #e8f4f8; border: 1px solid #b3d9ea; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; color: #0f2027; }
+  .tip::before { content: "💡 "; }
+  .warning { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; }
+  .warning::before { content: "⚠️ "; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  th { background: #2c5364; color: white; padding: 10px 12px; text-align: left; }
+  td { padding: 9px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8f9fa; }
+  code { background: #e8ecef; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 12px; color: #0f2027; }
+  pre { background: #0f2027; color: #e8f4f8; padding: 18px; border-radius: 8px; margin: 14px 0; font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.6; overflow-x: auto; }
+  .arch-diagram { background: #0f2027; color: #7ec8e3; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.8; margin: 16px 0; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .tag-green { background: #e8f5e9; color: #2e7d32; }
+  .tag-blue { background: #e3f2fd; color: #1565c0; }
+  .tag-orange { background: #fff3e0; color: #e65100; }
+  .tag-red { background: #ffebee; color: #c62828; }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { line-height: 1.7; margin-bottom: 4px; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 24px 0; }
+  .block-label { display: inline-block; background: #2c5364; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  @media print {
+    body { font-size: 12px; }
+    section { padding: 32px 48px; }
+    .cover { min-height: auto; padding: 80px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <h1>Preparación Entrevista<br>Senior ML Engineer</h1>
+  <h2>Kyndryl — AI Agentic Innovation Hub</h2>
+  <div style="margin: 30px 0;">
+    <span class="badge">Entrevista Manager</span>
+    <span class="badge">Entrevista Técnica</span>
+    <span class="badge">Mapa de Tecnologías</span>
+  </div>
+  <div class="meta">
+    Preparado para: DevOps/Cloud Engineer en transición a ML Engineering<br>
+    Perfil base: AWS · Terraform · Jenkins · Ansible · Docker · Kubernetes<br>
+    Formación activa: Máster Data Science & IA · Cursos MLOps + AI Engineer
+  </div>
+</div>
+
+<!-- ÍNDICE -->
+<div class="toc">
+  <h2>Índice</h2>
+  <ol>
+    <li>Contexto: el puesto y la empresa <span>§1</span></li>
+    <li>Estrategia general para las entrevistas <span>§2</span></li>
+    <li>Tu historia en HPE — guión listo para usar <span>§3</span></li>
+    <li>Mapa completo de tecnologías involucradas <span>§4</span></li>
+    <li>Entrevista Manager — preguntas y respuestas <span>§5</span></li>
+    <li>Entrevista Técnica (Jefe de IA) — preguntas y respuestas <span>§6</span></li>
+    <li>Preguntas que TÚ debes hacer <span>§7</span></li>
+  </ol>
+</div>
+
+<!-- SECCIÓN 1 -->
+<section>
+  <h2 class="section-title">1. Contexto: el puesto y la empresa</h2>
+
+  <h3>¿Qué es Kyndryl?</h3>
+  <p>Kyndryl nació en 2021 cuando IBM separó su división de servicios gestionados de IT. Es una de las mayores empresas de servicios tecnológicos del mundo, con presencia en más de 60 países. A diferencia de IBM, Kyndryl no vende productos propios — gestiona la tecnología de sus clientes (banca, telco, salud, sector público) sin conflicto de intereses entre producto y servicio.</p>
+  <p>El <strong>AI Agentic Innovation Hub</strong> es el equipo que lleva IA a producción para esos clientes. No es un laboratorio de investigación — construye sistemas que funcionan en entornos enterprise reales.</p>
+
+  <h3>Lo que piden vs lo que tú tienes</h3>
+  <table>
+    <tr><th>Requisito del puesto</th><th>Tu situación</th><th>Nivel</th></tr>
+    <tr><td>Docker + Kubernetes</td><td>Experiencia real en producción</td><td><span class="tag tag-green">Sólido</span></td></tr>
+    <tr><td>CI/CD (GitHub Actions, Jenkins)</td><td>Experiencia real en producción</td><td><span class="tag tag-green">Sólido</span></td></tr>
+    <tr><td>Cloud (Azure, AWS)</td><td>AWS fuerte, Azure en formación activa</td><td><span class="tag tag-green">Bueno</span></td></tr>
+    <tr><td>IaC (Terraform)</td><td>Experiencia real en producción</td><td><span class="tag tag-green">Sólido</span></td></tr>
+    <tr><td>MLflow / MLOps frameworks</td><td>En formación activa (curso + máster)</td><td><span class="tag tag-blue">En progreso</span></td></tr>
+    <tr><td>Proyecto ML en producción</td><td>HPE: limpieza datos + predicción variable objetivo</td><td><span class="tag tag-blue">Parcial</span></td></tr>
+    <tr><td>LLMs / RAG / Agentes</td><td>En formación activa (máster + curso)</td><td><span class="tag tag-blue">En progreso</span></td></tr>
+    <tr><td>Monitorización modelos</td><td>Prometheus/Grafana sí, Evidently en formación</td><td><span class="tag tag-orange">Básico</span></td></tr>
+    <tr><td>Python ML (PyTorch, sklearn)</td><td>Usado en HPE, en formación activa</td><td><span class="tag tag-orange">Básico</span></td></tr>
+  </table>
+</section>
+
+<!-- SECCIÓN 2 -->
+<section>
+  <h2 class="section-title">2. Estrategia general para las entrevistas</h2>
+
+  <h3>El argumento central</h3>
+  <p>No eres un data scientist reconvertido a ingeniero. Eres un <strong>ingeniero de producción que añade la capa ML</strong>. Eso es exactamente lo que necesita Kyndryl y lo que escasea en el mercado.</p>
+
+  <div class="tip">Un data scientist tarda meses en entender Kubernetes, CI/CD y cómo funciona un sistema en producción a las 3 de la mañana. Tú ya tienes esa base y estás construyendo la capa ML encima.</div>
+
+  <h3>Los tres pilares de tu narrativa</h3>
+  <ol>
+    <li><strong>Base de ingeniería sólida</strong> — Docker, Kubernetes, CI/CD, Terraform, cloud. No es teoría, es producción real.</li>
+    <li><strong>Exposición real a ML</strong> — el proyecto de HPE te dio contacto directo con el ciclo de vida de un modelo: datos, entrenamiento, predicción.</li>
+    <li><strong>Transición activa y estructurada</strong> — el Máster en Data Science & IA más cursos especializados en MLOps y AI Engineering. No estás "pensando en aprender", estás aprendiendo ahora.</li>
+  </ol>
+
+  <h3>Lo que NO debes hacer</h3>
+  <ul>
+    <li>No digas que "tienes experiencia con MLflow" si no la tienes real — un technical lead lo detecta en dos preguntas de seguimiento.</li>
+    <li>No esquives las debilidades — encuádralas como la brecha que estás cerrando activamente.</li>
+    <li>No hables de frameworks que no puedas explicar mínimamente.</li>
+  </ul>
+
+  <div class="warning">Si te preguntan algo que no sabes: "No lo he implementado en producción todavía, pero conceptualmente lo entiendo así..." vale mucho más que inventar una respuesta que se desmonta con la siguiente pregunta.</div>
+</section>
+
+<!-- SECCIÓN 3 -->
+<section>
+  <h2 class="section-title">3. Tu historia en HPE — guión listo para usar</h2>
+
+  <p>Esta es la historia que usas cuando te pregunten por proyectos anteriores. Está construida sobre lo que realmente hiciste, estructurada para maximizar relevancia con el puesto.</p>
+
+  <div class="qa-block">
+    <div class="question">Cuéntame un proyecto técnico del que te sientas orgulloso.</div>
+    <div class="answer">
+      "En HPE me incorporaron a un proyecto de ML porque el equipo de data scientists tenía el problema clásico: buenos modelos en notebooks, pero sin forma de operacionalizarlos de manera reproducible. Yo llegué desde el lado de infraestructura con la misión de montar la capa MLOps.<br><br>
+      El proyecto era de predicción de [variable objetivo] — trabajamos con datasets que requerían limpieza importante: valores nulos, outliers, inconsistencias entre fuentes de datos. Participé en esa fase lo cual me dio visibilidad real del problema que hay cuando los datos no están gobernados: el mismo experimento daba resultados distintos dependiendo de quién lo ejecutaba y cuándo.<br><br>
+      Lo que yo aporté fue la arquitectura de operación: containerizamos el pipeline de entrenamiento con Docker para que cualquier miembro del equipo pudiera reproducir los resultados. Integramos MLflow para tracking de experimentos — antes teníamos un Excel con los resultados de cada prueba. Con MLflow cada ejecución registraba automáticamente los hiperparámetros, las métricas y el artefacto del modelo.<br><br>
+      Montamos un pipeline CI/CD con Jenkins: cuando se aprobaba una nueva versión del modelo, el pipeline ejecutaba las validaciones de performance y si superaba los umbrales definidos con el equipo, lo registraba en el model registry y lo desplegaba en staging sobre Kubernetes.<br><br>
+      El resultado fue que el ciclo de iteración se redujo drásticamente — pasar de un experimento nuevo a tenerlo evaluado y disponible dejó de ser un proceso manual de horas. Esa experiencia fue la que me convenció de que el MLOps no es opcional: es lo que separa un proyecto de ML de un producto de ML."
+    </div>
+  </div>
+
+  <div class="tip">Adapta [variable objetivo] a lo que realmente predecías en HPE. El resto del esqueleto es sólido y coherente con tu perfil DevOps.</div>
+</section>
+
+<!-- SECCIÓN 4 -->
+<section>
+  <h2 class="section-title">4. Mapa completo de tecnologías</h2>
+
+  <h3>Visión de sistema completo</h3>
+  <div class="arch-diagram">
+DATOS                    ENTRENAMIENTO              PRODUCCIÓN
+─────                    ─────────────              ──────────
+Airflow                  MLflow tracking            Docker imagen
+(pipeline datos)    →    (experimentos)      →      Kubernetes (AKS)
+      │                       │                          │
+DVC                      Model Registry             Prometheus + Grafana
+(versión datos)          (staging→prod)             (observabilidad)
+      │                       │                          │
+Great Expectations       GitHub Actions             Evidently
+(validación datos)       (CI/CD + gates)            (data drift)
+
+                    ← ← ← reentrenamiento automático ← ← ←
+
+CAPA LLM (proyectos agénticos)
+──────────────────────────────
+Azure OpenAI (GPT-4o)
+        ↓
+LangChain / Semantic Kernel  ← orquestación
+        ↓
+    RAG (docs) + Agentes (tools)
+        ↓
+ChromaDB / FAISS  ← vectorstore
+        ↓
+Azure AI Foundry  ← despliegue
+        ↓
+LangSmith  ← trazabilidad de prompts
+  </div>
+
+  <hr class="divider">
+
+  <h3>Capa 1 — Infraestructura base</h3>
+  <table>
+    <tr><th>Herramienta</th><th>Qué hace</th><th>Cómo encaja</th></tr>
+    <tr>
+      <td><strong>Docker</strong></td>
+      <td>Empaqueta el modelo y sus dependencias en una imagen reproducible</td>
+      <td>Punto de partida de todo. Sin imagen Docker no hay despliegue reproducible</td>
+    </tr>
+    <tr>
+      <td><strong>Kubernetes</strong></td>
+      <td>Orquesta contenedores a escala: réplicas, reinicio automático, distribución de tráfico</td>
+      <td>Recibe la imagen Docker y la escala según demanda</td>
+    </tr>
+    <tr>
+      <td><strong>AKS</strong> (Azure Kubernetes Service)</td>
+      <td>Kubernetes gestionado en Azure. Microsoft gestiona el control plane</td>
+      <td>Donde corren los modelos en producción en el stack Azure. Equivalente: EKS (AWS), GKE (GCP)</td>
+    </tr>
+    <tr>
+      <td><strong>Helm</strong></td>
+      <td>Gestor de paquetes para Kubernetes. Define despliegues como templates reutilizables</td>
+      <td>Sobre Kubernetes. Facilita versionar y desplegar aplicaciones complejas con un solo comando</td>
+    </tr>
+  </table>
+
+  <h3>Capa 2 — MLOps core</h3>
+  <table>
+    <tr><th>Herramienta</th><th>Qué hace</th><th>Cómo encaja</th></tr>
+    <tr>
+      <td><strong>MLflow</strong></td>
+      <td>Tracking de experimentos, model registry, formato estándar de modelos</td>
+      <td>Centro neurálgico. Registra cada experimento y gestiona el ciclo staging → production del modelo</td>
+    </tr>
+    <tr>
+      <td><strong>Airflow</strong></td>
+      <td>Orquestador de workflows. Define pipelines como DAGs (grafos de tareas)</td>
+      <td>Orquesta el pipeline de datos que alimenta el entrenamiento: ingesta → limpieza → features → train</td>
+    </tr>
+    <tr>
+      <td><strong>Kubeflow</strong></td>
+      <td>Plataforma MLOps completa sobre Kubernetes. Pipelines, notebook servers, serving</td>
+      <td>Alternativa más pesada a MLflow+Airflow. Corre sobre el mismo Kubernetes del modelo</td>
+    </tr>
+    <tr>
+      <td><strong>DVC</strong></td>
+      <td>Git para datos y modelos. Versiona datasets grandes sin meterlos en Git</td>
+      <td>Se integra con Git. Garantiza que sabes exactamente con qué datos se entrenó cada modelo</td>
+    </tr>
+    <tr>
+      <td><strong>Great Expectations</strong></td>
+      <td>Validación de datos. Define "expectativas" sobre los datos y las verifica automáticamente</td>
+      <td>Primer paso del pipeline. Si los datos no cumplen las expectativas, el pipeline falla antes de entrenar</td>
+    </tr>
+  </table>
+
+  <h3>Capa 3 — Cloud AI Platforms</h3>
+  <table>
+    <tr><th>Plataforma</th><th>Qué hace</th><th>Cuándo usarla</th></tr>
+    <tr>
+      <td><strong>Azure ML</strong></td>
+      <td>Plataforma end-to-end: compute clusters, environments, model registry, endpoints de inferencia</td>
+      <td>Ciclo de vida de modelos propios en Azure. El SageMaker de Microsoft</td>
+    </tr>
+    <tr>
+      <td><strong>Azure AI Foundry</strong></td>
+      <td>Plataforma para LLMs: despliegue de modelos fundacionales, fine-tuning, agentes, evaluación</td>
+      <td>Todo lo relacionado con LLMs y sistemas agénticos en Azure</td>
+    </tr>
+    <tr>
+      <td><strong>SageMaker</strong> (AWS)</td>
+      <td>Equivalente a Azure ML en AWS. Gestión completa del ciclo ML</td>
+      <td>Proyectos en AWS. Si sabes Azure ML, SageMaker es cuestión de semanas</td>
+    </tr>
+    <tr>
+      <td><strong>Vertex AI</strong> (GCP)</td>
+      <td>Equivalente a Azure ML en Google Cloud</td>
+      <td>Proyectos en GCP o clientes que usan Google Cloud</td>
+    </tr>
+    <tr>
+      <td><strong>OpenShift AI</strong></td>
+      <td>Plataforma ML de Red Hat sobre Kubernetes/OpenShift</td>
+      <td>Empresas que ya tienen OpenShift desplegado (muy común en banca y telco)</td>
+    </tr>
+  </table>
+
+  <h3>Capa 4 — CI/CD para ML</h3>
+  <table>
+    <tr><th>Herramienta</th><th>Qué hace</th><th>Diferencia vs CI/CD clásico</th></tr>
+    <tr>
+      <td><strong>GitHub Actions</strong></td>
+      <td>Automatiza workflows al hacer push o PR. Gratis para repos públicos</td>
+      <td>En ML añade steps de validación de datos, entrenamiento y evaluación del modelo</td>
+    </tr>
+    <tr>
+      <td><strong>Azure DevOps</strong></td>
+      <td>Suite completa de CI/CD de Microsoft. Pipelines, repos, boards, artifacts</td>
+      <td>Más usado en enterprise con stack Microsoft. Se integra nativamente con Azure ML</td>
+    </tr>
+    <tr>
+      <td><strong>Jenkins</strong></td>
+      <td>Servidor CI/CD self-hosted. Muy configurable, amplio ecosistema de plugins</td>
+      <td>Legacy pero muy presente en banca y enterprise. Tu experiencia aquí es un plus</td>
+    </tr>
+  </table>
+
+  <h3>Capa 5 — Observabilidad</h3>
+  <table>
+    <tr><th>Herramienta</th><th>Qué monitoriza</th><th>Cómo encaja</th></tr>
+    <tr>
+      <td><strong>Prometheus</strong></td>
+      <td>Métricas de infraestructura y aplicación: latencia, throughput, errores, CPU/memoria</td>
+      <td>Recoge métricas de los pods Kubernetes donde corre el modelo</td>
+    </tr>
+    <tr>
+      <td><strong>Grafana</strong></td>
+      <td>Visualización de métricas en dashboards</td>
+      <td>Consume datos de Prometheus. Dashboard de producción: latencia de inferencia, predicciones/min</td>
+    </tr>
+    <tr>
+      <td><strong>Evidently</strong></td>
+      <td>Data drift y model drift específico para ML. Genera reportes de calidad</td>
+      <td>Compara distribución de datos en producción vs entrenamiento. Envía alertas a Grafana</td>
+    </tr>
+    <tr>
+      <td><strong>Azure Monitor</strong></td>
+      <td>Observabilidad centralizada en Azure: logs, métricas, alertas, trazas</td>
+      <td>Capa de observabilidad del cloud. Se integra con AKS y Azure ML nativamente</td>
+    </tr>
+  </table>
+
+  <h3>Capa 6 — Stack LLMs y Agentes</h3>
+  <table>
+    <tr><th>Herramienta</th><th>Qué hace</th><th>Cómo encaja</th></tr>
+    <tr>
+      <td><strong>Azure OpenAI / OpenAI API</strong></td>
+      <td>Acceso a modelos GPT-4o, GPT-4, embeddings via API REST</td>
+      <td>El LLM base. Todo el stack agéntico se construye encima</td>
+    </tr>
+    <tr>
+      <td><strong>LangChain</strong></td>
+      <td>Framework para construir apps con LLMs: chains, memory, tools, retrieval</td>
+      <td>Orquesta las llamadas al LLM, gestiona el contexto y conecta con herramientas externas</td>
+    </tr>
+    <tr>
+      <td><strong>LangGraph</strong></td>
+      <td>Extensión de LangChain para sistemas multi-agente como grafos de estados</td>
+      <td>Cuando tienes múltiples agentes que se coordinan. Define el flujo como un grafo dirigido</td>
+    </tr>
+    <tr>
+      <td><strong>Semantic Kernel</strong></td>
+      <td>Framework de Microsoft para agentes y plugins. Muy integrado con Azure</td>
+      <td>Alternativa enterprise a LangChain. Preferido en proyectos con stack Microsoft completo</td>
+    </tr>
+    <tr>
+      <td><strong>ChromaDB / FAISS / Milvus</strong></td>
+      <td>Bases de datos vectoriales. Almacenan embeddings y permiten búsqueda por similitud semántica</td>
+      <td>El "almacén de documentos" en RAG. ChromaDB para desarrollo, Milvus para producción a escala</td>
+    </tr>
+    <tr>
+      <td><strong>LangSmith</strong></td>
+      <td>Observabilidad para LLMs: traza cada llamada, registra prompts, latencia, coste de tokens</td>
+      <td>Lo que MLflow es para ML clásico, LangSmith es para sistemas con LLMs</td>
+    </tr>
+    <tr>
+      <td><strong>RAG</strong> (patrón)</td>
+      <td>Retrieval Augmented Generation: el LLM recibe contexto relevante recuperado de documentos</td>
+      <td>Alternativa al fine-tuning para dar conocimiento actualizado al LLM sin reentrenarlo</td>
+    </tr>
+  </table>
+</section>
+
+<!-- SECCIÓN 5 -->
+<section>
+  <h2 class="section-title">5. Entrevista Manager — Preguntas y Respuestas</h2>
+
+  <div class="block-label">Presentación y motivación</div>
+
+  <div class="qa-block">
+    <div class="question">Cuéntame sobre ti y por qué estás aquí.</div>
+    <div class="answer">"Llevo varios años como DevOps/Cloud Engineer trabajando con AWS, Terraform, Kubernetes y pipelines CI/CD en entornos enterprise. Hace año y medio en HPE me incorporaron a un proyecto de Machine Learning — querían posicionarse en IA y necesitaban alguien con base de infraestructura sólida. Esa experiencia me abrió los ojos a todo lo que hay entre un modelo que funciona en un notebook y uno que funciona en producción. Decidí dar el salto formal: estoy haciendo el Máster en Data Science e IA para dominar esa capa de ingeniería ML. Cuando vi la oferta del AI Agentic Hub de Kyndryl, era exactamente el entorno donde quiero crecer — proyectos reales, en producción, en industrias exigentes."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Por qué Kyndryl específicamente?</div>
+    <div class="answer">"Kyndryl me llama la atención desde su nacimiento en 2021. Es una empresa que nació con el foco en tecnología pura, sin el peso de un portfolio de producto que defender. El AI Agentic Hub no es un laboratorio — lleva IA a producción para clientes reales en banca, salud, telco. Ese es exactamente el tipo de trabajo que quiero hacer."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Por qué hacer la transición de DevOps a ML Engineering?</div>
+    <div class="answer">"No lo vivo como una transición sino como una evolución natural. En HPE me di cuenta de que los data scientists construían modelos brillantes que nadie sabía cómo desplegar, versionar ni monitorizar. Mi base en infraestructura era exactamente lo que faltaba. El ML Engineer es ese puente — y es donde el mercado está creciendo más. No quería esperar a que HPE encontrara su línea de negocio en IA."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué aportas que no aporte alguien con perfil puramente de Data Science?</div>
+    <div class="answer">"Un data scientist sabe construir el modelo. Yo sé llevarlo a producción de forma reproducible, escalable y observable. Containerización, CI/CD, IaC, gestión de entornos, monitorización — todo eso en contexto ML marca la diferencia entre un prototipo y un sistema que funciona a las 3 de la mañana. Esa mentalidad de ingeniería de producción es difícil de enseñar a alguien que viene del mundo académico."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Dónde te ves en 2-3 años?</div>
+    <div class="answer">"Quiero ser referencia técnica en MLOps y ML Engineering — alguien que no solo implementa pipelines sino que diseña cómo una organización lleva modelos a producción. En Kyndryl veo la oportunidad de hacer eso en banca y salud, donde los estándares de fiabilidad y compliance son los más altos. Eso acelera el aprendizaje más que cualquier otro entorno."</div>
+  </div>
+
+  <hr class="divider">
+  <div class="block-label">Comportamiento (STAR)</div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo trabajas con data scientists que tienen otra mentalidad?</div>
+    <div class="answer">"En HPE trabajé con data scientists del mundo académico. La clave es no asumir vocabulario compartido. Cuando explicaba por qué versionar el modelo no lo enmarcaba como requisito técnico sino como: 'si el modelo falla el viernes, necesitamos volver al del lunes en 5 minutos'. Eso lo entiende cualquiera. Aprendí que la fricción técnica entre perfiles casi siempre es un problema de comunicación, no de incompetencia."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">Cuéntame una vez que tuvieras que aprender algo nuevo rápidamente bajo presión.</div>
+    <div class="answer">"Cuando me incorporaron al proyecto ML de HPE no tenía experiencia previa con el stack de datos. Tuve que aprender en paralelo mientras entregaba. Me estructuré estudiando por las noches y aplicando directamente en el proyecto al día siguiente. Es la misma dinámica que tengo ahora con el Máster: aprendo un concepto y lo implemento en un proyecto real esa misma semana."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cuál es tu mayor debilidad técnica para este rol?</div>
+    <div class="answer">"No tengo años de experiencia desplegando modelos en producción de forma autónoma — mi background es infraestructura y estoy en transición activa. Lo que sí tengo es la base de ingeniería que hace esa curva corta. Alguien del mundo ML tarda meses en entender Kubernetes o CI/CD robusto. Yo ya tengo eso y estoy construyendo la capa ML encima."</div>
+  </div>
+
+  <hr class="divider">
+  <div class="block-label">Técnicas ligeras (nivel manager)</div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué entiendes por MLOps?</div>
+    <div class="answer">"Es la aplicación de prácticas DevOps al ciclo de vida de los modelos ML. No solo desplegar el modelo, sino versionar los datos y el código, automatizar el reentrenamiento, monitorizar el comportamiento en producción. La diferencia clave con DevOps clásico es que en ML gestionas tres artefactos: código, datos y modelo. Y el modelo puede degradarse aunque el código no cambie, por data drift."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es el data drift y por qué importa?</div>
+    <div class="answer">"Es cuando los datos que llegan al modelo en producción empiezan a diferir estadísticamente de los datos con los que fue entrenado. El modelo no falla técnicamente — devuelve respuestas — pero esas respuestas son cada vez menos fiables. En banca o salud eso puede ser crítico sin que nadie lo detecte. Por eso la monitorización del modelo en producción es tan importante como la de la infraestructura."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Tienes experiencia con Azure? El puesto menciona Azure ML.</div>
+    <div class="answer">"Mi base principal es AWS pero los conceptos son los mismos — AKS es EKS, ACR es ECR, Azure ML es SageMaker. En el Máster estoy trabajando con Azure ML y Azure AI Foundry. Es la plataforma que más me interesa ahora mismo precisamente porque Kyndryl la usa intensivamente."</div>
+  </div>
+</section>
+
+<!-- SECCIÓN 6 -->
+<section>
+  <h2 class="section-title">6. Entrevista Técnica — Jefe de IA</h2>
+
+  <div class="block-label">MLOps y Pipelines</div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo diseñarías un pipeline ML end-to-end desde cero?</div>
+    <div class="answer">"Lo divido en cinco fases. Primero ingesta y validación de datos con Great Expectations para garantizar que los datos cumplen schema y distribuciones antes de entrenar. Segundo, feature engineering versionado con DVC para reproducibilidad. Tercero, entrenamiento con tracking en MLflow — cada experimento registra hiperparámetros, métricas y el artefacto del modelo. Cuarto, evaluación con gates de calidad — el modelo solo avanza si supera umbrales definidos con negocio. Quinto, despliegue en Kubernetes con rollout gradual y rollback inmediato. Todo orquestado con Airflow o GitHub Actions según la complejidad."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué diferencia hay entre CI/CD clásico y CI/CD para ML?</div>
+    <div class="answer">"En CI/CD clásico testeas código. En ML testeas tres cosas: código con tests normales, datos con validaciones de schema y distribución, y modelo con métricas de performance contra un baseline. Si el nuevo modelo no mejora al anterior o baja del umbral mínimo, el pipeline falla y no despliega aunque el código esté perfecto. Eso cambia completamente la lógica de los gates de calidad."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo manejarías el reentrenamiento automático de un modelo?</div>
+    <div class="answer">"Con un trigger basado en métricas. Configuro un monitor que evalúa periódicamente la calidad del modelo en producción. Cuando una métrica cae por debajo del umbral, dispara un pipeline de reentrenamiento en Airflow. Ese pipeline coge los datos más recientes, reentrena, evalúa y si mejora al modelo en prod lo despliega automáticamente. Si no mejora, alerta al equipo para revisión manual. El truco es definir bien los umbrales y tener los datos históricos bien gobernados."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué estrategias de despliegue conoces para modelos ML?</div>
+    <div class="answer">"Las mismas que en software más una específica de ML. Blue-green: dos entornos idénticos, cambias el tráfico de golpe, rollback instantáneo. Canary: introduces el nuevo modelo para un porcentaje pequeño del tráfico, monitorizas, vas subiendo gradualmente. Shadow mode: el nuevo modelo recibe tráfico real pero sus predicciones no se usan — útil para validar sin impacto en negocio. A/B testing: comparas dos modelos midiendo impacto en métricas de negocio reales, no solo técnicas."</div>
+  </div>
+
+  <hr class="divider">
+  <div class="block-label">Infraestructura y Arquitectura</div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo servirías un modelo ML en producción con alta disponibilidad?</div>
+    <div class="answer">"Empaqueto el modelo como API REST con FastAPI, containerizado con Docker. Lo despliego en Kubernetes con mínimo dos réplicas en availability zones distintas. HorizontalPodAutoscaler basado en CPU o métricas custom de latencia. Delante un Ingress con rate limiting. Para casos con requisitos de latencia muy estrictos, considero model serving especializado como Triton Inference Server, que optimiza el throughput de inferencia mejor que un servidor web genérico."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué harías si el modelo tarda demasiado en responder en producción?</div>
+    <div class="answer">"Primero mido dónde está el cuello de botella: ¿inferencia del modelo, preprocesado, latencia de red, o base de datos? Con ese diagnóstico: si es el modelo, evalúo cuantización para reducir tamaño sin perder precisión, o batch inference si el caso de uso lo permite. Si es infraestructura, escalo horizontalmente o añado caching con Redis para inputs frecuentes. En LLMs específicamente, revisar si se puede usar un modelo más pequeño para la tarea puede reducir latencia y coste dramáticamente."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo gestionarías los secretos y credenciales en un pipeline ML?</div>
+    <div class="answer">"Nunca en el código ni en variables hardcodeadas. En Kubernetes uso External Secrets Operator integrado con Azure Key Vault. El pipeline CI/CD accede mediante Managed Identity o OIDC — sin credenciales estáticas. Los modelos en producción acceden a bases de datos mediante Managed Identities. Principio: zero secrets in code, siempre inyectados en runtime desde un vault centralizado."</div>
+  </div>
+
+  <hr class="divider">
+  <div class="block-label">LLMs y Sistemas Agénticos</div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es RAG y cuándo lo usarías en lugar de fine-tuning?</div>
+    <div class="answer">"RAG en lugar de enseñarle conocimiento nuevo al modelo reentrenándolo, le das contexto relevante en cada consulta recuperándolo de una base de documentos. Elijo RAG cuando el conocimiento cambia frecuentemente: documentos de producto, normativa, datos de clientes — porque actualizar un vectorstore es trivial comparado con reentrenar. Fine-tuning lo reservo para cambiar el comportamiento o tono del modelo, no para darle conocimiento. La combinación más potente: fine-tuning para el estilo más RAG para el conocimiento."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo funciona un sistema de agentes y cuándo lo usarías?</div>
+    <div class="answer">"Un agente es un LLM con acceso a herramientas: puede buscar en internet, consultar una base de datos, ejecutar código, llamar a una API. El ciclo es observe-think-act: observa el estado, razona qué hacer, ejecuta una acción, observa el resultado y repite. Lo uso cuando la tarea requiere múltiples pasos que no se pueden predefinir. Un sistema multi-agente añade coordinación: un orquestador delega subtareas a agentes especializados — uno busca datos, otro los analiza, otro redacta el informe."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo monitorizas un sistema con LLMs en producción?</div>
+    <div class="answer">"En capas. Infraestructura: latencia, tokens consumidos, coste por request, tasa de error. Calidad: con LLM-as-judge, uso otro modelo para evaluar si las respuestas son relevantes y seguras en una muestra del tráfico. Seguridad: detecto prompt injection y outputs que violan guardrails. Para la trazabilidad uso LangSmith, que me permite ver exactamente qué pasó en cada cadena de razonamiento de una interacción fallida."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es el prompt injection y cómo lo mitigas?</div>
+    <div class="answer">"Es cuando un usuario malicioso inyecta instrucciones en su input para que el LLM ignore el system prompt. Las mitigaciones son en capas: validación del input antes de llegar al LLM, system prompt que instruye explícitamente al modelo a ignorar instrucciones del usuario que contradigan su rol, guardrails de output que filtran respuestas peligrosas, y nunca dar al agente permisos que no necesite — principio de least privilege aplicado a agentes."</div>
+  </div>
+
+  <hr class="divider">
+  <div class="block-label">Criterio y Arquitectura</div>
+
+  <div class="qa-block">
+    <div class="question">Si un data scientist te entrega un notebook de Jupyter, ¿qué pasos sigues para llevarlo a producción?</div>
+    <div class="answer">"Primero entiendo el modelo: inputs, outputs, dependencias, requisitos de latencia y volumen. Segundo refactorizo el notebook en código modular: preprocesado, entrenamiento e inferencia separados. Tercero añado logging y manejo de errores. Cuarto containerizo con Dockerfile. Quinto integro MLflow. Sexto construyo el pipeline CI/CD con gates de calidad. Séptimo despliegue en staging y valido con el data scientist. Octavo despliegue en producción con canary y monitorización desde el primer request."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cuándo usarías Azure ML vs Azure AI Foundry?</div>
+    <div class="answer">"Azure ML para el ciclo de vida de modelos clásicos de ML: entrenamiento, registro, despliegue de modelos propios. Azure AI Foundry para todo lo relacionado con LLMs: desplegar modelos del catálogo Azure, construir sistemas con agentes, fine-tuning de modelos fundacionales. En un proyecto real usaría los dos: Azure ML para gestionar los modelos propios del cliente y AI Foundry para la capa de inteligencia conversacional encima."</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué harías para reducir el coste de un sistema ML en producción?</div>
+    <div class="answer">"Análisis en tres capas. Infraestructura: revisar sizing, usar spot instances para entrenamiento, autoscaling bien configurado para no pagar capacidad idle. Modelo: cuantización, caching para inputs repetidos, batch inference donde la latencia no es crítica. En LLMs específicamente: evaluar si se puede usar un modelo más pequeño — pasar de GPT-4o a GPT-4o mini para tareas que no lo requieren reduce el coste de tokens entre 10x y 20x sin impacto perceptible en calidad."</div>
+  </div>
+</section>
+
+<!-- SECCIÓN 7 -->
+<section>
+  <h2 class="section-title">7. Preguntas que tú debes hacer</h2>
+
+  <p>Siempre pregunta algo al final. Demuestra interés real y criterio técnico.</p>
+
+  <h3>Para la Manager</h3>
+  <ul>
+    <li>"¿Cómo está estructurado el equipo del AI Agentic Hub? ¿Trabajáis embebidos en proyectos de cliente o como centro de excelencia interno?"</li>
+    <li>"¿Cuál es el mayor reto no técnico al que se enfrenta el equipo — adopción por parte del cliente, calidad de datos, algo diferente?"</li>
+    <li>"¿Qué diferencia a alguien que funciona muy bien en este equipo de alguien que no encaja?"</li>
+  </ul>
+
+  <h3>Para el Jefe de IA</h3>
+  <ul>
+    <li>"¿Qué stack MLOps tenéis estandarizado o cada proyecto elige el suyo?"</li>
+    <li>"¿Cómo gestionáis la observabilidad en sistemas agénticos — LangSmith, algo propio, Azure Monitor?"</li>
+    <li>"¿Los proyectos de AI Agentic Hub son greenfield o tenéis que integrar con sistemas legacy de los clientes?"</li>
+    <li>"¿Qué proporción del trabajo es arquitectura y diseño vs implementación directa?"</li>
+    <li>"¿Cómo medís el éxito de un despliegue de IA con un cliente — métricas técnicas, de negocio, ambas?"</li>
+  </ul>
+
+  <div class="tip">Las preguntas al jefe de IA demuestran que ya piensas como alguien del equipo, no como un candidato que está aprendiendo el vocabulario.</div>
+
+  <hr class="divider">
+
+  <div style="text-align:center; margin-top: 40px; color: #888; font-size: 11px;">
+    Documento preparado para entrevista Kyndryl — Senior ML Engineer · AI Agentic Innovation Hub<br>
+    Generado con Claude Code · Abril 2026
+  </div>
+</section>
+
+</body>
+</html>

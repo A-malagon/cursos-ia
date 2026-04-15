@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+*.env
+venv/
+.venv/
+
+# Modelos y datos grandes
+*.pkl
+*.pt
+*.h5
+*.onnx
+*.csv
+*.parquet
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# DVC cache (los datos se gestionan con DVC, no con git)
+.dvc/cache
+/tmp

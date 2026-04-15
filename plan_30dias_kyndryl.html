@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Plan 30 Días — Kyndryl ML Engineer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; }
+  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); color: white; text-align: center; padding: 40px; page-break-after: always; }
+  .cover h1 { font-size: 30px; font-weight: 700; margin-bottom: 12px; }
+  .cover h2 { font-size: 17px; font-weight: 300; opacity: 0.8; margin-bottom: 30px; }
+  .cover .badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 18px; margin: 4px; font-size: 12px; }
+  section { padding: 44px 60px; page-break-before: always; }
+  h2.section-title { font-size: 21px; color: #0f3460; border-bottom: 3px solid #0f3460; padding-bottom: 10px; margin-bottom: 24px; }
+  h3 { font-size: 15px; color: #16213e; margin: 22px 0 10px 0; }
+  p { line-height: 1.7; margin-bottom: 10px; color: #333; }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 12px; }
+  th { background: #0f3460; color: white; padding: 10px 12px; text-align: left; }
+  td { padding: 9px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: top; line-height: 1.5; }
+  tr:nth-child(even) td { background: #f8f9fa; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; }
+  .tag-green { background: #e8f5e9; color: #2e7d32; }
+  .tag-blue { background: #e3f2fd; color: #1565c0; }
+  .tag-orange { background: #fff3e0; color: #e65100; }
+  .tag-red { background: #ffebee; color: #c62828; }
+  .tag-purple { background: #f3e5f5; color: #6a1b9a; }
+  .tip { background: #e8f4f8; border: 1px solid #b3d9ea; border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 12px; }
+  .tip::before { content: "💡 "; }
+  .warning { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 12px; }
+  .warning::before { content: "⚠️ "; }
+  .week-block { border: 2px solid #0f3460; border-radius: 8px; padding: 20px; margin: 20px 0; }
+  .week-title { font-size: 16px; font-weight: 700; color: #0f3460; margin-bottom: 6px; }
+  .week-goal { font-size: 12px; color: #666; margin-bottom: 14px; font-style: italic; }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { line-height: 1.7; margin-bottom: 3px; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 20px 0; }
+  .highlight { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Plan 30 Días — Kyndryl Ready</h1>
+  <h2>Lo que cubren los cursos · Lo que falta · Cómo priorizarlo</h2>
+  <div style="margin: 24px 0;">
+    <span class="badge">Curso 1: MLOps</span>
+    <span class="badge">Curso 2: AI Engineer</span>
+    <span class="badge">Curso 3: Cloud Engineer</span>
+  </div>
+  <div style="font-size: 12px; opacity: 0.6; line-height: 2;">
+    Objetivo: estar listo para el primer día en Kyndryl en 21-30 días<br>
+    Stack objetivo: MLflow · Airflow · LangChain · RAG · Azure ML · Azure AI Foundry
+  </div>
+</div>
+
+<section>
+  <h2 class="section-title">1. Qué cubren los cursos actuales vs qué pide Kyndryl</h2>
+
+  <table>
+    <tr><th>Tecnología / Skill</th><th>¿En qué curso?</th><th>¿Cuándo?</th><th>Estado</th></tr>
+    <tr><td><strong>Docker + Docker Compose</strong></td><td>Curso 1 — Semana 1</td><td>Días 1-3 ✅ ya hechos</td><td><span class="tag tag-green">Cubierto</span></td></tr>
+    <tr><td><strong>Kubernetes (core)</strong></td><td>Curso 1 — Semana 2</td><td>Días 8-14</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>AKS</strong></td><td>Curso 1 — Semana 3</td><td>Días 15-21</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>CI/CD (GitHub Actions, Jenkins)</strong></td><td>Curso 1 — Semana 3</td><td>Días 16-17</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>MLflow</strong></td><td>Curso 1 — Semana 3</td><td>Día 19</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>Azure ML</strong></td><td>Curso 1 — Semana 3</td><td>Día 18</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>Prometheus + Grafana</strong></td><td>Curso 1 — Semana 4</td><td>Día 23</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>LangChain + RAG</strong></td><td>Curso 2 — Semana 1</td><td>Días 4-6</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>Agentes LLM</strong></td><td>Curso 2 — Semana 2</td><td>Días 8-13</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>Azure AI Foundry</strong></td><td>Curso 2 — Semana 3</td><td>Días 15-16</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>LangSmith</strong></td><td>Curso 2 — Semana 4</td><td>Día 24</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+    <tr><td><strong>Azure Networking + Gobernanza</strong></td><td>Curso 3 — Semanas 1-2</td><td>Pendiente</td><td><span class="tag tag-orange">Pendiente</span></td></tr>
+    <tr><td><strong>Airflow</strong></td><td>NO está en ningún curso</td><td>—</td><td><span class="tag tag-red">Gap</span></td></tr>
+    <tr><td><strong>DVC</strong></td><td>NO está en ningún curso</td><td>—</td><td><span class="tag tag-red">Gap</span></td></tr>
+    <tr><td><strong>Evidently (data drift)</strong></td><td>NO está en ningún curso</td><td>—</td><td><span class="tag tag-red">Gap</span></td></tr>
+    <tr><td><strong>FastAPI para model serving</strong></td><td>NO está en ningún curso</td><td>—</td><td><span class="tag tag-red">Gap</span></td></tr>
+    <tr><td><strong>Great Expectations</strong></td><td>NO está en ningún curso</td><td>—</td><td><span class="tag tag-red">Gap</span></td></tr>
+    <tr><td><strong>Kubeflow</strong></td><td>NO está en ningún curso</td><td>—</td><td><span class="tag tag-red">Gap</span></td></tr>
+    <tr><td><strong>Python ML (sklearn, PyTorch)</strong></td><td>NO está en ningún curso</td><td>—</td><td><span class="tag tag-red">Gap</span></td></tr>
+    <tr><td><strong>Seguridad LLMs (prompt injection)</strong></td><td>Curso 2 — Semana 4</td><td>Día 23</td><td><span class="tag tag-blue">Próximo</span></td></tr>
+  </table>
+
+  <div class="warning">Los gaps críticos para Kyndryl son: Airflow, DVC, Evidently y FastAPI. Son herramientas del día a día en MLOps que los cursos no cubren. Hay que añadirlas.</div>
+</section>
+
+<section>
+  <h2 class="section-title">2. Gaps añadidos a los cursos</h2>
+  <p>Estos temas se integran en los cursos existentes en los días más relevantes:</p>
+
+  <table>
+    <tr><th>Gap</th><th>Dónde se añade</th><th>Tiempo estimado</th></tr>
+    <tr>
+      <td><strong>FastAPI para model serving</strong><br><small>Exponer el modelo como API REST de forma profesional</small></td>
+      <td>Curso 1 — Semana 1, Día 3 (tras Docker Compose)</td>
+      <td>2-3h práctica</td>
+    </tr>
+    <tr>
+      <td><strong>Airflow básico</strong><br><small>DAGs, tasks, dependencias, scheduling de pipelines ML</small></td>
+      <td>Curso 1 — Semana 3, nuevo Día 17b (tras CI/CD)</td>
+      <td>5h teoría + práctica</td>
+    </tr>
+    <tr>
+      <td><strong>DVC</strong><br><small>Versionar datasets y modelos con Git</small></td>
+      <td>Curso 1 — Semana 3, junto al día de MLflow (Día 19)</td>
+      <td>3h práctica</td>
+    </tr>
+    <tr>
+      <td><strong>Evidently</strong><br><small>Detectar data drift y model drift en producción</small></td>
+      <td>Curso 1 — Semana 4, junto a monitorización (Día 22)</td>
+      <td>3h práctica</td>
+    </tr>
+    <tr>
+      <td><strong>Great Expectations</strong><br><small>Validación de datos antes de entrenar</small></td>
+      <td>Curso 1 — Semana 3, junto al pipeline CI/CD (Día 17)</td>
+      <td>2h práctica</td>
+    </tr>
+    <tr>
+      <td><strong>Python ML básico (sklearn)</strong><br><small>Entrenar un modelo simple para tener algo que desplegar</small></td>
+      <td>Curso 1 — Semana 1, Día 6 (proyecto semana 1)</td>
+      <td>2-3h práctica</td>
+    </tr>
+    <tr>
+      <td><strong>Kubeflow conceptual</strong><br><small>Saber qué es y cuándo usarlo vs Airflow</small></td>
+      <td>Curso 1 — Semana 2, junto a Kubernetes avanzado</td>
+      <td>1h teoría</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2 class="section-title">3. Plan de 30 días — Kyndryl Ready</h2>
+
+  <div class="highlight">
+    <strong>Premisa:</strong> tienes 21-30 días antes de entrar. El objetivo no es terminar todos los cursos — es dominar lo que vas a usar en las primeras semanas de trabajo y poder hablar con criterio de todo lo demás.
+  </div>
+
+  <div class="week-block">
+    <div class="week-title">SEMANA 1 — Días 1-7: Cimientos sólidos</div>
+    <div class="week-goal">Objetivo: tener un modelo ML real desplegado como API en un contenedor Docker. Todo versionado.</div>
+    <table>
+      <tr><th>Día</th><th>Qué hacer</th><th>Prioridad</th></tr>
+      <tr><td>1</td><td>Completar Día 3 MLOps (Docker Compose + Redis) + añadir FastAPI básico</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>2</td><td>Python ML básico con scikit-learn: entrena un modelo de clasificación simple (iris o titanic)</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>3</td><td>MLOps Día 4: Azure fundamentos + exponer ese modelo con FastAPI como API REST</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>4</td><td>MLOps Día 5: Azure CLI + Terraform. Dockerizar la FastAPI del modelo</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>5</td><td>MLflow hands-on: instalar localmente, trackear experimentos del modelo scikit-learn, model registry</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>6</td><td>MLOps Día 6 (Proyecto S1): modelo ML + MLflow + Docker + API. Todo integrado</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>7</td><td>Test semana 1 + DVC básico: versionar el dataset y el modelo entrenado</td><td><span class="tag tag-orange">Alto</span></td></tr>
+    </table>
+    <p><strong>Checkpoint:</strong> Tienes un modelo scikit-learn entrenado, trackeado con MLflow, versionado con DVC, servido con FastAPI, containerizado con Docker.</p>
+  </div>
+
+  <div class="week-block">
+    <div class="week-title">SEMANA 2 — Días 8-14: Kubernetes + Pipeline completo</div>
+    <div class="week-goal">Objetivo: tu modelo del semana 1 corriendo en Kubernetes con CI/CD automatizado.</div>
+    <table>
+      <tr><th>Día</th><th>Qué hacer</th><th>Prioridad</th></tr>
+      <tr><td>8</td><td>MLOps Días 8-9: Kubernetes core (Pods, Deployments, Services). Despliega tu modelo en minikube</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>9</td><td>MLOps Días 10-11: ConfigMaps, Secrets, Ingress. Añadir Key Vault para credenciales</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>10</td><td>MLOps Día 12: Helm. Empaqueta el despliegue del modelo como Helm chart</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>11</td><td>GitHub Actions: pipeline CI/CD que hace build → test → push imagen → deploy en minikube</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>12</td><td>Great Expectations: añade validación de datos al pipeline. Si falla, el pipeline para</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>13</td><td>MLOps Día 13 (Proyecto S2): pipeline completo con reentrenamiento automático básico</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>14</td><td>Airflow básico: DAG sencillo que orquesta ingesta → preprocesado → entrenamiento</td><td><span class="tag tag-orange">Alto</span></td></tr>
+    </table>
+    <p><strong>Checkpoint:</strong> Pipeline CI/CD funcionando: código → build → test → deploy en K8s. Airflow orquestando el pipeline de datos.</p>
+  </div>
+
+  <div class="week-block">
+    <div class="week-title">SEMANA 3 — Días 15-21: Azure + LLMs + RAG</div>
+    <div class="week-goal">Objetivo: modelo en AKS + primer sistema RAG con LangChain funcionando.</div>
+    <table>
+      <tr><th>Día</th><th>Qué hacer</th><th>Prioridad</th></tr>
+      <tr><td>15</td><td>MLOps Días 15-16: AKS. Migra el despliegue de minikube a AKS real</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>16</td><td>Azure ML: workspace, compute cluster, registrar el modelo en Azure ML Model Registry</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>17</td><td>AI Engineer Días 1-2: cómo funcionan los LLMs + Azure OpenAI API primeras llamadas</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>18</td><td>AI Engineer Días 3-4: prompting avanzado + LangChain core (chains, memory)</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>19</td><td>AI Engineer Día 5: RAG con LangChain + ChromaDB. Construye un chatbot sobre documentos</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>20</td><td>Evidently: añade monitorización de data drift al modelo en AKS. Dashboard en Grafana</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>21</td><td>AI Engineer Día 6 (Proyecto): chatbot RAG completo. LangSmith para trazabilidad</td><td><span class="tag tag-orange">Alto</span></td></tr>
+    </table>
+    <p><strong>Checkpoint:</strong> Modelo ML en AKS con Azure ML. Sistema RAG con LangChain + ChromaDB + LangSmith. Monitorización con Evidently + Grafana.</p>
+  </div>
+
+  <div class="week-block">
+    <div class="week-title">SEMANA 4 — Días 22-30: Agentes + Integración + Preparación final</div>
+    <div class="week-goal">Objetivo: sistema agéntico básico + todo integrado + listo para el primer día.</div>
+    <table>
+      <tr><th>Día</th><th>Qué hacer</th><th>Prioridad</th></tr>
+      <tr><td>22</td><td>AI Engineer Días 8-9: agentes con LangChain. Agente que usa herramientas externas</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>23</td><td>AI Engineer Día 10: Semantic Kernel básico. Diferencias con LangChain</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>24</td><td>Azure AI Foundry: desplegar un modelo LLM, configurar un endpoint, conectar desde LangChain</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>25</td><td>Seguridad en LLMs: prompt injection, guardrails, datos sensibles en banca</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>26</td><td>Proyecto integrador: sistema agéntico que combina RAG + modelo ML + Azure AI Foundry</td><td><span class="tag tag-red">Crítico</span></td></tr>
+      <tr><td>27</td><td>FinOps básico: Azure Cost Management, optimización de tokens LLM, spot instances para training</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>28</td><td>Repaso arquitectura: dibuja de memoria el stack completo MLOps + LLM. Practica explicarlo en voz alta</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>29</td><td>Simulacro entrevista técnica: responde las preguntas del documento de entrevista sin mirar</td><td><span class="tag tag-orange">Alto</span></td></tr>
+      <tr><td>30</td><td>Buffer: refuerza los dos temas donde te sientas más débil</td><td><span class="tag tag-blue">Flexible</span></td></tr>
+    </table>
+    <p><strong>Checkpoint final:</strong> Stack completo desplegado. Sistema RAG + agente + modelo ML en Azure. Listo para el primer día en Kyndryl.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">4. Prioridad absoluta si el tiempo se reduce</h2>
+
+  <p>Si tienes menos de 21 días o el ritmo baja, este es el orden de prioridad estricto:</p>
+
+  <table>
+    <tr><th>#</th><th>Skill</th><th>Por qué es prioritario</th></tr>
+    <tr><td>1</td><td><strong>MLflow completo</strong></td><td>Lo van a preguntar en el primer sprint. Es el corazón del MLOps.</td></tr>
+    <tr><td>2</td><td><strong>FastAPI + modelo scikit-learn desplegado</strong></td><td>Tener algo concreto que mostrar. "He desplegado X" vale más que "he leído sobre Y".</td></tr>
+    <tr><td>3</td><td><strong>LangChain + RAG básico</strong></td><td>El AI Agentic Hub lo usa en el día a día. Sin esto estás cojo en ese equipo.</td></tr>
+    <tr><td>4</td><td><strong>Kubernetes en AKS</strong></td><td>Infraestructura base de todo. Ya tienes la base DevOps, es completar el contexto ML.</td></tr>
+    <tr><td>5</td><td><strong>Azure ML + Azure AI Foundry</strong></td><td>Las plataformas específicas de Kyndryl. Hay que conocerlas aunque sea superficialmente.</td></tr>
+    <tr><td>6</td><td><strong>Airflow básico</strong></td><td>Muy probable que lo usen para orquestar pipelines de datos.</td></tr>
+    <tr><td>7</td><td><strong>Evidently + monitorización drift</strong></td><td>Diferenciador en la entrevista técnica. Pocos candidatos lo conocen bien.</td></tr>
+  </table>
+
+  <div class="tip">Lo que NO necesitas dominar antes del día 1: Kubeflow (conceptual es suficiente), Triton Inference Server, feature stores avanzados. Eso lo aprendes en el trabajo.</div>
+
+  <hr class="divider">
+
+  <h3>Ritmo diario recomendado</h3>
+  <table>
+    <tr><th>Bloque</th><th>Tiempo</th><th>Qué hacer</th></tr>
+    <tr><td>Mañana</td><td>3h</td><td>Teoría + lab guiado del curso (con Claude)</td></tr>
+    <tr><td>Tarde</td><td>3h</td><td>Proyecto práctico: aplicar lo aprendido a algo concreto</td></tr>
+    <tr><td>Noche</td><td>30min</td><td>Repasar las preguntas de entrevista del bloque del día</td></tr>
+  </table>
+
+  <div style="text-align:center; margin-top: 40px; color: #888; font-size: 11px;">
+    Plan 30 Días — Kyndryl Senior ML Engineer · AI Agentic Innovation Hub<br>
+    Generado con Claude Code · Abril 2026
+  </div>
+</section>
+
+</body>
+</html>
