@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/health")
 def health():
-    return jsonify({"status":"healthy"})
+    return jsonify({"status":"ok"})
 
 @app.route("/predict/<float:x>")
 def predict(x):

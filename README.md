@@ -10,7 +10,7 @@
 
 | # | Curso | Objetivo | Estado |
 |---|-------|----------|--------|
-| 1 | [MLOps Intensivo](./semana1/README.md) | Docker + Kubernetes + AKS + Azure ML + MLflow | ⏳ En curso — S1D3 |
+| 1 | [MLOps Intensivo](./curso1_mlops/semana1/README.md) | Docker + Kubernetes + AKS + Azure ML + MLflow | ⏳ En curso — S1D3 |
 | 2 | [AI Engineer](./curso2_ai_engineer/README.md) | LangChain + Semantic Kernel + Azure AI Foundry + Agentes LLM | ⬜ Pendiente |
 | 3 | [Cloud Engineer — KPMG Ready](./curso3_cloud_engineer/README.md) | Azure Core + Networking + Gobernanza + IaC + Multi-cloud | ⬜ Pendiente |
 
@@ -34,13 +34,14 @@
 Curso_MLOps/
 ├── README.md                          ← este fichero, índice global
 │
-├── semana1/                           ← Curso 1: MLOps
-│   ├── README.md                      ← teoría + ejercicios + respuestas
-│   ├── dia2/                          ← Dockerfile, app.py, etc.
-│   └── dia3/
-├── semana2/
-├── semana3/
-├── semana4/
+├── curso1_mlops/                      ← Curso 1: MLOps
+│   ├── semana1/
+│   │   ├── README.md                  ← teoría + ejercicios + respuestas
+│   │   ├── dia2/                      ← Dockerfile, app.py, etc.
+│   │   └── dia3/
+│   ├── semana2/
+│   ├── semana3/
+│   └── semana4/
 │
 ├── curso2_ai_engineer/                ← Curso 2: AI Engineer
 │   ├── README.md

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preparación Entrevista KPMG — Consultor Senior/Manager Cloud + IA</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; }
+  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #00338D, #0055A5, #005EB8); color: white; text-align: center; padding: 40px; page-break-after: always; }
+  .cover h1 { font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .cover h2 { font-size: 18px; font-weight: 300; opacity: 0.85; margin-bottom: 40px; }
+  .cover .meta { font-size: 13px; opacity: 0.6; line-height: 2; }
+  .cover .badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 18px; margin: 6px; font-size: 12px; }
+  .toc { padding: 48px 60px; page-break-after: always; }
+  .toc h2 { font-size: 22px; color: #00338D; border-bottom: 3px solid #00338D; padding-bottom: 10px; margin-bottom: 24px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { padding: 6px 0; font-size: 14px; color: #333; }
+  section { padding: 48px 60px; page-break-before: always; }
+  h2.section-title { font-size: 22px; color: #00338D; border-bottom: 3px solid #00338D; padding-bottom: 10px; margin-bottom: 28px; }
+  h3 { font-size: 16px; color: #0055A5; margin: 24px 0 10px 0; }
+  h4 { font-size: 14px; color: #00338D; margin: 16px 0 8px 0; }
+  p { line-height: 1.7; margin-bottom: 10px; color: #333; }
+  .qa-block { background: #f0f4ff; border-left: 4px solid #00338D; border-radius: 0 8px 8px 0; padding: 18px 20px; margin: 20px 0; }
+  .qa-block .question { font-weight: 700; color: #00338D; font-size: 14px; margin-bottom: 10px; }
+  .qa-block .question::before { content: "P: "; color: #0055A5; }
+  .qa-block .answer { color: #333; line-height: 1.7; font-size: 13px; }
+  .qa-block .answer::before { content: "R: "; font-weight: 700; color: #0055A5; }
+  .tip { background: #e8f4f8; border: 1px solid #b3d9ea; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; color: #003366; }
+  .tip::before { content: "💡 "; }
+  .warning { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; }
+  .warning::before { content: "⚠️ "; }
+  .strategy { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; color: #1b5e20; }
+  .strategy::before { content: "🎯 "; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+  th { background: #00338D; color: white; padding: 10px 12px; text-align: left; }
+  td { padding: 9px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8f9fa; }
+  code { background: #e8ecef; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 12px; color: #00338D; }
+  .arch-diagram { background: #0a1628; color: #7ec8e3; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.8; margin: 16px 0; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .tag-green { background: #e8f5e9; color: #2e7d32; }
+  .tag-blue { background: #e3f2fd; color: #1565c0; }
+  .tag-orange { background: #fff3e0; color: #e65100; }
+  .tag-red { background: #ffebee; color: #c62828; }
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { line-height: 1.7; margin-bottom: 4px; }
+  .divider { border: none; border-top: 1px solid #e0e0e0; margin: 24px 0; }
+  .block-label { display: inline-block; background: #00338D; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .no-exp-box { background: #f3e5f5; border-left: 4px solid #7b1fa2; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 12px; }
+  .no-exp-box::before { content: "🗣️ Cómo responder sin experiencia directa: "; font-weight: 700; color: #7b1fa2; display: block; margin-bottom: 6px; }
+  @media print {
+    section { page-break-before: always; }
+    .cover { page-break-after: always; }
+    body { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <h1>Preparación Entrevista KPMG</h1>
+  <h2>Consultor Senior / Manager — Cloud + Inteligencia Artificial</h2>
+  <div style="margin: 30px 0;">
+    <span class="badge">LLMs & RAG</span>
+    <span class="badge">Agentes IA</span>
+    <span class="badge">Azure AI</span>
+    <span class="badge">Cloud Architecture</span>
+    <span class="badge">MLOps</span>
+  </div>
+  <div class="meta">
+    <div>Entrevista: miércoles 22 de abril de 2026</div>
+    <div>Perfil previo: DevOps/Cloud Engineer (AWS, Terraform, Jenkins)</div>
+    <div>Formación activa: MLOps + AI Engineer + Cloud Engineer</div>
+  </div>
+</div>
+
+<!-- ÍNDICE -->
+<div class="toc">
+  <h2>Contenido</h2>
+  <ol>
+    <li>Estrategia para la entrevista — cómo posicionarte sin experiencia directa en IA</li>
+    <li>Conceptos IA que debes dominar — LLMs, embeddings, RAG, agentes</li>
+    <li>Arquitecturas RAG — cómo funciona y cuándo recomendarla a un cliente</li>
+    <li>Agentes IA — ReAct, herramientas, orquestación</li>
+    <li>Azure AI Stack — los servicios que usa KPMG</li>
+    <li>Cloud Architecture para cargas de IA — decisiones de diseño</li>
+    <li>Preguntas de consultor — cuándo recomiendas X vs Y</li>
+    <li>Preguntas trampa — las que más penalizan</li>
+    <li>Plan de repaso para 7 días</li>
+  </ol>
+</div>
+
+<!-- SECCIÓN 1: ESTRATEGIA -->
+<section>
+  <h2 class="section-title">1. Estrategia para la entrevista</h2>
+
+  <p>KPMG para un rol Senior/Manager consultor no busca que hayas implementado RAG en producción. Buscan que <strong>entiendas los conceptos, sepas recomendar soluciones y puedas hablar con clientes</strong>. Tu background DevOps es un activo real — muchos candidatos con conocimiento de IA no saben deployar ni operar nada.</p>
+
+  <h3>Tu narrativa</h3>
+  <div class="strategy">
+    "Llevo años como Cloud/DevOps Engineer en AWS, con Terraform y CI/CD. He visto la demanda de IA crecer y me he puesto a formarme de manera intensiva — estoy haciendo tres cursos en paralelo: MLOps, AI Engineer y Cloud Engineer enfocado en Azure. No tengo experiencia de producción en IA todavía, pero tengo la base de infraestructura y la formación activa para cerrar ese gap rápido."
+  </div>
+
+  <h3>Los tres pilares que debes proyectar</h3>
+  <table>
+    <tr>
+      <th>Pilar</th>
+      <th>Qué transmitir</th>
+      <th>Cómo anclarlo</th>
+    </tr>
+    <tr>
+      <td><strong>Credibilidad técnica</strong></td>
+      <td>Entiendes los conceptos en profundidad</td>
+      <td>Explica con analogías claras, no solo repite definiciones</td>
+    </tr>
+    <tr>
+      <td><strong>Mentalidad de consultor</strong></td>
+      <td>Razonas trade-offs, no solo recitas tecnologías</td>
+      <td>"Dependería de... si el cliente tiene X, recomendaría Y porque..."</td>
+    </tr>
+    <tr>
+      <td><strong>Velocidad de aprendizaje</strong></td>
+      <td>El gap de experiencia no es permanente</td>
+      <td>Menciona la formación activa, el repositorio, los proyectos</td>
+    </tr>
+  </table>
+
+  <div class="warning">
+    Nunca inventes experiencia que no tienes. En KPMG hay muchos consultores técnicos que saben exactamente qué preguntar para verificarlo. Es mucho mejor decir "no lo he implementado en producción pero conozco el concepto y sé cómo se haría" que pillarte en una mentira.
+  </div>
+</section>
+
+<!-- SECCIÓN 2: CONCEPTOS IA -->
+<section>
+  <h2 class="section-title">2. Conceptos IA que debes dominar</h2>
+
+  <h3>LLMs — Large Language Models</h3>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es un LLM y cómo funciona a grandes rasgos?</div>
+    <div class="answer">Un LLM es un modelo de lenguaje entrenado con enormes cantidades de texto para predecir qué token viene a continuación. Durante el entrenamiento aprende patrones estadísticos del lenguaje humano. En inferencia, dada una entrada (prompt), genera una respuesta token a token. Lo que parece "razonamiento" es en realidad interpolación sofisticada sobre patrones aprendidos. Los modelos actuales como GPT-4o o Claude tienen ventanas de contexto de 128K-200K tokens, lo que permite conversaciones largas y análisis de documentos completos.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es un token?</div>
+    <div class="answer">La unidad mínima de procesamiento del LLM. No es una palabra — es un fragmento de texto. "MLOps" puede ser 1 o 3 tokens según el modelo. Importante para un consultor porque el coste de la API se mide en tokens: coste = (tokens entrada + tokens salida) × precio por token. Para un cliente con millones de llamadas, la gestión de tokens puede suponer diferencias de decenas de miles de euros al mes.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es la temperatura en un LLM?</div>
+    <div class="answer">Parámetro que controla la aleatoriedad de las respuestas. Temperatura 0 → siempre la respuesta más probable (producción, código, respuestas factuales). Temperatura 0.7 → balance creatividad/coherencia (chatbots de atención). Temperatura 1+ → muy creativo, puede ser incoherente (brainstorming). Para un cliente bancario que usa IA para responder preguntas regulatorias, temperatura 0 o muy baja es obligatoria.</div>
+  </div>
+
+  <h3>Embeddings</h3>
+
+  <div class="qa-block">
+    <div class="question">¿Qué son los embeddings y para qué sirven?</div>
+    <div class="answer">Un embedding es la representación numérica de un texto como vector en un espacio de alta dimensión (1536 números con text-embedding-ada-002). Lo relevante: textos con significado similar tienen vectores cercanos. "impago" y "riesgo de crédito" estarán cerca. "impago" y "receta de cocina" estarán lejos. Se usan en tres casos principales: RAG (encontrar documentos relevantes para una pregunta), búsqueda semántica (búsqueda por significado, no por palabras clave), y clasificación de textos (agrupar tickets de soporte por tema).</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué diferencia hay entre búsqueda semántica y búsqueda por palabras clave?</div>
+    <div class="answer">Búsqueda por palabras clave (Elasticsearch clásico): busca la palabra exacta. Si el documento dice "impago" y la consulta es "cliente que no paga", no lo encuentra. Búsqueda semántica con embeddings: compara el significado. "cliente que no paga" y "riesgo de impago" son semánticamente similares → sí los conecta. Para un banco que quiere que sus analistas busquen en normativa regulatoria o contratos, la búsqueda semántica es transformacional.</div>
+  </div>
+
+  <h3>Fine-tuning vs RAG — pregunta clásica de consultor</h3>
+
+  <div class="qa-block">
+    <div class="question">¿Cuándo recomiendas fine-tuning y cuándo RAG?</div>
+    <div class="answer">Fine-tuning: modificas los pesos del modelo con tus propios datos. Enseñas al modelo a hablar de una manera concreta, seguir un formato específico o conocer terminología de nicho. Caro (GPUs, tiempo, datos etiquetados) y difícil de actualizar — si cambia la información, tienes que reentrenar. RAG: el modelo base no cambia. Le das contexto relevante en el prompt en tiempo real. Mucho más barato, actualizable al instante y auditable. Para la mayoría de casos empresariales (documentos que cambian, normativa, bases de conocimiento) RAG es la respuesta correcta. Fine-tuning tiene sentido si necesitas cambiar el estilo/formato de respuesta o si la terminología es muy especializada y el modelo base la desconoce completamente.</div>
+  </div>
+
+  <div class="tip">
+    Regla para la entrevista: si te preguntan "fine-tuning o RAG", di RAG salvo que haya una razón muy específica. Es la respuesta que da un consultor experimentado, no "depende" sin más.
+  </div>
+</section>
+
+<!-- SECCIÓN 3: RAG -->
+<section>
+  <h2 class="section-title">3. Arquitecturas RAG</h2>
+
+  <p>RAG (Retrieval-Augmented Generation) es el patrón de arquitectura más usado en proyectos de IA empresarial. Debes poder explicarlo de memoria y dibujarlo si te lo piden.</p>
+
+  <h3>Flujo completo RAG</h3>
+
+  <div class="arch-diagram">
+[FASE INDEXACIÓN — se hace una vez]
+
+Documentos (PDFs, Word, contratos, normativa...)
+        ↓
+   Dividir en chunks (trozos de ~500 tokens)
+        ↓
+   Generar embedding de cada chunk (Azure OpenAI: text-embedding-ada-002)
+        ↓
+   Guardar embeddings + texto en Vectorstore (ChromaDB / FAISS / Azure AI Search)
+
+[FASE CONSULTA — en tiempo real]
+
+Usuario hace una pregunta
+        ↓
+   Generar embedding de la pregunta
+        ↓
+   Buscar los N chunks más similares en el vectorstore (búsqueda semántica)
+        ↓
+   Construir prompt: "Pregunta: X  |  Contexto relevante: chunk1, chunk2, chunk3"
+        ↓
+   Enviar al LLM (Azure OpenAI GPT-4o)
+        ↓
+   LLM responde basándose SOLO en el contexto proporcionado
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Por qué RAG en vez de meter todos los documentos en el contexto del LLM?</div>
+    <div class="answer">Por coste y latencia. Un contrato bancario puede ser 100 páginas. Meter 100 páginas en cada pregunta costaría una fortuna en tokens y haría cada llamada lenta. RAG selecciona solo los 3-5 fragmentos más relevantes para cada pregunta. Además, los LLMs con contextos muy largos tienen peor rendimiento en los fragmentos del "medio" del contexto (lost-in-the-middle problem). RAG mantiene el contexto pequeño y relevante.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es el chunking y por qué importa?</div>
+    <div class="answer">Chunking es cómo divides los documentos antes de indexarlos. Si el chunk es demasiado pequeño, pierde contexto (un párrafo suelto sin saber de qué trata la sección). Si es demasiado grande, el embedding es menos preciso y el retrieval peor. El tamaño típico es 300-1000 tokens con overlap (solapamiento) del 10-20% para no perder contexto en los cortes. Para documentos estructurados como normativa o contratos, es mejor hacer chunking por sección lógica que por número fijo de tokens.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué vectorstore recomiendas y cuándo?</div>
+    <div class="answer">Tres opciones principales: ChromaDB para desarrollo y prototipos (fácil, local, sin infraestructura). FAISS para velocidad máxima en memoria cuando los datos caben en RAM. Milvus para producción a escala con millones de vectores, alta disponibilidad y arquitectura distribuida. Para un cliente Azure empresarial: Azure AI Search, que es el vectorstore gestionado de Microsoft — se integra nativamente con Azure OpenAI, tiene RBAC, cumplimiento normativo y no necesitas gestionar infraestructura adicional.</div>
+  </div>
+
+  <h3>RAG avanzado — si te preguntan a fondo</h3>
+
+  <div class="qa-block">
+    <div class="question">¿Qué problemas tiene RAG y cómo se mitigan?</div>
+    <div class="answer">Tres problemas principales: (1) Retrieval incorrecto — si los chunks recuperados no son los adecuados, el LLM genera una respuesta basada en contexto incorrecto. Mitigación: re-ranking (usar un segundo modelo para reordenar los chunks recuperados), HyDE (generar una respuesta hipotética y buscar chunks similares a ella). (2) Alucinaciones — el LLM puede generar información que no está en los chunks. Mitigación: instrucciones explícitas de "responde solo con la información del contexto, si no está di que no lo sabes". (3) Contexto fragmentado — el chunk recuperado no tiene suficiente contexto. Mitigación: overlap entre chunks, parent-child chunking.</div>
+  </div>
+</section>
+
+<!-- SECCIÓN 4: AGENTES -->
+<section>
+  <h2 class="section-title">4. Agentes IA</h2>
+
+  <p>Los agentes son LLMs que pueden tomar decisiones, usar herramientas externas y ejecutar secuencias de pasos para completar una tarea. Es uno de los temas más de moda — tu compañero mencionó explícitamente que te lo preguntarán.</p>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es un agente de IA y en qué se diferencia de un chatbot normal?</div>
+    <div class="answer">Un chatbot normal: recibes un mensaje → generas una respuesta → fin. Un agente: recibes una tarea → el LLM decide qué herramientas usar → ejecuta acciones → observa el resultado → decide el siguiente paso → repite hasta completar la tarea. La diferencia clave es la capacidad de acción: un agente puede buscar en Google, ejecutar código, consultar una base de datos, enviar un email o llamar a una API. No solo genera texto — genera texto Y actúa.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es el patrón ReAct?</div>
+    <div class="answer">ReAct (Reasoning + Acting) es el patrón fundamental de los agentes modernos. El LLM alterna entre: Thought (razonamiento interno — "necesito saber el precio actual de IBEX para calcular esto"), Action (usa una herramienta — "buscar precio IBEX en API"), Observation (observa el resultado — "IBEX está a 11.234"), y vuelve a Thought. Este ciclo se repite hasta llegar a la respuesta final. Es el patrón que usan LangChain Agents, AutoGPT y la mayoría de frameworks de agentes.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué riesgos tienen los agentes en producción empresarial?</div>
+    <div class="answer">Cuatro riesgos principales que un consultor debe conocer: (1) Prompt injection — un usuario malicioso puede intentar que el agente ignore sus instrucciones y ejecute acciones no autorizadas. (2) Scope creep — el agente puede encadenar acciones que van más allá de lo que el usuario pretendía. (3) Costes impredecibles — un agente que entra en bucle puede hacer decenas de llamadas API antes de detenerse. (4) Trazabilidad y auditoría — en sectores regulados (banca, seguros) es obligatorio poder explicar por qué el agente tomó cada decisión. Soluciones: guardrails estrictos, límite de pasos, aprobación humana para acciones críticas (human-in-the-loop), logging completo con LangSmith o Azure Monitor.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué frameworks de agentes conoces?</div>
+    <div class="answer">LangChain es el más extendido — tiene AgentExecutor, herramientas predefinidas y buena comunidad. LangGraph (de los mismos creadores) añade control de flujo explícito con grafos de estado, más adecuado para agentes complejos en producción. Semantic Kernel de Microsoft es el más integrado con el ecosistema Azure — plugins, planners, memoria semántica. AutoGen de Microsoft Research para sistemas multi-agente donde varios agentes colaboran. Para un cliente KPMG en Azure, Semantic Kernel + Azure AI Foundry es la combinación natural.</div>
+  </div>
+
+  <h3>Arquitectura multi-agente</h3>
+
+  <div class="arch-diagram">
+Usuario
+    ↓
+Agente Orquestador (decide qué agente especializado usar)
+    ├─→ Agente Búsqueda (RAG sobre documentos internos)
+    ├─→ Agente Análisis (código Python, cálculos)
+    ├─→ Agente Comunicación (redactar emails, informes)
+    └─→ Agente Validación (verifica que la respuesta cumple reglas de negocio)
+    ↓
+Respuesta consolidada al usuario
+  </div>
+
+  <div class="tip">
+    Caso de uso concreto para KPMG: un agente que ayuda a analistas de auditoría a revisar contratos. El orquestador recibe "analiza este contrato y busca cláusulas de riesgo". El agente de búsqueda recupera cláusulas similares de contratos pasados. El agente de análisis las compara. El agente de validación verifica que el informe cumple la plantilla estándar. Puedes contar este ejemplo aunque no lo hayas implementado.
+  </div>
+</section>
+
+<!-- SECCIÓN 5: AZURE AI STACK -->
+<section>
+  <h2 class="section-title">5. Azure AI Stack — lo que usa KPMG</h2>
+
+  <p>KPMG es partner de Microsoft. Casi todo lo que hacen en IA pasa por Azure. Estos son los servicios que debes conocer.</p>
+
+  <table>
+    <tr>
+      <th>Servicio</th>
+      <th>Para qué sirve</th>
+      <th>Cuándo recomendarlo</th>
+    </tr>
+    <tr>
+      <td><strong>Azure OpenAI Service</strong></td>
+      <td>Acceso a modelos GPT-4o, GPT-4, embeddings en infraestructura Azure (con cumplimiento normativo, datos no salen de tu suscripción)</td>
+      <td>Siempre que el cliente necesite LLMs en Azure con garantías de privacidad</td>
+    </tr>
+    <tr>
+      <td><strong>Azure AI Foundry</strong></td>
+      <td>Plataforma end-to-end para construir agentes y aplicaciones de IA: gestión de modelos, evaluación, despliegue, monitoring</td>
+      <td>Proyectos de IA complejos donde necesitas governanza, trazabilidad y ciclo de vida completo</td>
+    </tr>
+    <tr>
+      <td><strong>Azure AI Search</strong></td>
+      <td>Motor de búsqueda que incluye búsqueda vectorial — el vectorstore gestionado de Microsoft</td>
+      <td>RAG en producción en Azure — managed, escalable, con RBAC y sin gestionar infraestructura</td>
+    </tr>
+    <tr>
+      <td><strong>Azure Machine Learning</strong></td>
+      <td>Plataforma MLOps: entrenamiento, registro de modelos, endpoints de inferencia, pipelines, MLflow integrado</td>
+      <td>Cuando el cliente tiene modelos custom que necesita entrenar, versionar y desplegar</td>
+    </tr>
+    <tr>
+      <td><strong>Azure Kubernetes Service (AKS)</strong></td>
+      <td>Kubernetes gestionado — para desplegar modelos como microservicios</td>
+      <td>Modelos en producción con alta disponibilidad, escalado automático y cargas variables</td>
+    </tr>
+    <tr>
+      <td><strong>Azure Container Registry (ACR)</strong></td>
+      <td>Registro privado de imágenes Docker</td>
+      <td>Siempre que uses contenedores — va de la mano con AKS</td>
+    </tr>
+    <tr>
+      <td><strong>MLflow (en Azure ML)</strong></td>
+      <td>Tracking de experimentos, registro de modelos, comparación de runs</td>
+      <td>Cualquier proyecto con entrenamiento de modelos que necesite reproducibilidad</td>
+    </tr>
+  </table>
+
+  <div class="qa-block">
+    <div class="question">¿Qué diferencia hay entre Azure OpenAI Service y Azure AI Foundry?</div>
+    <div class="answer">Azure OpenAI Service es el punto de acceso a los modelos: haces llamadas API a GPT-4o, obtienes respuestas, generas embeddings. Es el "motor". Azure AI Foundry es la plataforma completa para construir sobre ese motor: gestiona proyectos, versiona prompts, evalúa la calidad de respuestas, despliega agentes, monitoriza en producción y gestiona permisos de equipo. La analogía: Azure OpenAI es el motor del coche, AI Foundry es el taller completo con herramientas, diagnóstico y mantenimiento.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Por qué Azure OpenAI en vez de OpenAI directamente?</div>
+    <div class="answer">Tres razones principales para cualquier cliente enterprise: (1) Privacidad de datos — con Azure OpenAI, los datos no se usan para entrenar modelos de Microsoft ni OpenAI. Con OpenAI directo, depende del contrato. Para un banco o aseguradora, esto es no negociable. (2) Cumplimiento normativo — Azure tiene certificaciones SOC 2, ISO 27001, ENS en España. (3) Integración con el ecosistema Azure — misma red privada, mismos roles RBAC, mismo billing, mismo monitoring con Azure Monitor.</div>
+  </div>
+
+  <div class="no-exp-box">
+    Si te preguntan si has usado Azure AI Foundry: "No lo he usado en producción todavía, pero lo estoy estudiando en mi formación actual. Conozco su arquitectura de hubs y proyectos, el flujo de despliegue de endpoints y cómo se integra con Azure OpenAI. Sé que es la plataforma que recomienda Microsoft para proyectos de IA empresariales y la que usaría para un cliente que necesite governanza y trazabilidad completa."
+  </div>
+</section>
+
+<!-- SECCIÓN 6: CLOUD PARA IA -->
+<section>
+  <h2 class="section-title">6. Cloud Architecture para cargas de IA</h2>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo diseñarías la arquitectura para un cliente que quiere un chatbot RAG sobre su documentación interna?</div>
+    <div class="answer">
+      Arquitectura en Azure en 4 capas:<br><br>
+      <strong>Frontend:</strong> Azure Static Web Apps o App Service para la interfaz de usuario.<br><br>
+      <strong>Orquestación:</strong> Azure Functions o App Service (Python/FastAPI) con LangChain o Semantic Kernel. Aquí vive la lógica RAG: recibe la pregunta, llama al vectorstore, construye el prompt, llama al LLM.<br><br>
+      <strong>Datos:</strong> Azure AI Search como vectorstore. Azure Blob Storage para los documentos originales. Azure OpenAI para embeddings (text-embedding-ada-002) y respuestas (GPT-4o).<br><br>
+      <strong>Seguridad y monitoring:</strong> Azure Key Vault para secretos y API keys. Managed Identity para que los servicios se autentiquen sin credenciales en código. Azure Monitor + Application Insights para trazabilidad. Conditional Access para que solo usuarios de la organización accedan.
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo escalarías un modelo de ML en producción?</div>
+    <div class="answer">Depende del patrón de carga. Si es batch (predicciones programadas, no tiempo real): Azure ML Pipelines con compute clusters que escalan a cero cuando no se usan. Si es online (API de inferencia en tiempo real): AKS con Horizontal Pod Autoscaler — escala según CPU/memoria o métricas custom como requests por segundo. Si hay picos muy variables: Azure ML Managed Online Endpoints con autoscaling, que abstrae el Kubernetes y lo gestiona Microsoft. Para un consultor, la pregunta clave que hacer al cliente es: ¿cuántas predicciones por segundo en pico? ¿Hay latencia máxima aceptable? ¿Los picos son predecibles?</td>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué es MLOps y por qué lo necesita una empresa?</div>
+    <div class="answer">MLOps es la aplicación de prácticas DevOps al ciclo de vida de modelos de Machine Learning. Un modelo no es código estático — su rendimiento degrada con el tiempo porque los datos del mundo real cambian (data drift) o el comportamiento que modela cambia (concept drift). MLOps incluye: versionar datos (DVC) y modelos (MLflow), automatizar el reentrenamiento cuando la calidad cae, tener pipelines CI/CD para modelos (validar antes de desplegar), monitorizar el modelo en producción (Evidently, Azure Monitor). Sin MLOps, los modelos se degradan en silencio y nadie lo sabe hasta que el negocio se queja.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Qué diferencia hay entre MLflow y Airflow?</div>
+    <div class="answer">MLflow: tracking de experimentos de ML. Registra métricas, parámetros, artefactos (modelos, gráficas) de cada entrenamiento. Permite comparar runs y registrar el modelo que va a producción. Responde a "¿qué modelo entrené, con qué datos, y qué métricas obtuvo?". Airflow: orquestador de workflows. Define pipelines de datos/ML como DAGs (grafos acíclicos dirigidos) con dependencias, scheduling y reintentos. Responde a "¿cuándo y en qué orden ejecuto cada paso de mi pipeline?". Se usan juntos: Airflow orquesta el pipeline completo (extraer datos → preprocesar → entrenar → evaluar → desplegar), MLflow trackea lo que ocurre durante el entrenamiento.</div>
+  </div>
+</section>
+
+<!-- SECCIÓN 7: PREGUNTAS DE CONSULTOR -->
+<section>
+  <h2 class="section-title">7. Preguntas de consultor</h2>
+
+  <p>En KPMG el rol es consultor — no solo implementas, <strong>recomiendas y convences a clientes</strong>. Estas preguntas valoran tu capacidad de razonar trade-offs.</p>
+
+  <div class="qa-block">
+    <div class="question">Un cliente bancario quiere implementar IA para responder preguntas de sus empleados sobre normativa interna. ¿Qué arquitectura recomiendas?</div>
+    <div class="answer">RAG sobre Azure AI Search + Azure OpenAI GPT-4o. Los documentos normativos cambian constantemente — fine-tuning sería caro de mantener. Con RAG, cuando actualicen un procedimiento, reindexas ese documento y listo. Azure OpenAI garantiza que los datos normativos internos no salen de la suscripción del banco. Añadiría: citación de fuentes obligatoria en cada respuesta (el LLM indica de qué documento y sección viene la información), y temperatura 0 para respuestas deterministas. Human-in-the-loop para preguntas sobre casos edge que el sistema marque como baja confianza.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cuándo NO recomendarías usar un LLM?</div>
+    <div class="answer">Cuando la respuesta correcta es única y determinista: cálculos financieros exactos, validaciones regulatorias con respuesta binaria sí/no, transformaciones de datos estructurados. Un LLM puede alucinar el resultado de una suma. Para eso, código normal. También cuando el coste no está justificado: clasificar emails en 5 categorías se puede hacer con un modelo de clasificación clásico a 1/100 del coste de un LLM. Los LLMs brillan donde el lenguaje natural, la ambigüedad y la generación de texto son el core del problema.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">Un cliente tiene miedo de que sus datos acaben en modelos de OpenAI. ¿Cómo lo resuelves?</div>
+    <div class="answer">Azure OpenAI Service. Microsoft garantiza contractualmente que los datos enviados a Azure OpenAI no se usan para entrenar modelos, no son accesibles por Microsoft para revisión humana (salvo abuso) y no salen de la región Azure configurada. Además, la comunicación puede ir por Private Endpoints — el tráfico nunca sale a internet público, va por la red privada de Azure. Esto es lo que permite a bancos, aseguradoras y administraciones públicas españolas usar GPT-4o con cumplimiento del RGPD.</div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">¿Cómo medirías el éxito de un proyecto RAG en producción?</div>
+    <div class="answer">Cuatro métricas: (1) Relevancia del retrieval — ¿los chunks recuperados son los correctos para la pregunta? Se puede evaluar con un LLM-as-judge o con un dataset de preguntas con respuestas conocidas. (2) Calidad de la respuesta — ¿la respuesta generada es correcta y está fundamentada en los chunks? RAGAS es un framework específico para esto. (3) Tasa de "no sé" — ¿cuántas veces el sistema correctamente dice que no tiene información vs. alucina? Preferimos alto "no sé" a alucinaciones. (4) Satisfacción del usuario — thumbs up/down en la UI, tiempo de sesión, si el usuario tuvo que buscar la información por otro canal.</div>
+  </div>
+</section>
+
+<!-- SECCIÓN 8: PREGUNTAS TRAMPA -->
+<section>
+  <h2 class="section-title">8. Preguntas trampa — las que más penalizan</h2>
+
+  <div class="warning">
+    Estas son respuestas que suenan bien pero que un entrevistador técnico de KPMG sabrá que son incorrectas o superficiales.
+  </div>
+
+  <h3>Trampa 1: "Los LLMs razonan"</h3>
+  <p><strong>Error:</strong> decir que los LLMs "razonan", "entienden" o "piensan".</p>
+  <p><strong>Correcto:</strong> Los LLMs predicen el siguiente token basándose en patrones estadísticos. Lo que parece razonamiento es interpolación sofisticada. Esto tiene implicaciones reales: no son fiables para lógica formal o matemáticas exactas, pueden contradecirse, y su "conocimiento" tiene fecha de corte.</p>
+
+  <h3>Trampa 2: "RAG elimina las alucinaciones"</h3>
+  <p><strong>Error:</strong> decir que RAG resuelve el problema de alucinaciones.</p>
+  <p><strong>Correcto:</strong> RAG las reduce significativamente al anclar las respuestas en documentos reales. Pero si el retrieval falla (devuelve chunks irrelevantes), el LLM puede alucinar igualmente. Y el LLM puede "confabular" combinando información de distintos chunks de forma incorrecta. RAG reduce el riesgo, no lo elimina.</p>
+
+  <h3>Trampa 3: "Fine-tuning siempre da mejores resultados"</h3>
+  <p><strong>Error:</strong> asumir que fine-tuning > RAG en calidad.</p>
+  <p><strong>Correcto:</strong> Para conocimiento factual actualizable, RAG supera al fine-tuning. El fine-tuning enseña estilo y formato, no hechos. Un modelo fine-tuneado con documentos de enero puede alucinar hechos de marzo. RAG con esos mismos documentos actualizados responde correctamente.</p>
+
+  <h3>Trampa 4: "Más contexto siempre es mejor"</h3>
+  <p><strong>Error:</strong> creer que meter más contexto en el prompt mejora las respuestas.</p>
+  <p><strong>Correcto:</strong> Los LLMs tienen el problema "lost in the middle" — dan menos importancia a información en el centro de contextos muy largos. Contextos muy largos = más latencia y más coste. El objetivo es contexto relevante y conciso, no máximo contexto posible.</p>
+
+  <h3>Trampa 5: Confundir Airflow con MLflow</h3>
+  <p><strong>Error:</strong> usar estos términos indistintamente o confundir sus funciones.</p>
+  <p><strong>Correcto:</strong> Airflow = orquestación de pipelines. MLflow = tracking de experimentos y registro de modelos. Son complementarios, no competidores. Ver sección 6 para la explicación completa.</p>
+
+  <h3>Trampa 6: Vectorstore = base de datos relacional con vectores</h3>
+  <p><strong>Error:</strong> describir un vectorstore como "una base de datos que guarda vectores".</p>
+  <p><strong>Correcto:</strong> Un vectorstore es una base de datos especializada en búsqueda de similitud por distancia (coseno, euclidiana). No hace queries SQL. El motor de búsqueda es un índice ANN (Approximate Nearest Neighbor) que permite buscar los K vectores más cercanos entre millones en milisegundos. Es una estructura de datos completamente diferente de una BD relacional o documental.</p>
+</section>
+
+<!-- SECCIÓN 9: PLAN 7 DÍAS -->
+<section>
+  <h2 class="section-title">9. Plan de repaso — 7 días</h2>
+
+  <table>
+    <tr>
+      <th>Día</th>
+      <th>Fecha</th>
+      <th>Foco</th>
+      <th>Objetivo</th>
+    </tr>
+    <tr>
+      <td><strong>Día 1</strong></td>
+      <td>Miércoles 15 abril</td>
+      <td>LLMs + Embeddings (sección 2)</td>
+      <td>Poder explicar token, temperatura, embedding y para qué sirve cada uno sin mirar notas</td>
+    </tr>
+    <tr>
+      <td><strong>Día 2</strong></td>
+      <td>Jueves 16 abril</td>
+      <td>Arquitectura RAG (sección 3)</td>
+      <td>Poder dibujar el flujo RAG completo de memoria y explicar chunking, retrieval y por qué no meter todo en contexto</td>
+    </tr>
+    <tr>
+      <td><strong>Día 3</strong></td>
+      <td>Viernes 17 abril</td>
+      <td>Agentes IA (sección 4)</td>
+      <td>Explicar ReAct, diferencia agente vs chatbot, riesgos en producción y frameworks</td>
+    </tr>
+    <tr>
+      <td><strong>Día 4</strong></td>
+      <td>Sábado 18 abril</td>
+      <td>Azure AI Stack (sección 5)</td>
+      <td>Saber para qué sirve cada servicio Azure y cuándo recomendarlo. Diferencia Azure OpenAI vs AI Foundry</td>
+    </tr>
+    <tr>
+      <td><strong>Día 5</strong></td>
+      <td>Domingo 19 abril</td>
+      <td>Cloud para IA + MLOps (sección 6)</td>
+      <td>Poder diseñar la arquitectura del chatbot RAG de memoria. Diferencia MLflow/Airflow clara</td>
+    </tr>
+    <tr>
+      <td><strong>Día 6</strong></td>
+      <td>Lunes 20 abril</td>
+      <td>Preguntas de consultor + trampa (secciones 7-8)</td>
+      <td>Practicar respuestas en voz alta. Interiorizar las trampas para no caer en ellas</td>
+    </tr>
+    <tr>
+      <td><strong>Día 7</strong></td>
+      <td>Martes 21 abril</td>
+      <td>Simulacro completo</td>
+      <td>Repasar todo el documento una vez más. Ensayar la narrativa personal de 2 minutos</td>
+    </tr>
+    <tr>
+      <td><strong>Entrevista</strong></td>
+      <td>Miércoles 22 abril</td>
+      <td>—</td>
+      <td>Confía en lo que sabes. Sé honesto con lo que no has implementado. Muestra mentalidad de consultor.</td>
+    </tr>
+  </table>
+
+  <div class="strategy">
+    El día de la entrevista: si no sabes algo, di "no he trabajado con eso directamente, pero entiendo el concepto y sé cómo me pondría al día rápido". Es infinitamente mejor que intentar improvisar y que el entrevistador te lo desmonten.
+  </div>
+
+  <div class="tip">
+    Tu ventaja diferencial: eres DevOps/Cloud Engineer con base sólida en infraestructura. Muchos candidatos de "IA" no saben deployar nada. Tú sabes Terraform, Docker, Kubernetes, CI/CD. Eso es lo que permite que los proyectos de IA lleguen a producción. Enfatízalo.
+  </div>
+</section>
+
+</body>
+</html>
