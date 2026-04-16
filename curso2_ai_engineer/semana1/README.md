@@ -465,4 +465,167 @@ services:
 
 ---
 
+---
+
+## Día 2 — OpenAI API en profundidad
+
+### Temas: historial de conversación, system prompt avanzado, function calling
+
+---
+
+### Parte 1 — Conversación con historial
+
+El LLM no recuerda nada entre llamadas. Cada llamada es independiente. Para que "recuerde" el contexto anterior tienes que mandarle el historial completo en cada llamada.
+
+**¿Cómo funciona?**
+
+Mantienes una lista `historial` en tu código. Cada turno añades el mensaje del usuario y la respuesta del modelo. En cada llamada mandas la lista completa:
+
+```python
+historial = [
+    {"role": "system", "content": "Eres un asistente experto en riesgo financiero."}
+]
+
+def chat(mensaje):
+    historial.append({"role": "user", "content": mensaje})
+    respuesta = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=historial,   # ← mandas TODO el historial
+        temperature=0.7
+    )
+    contenido = respuesta.choices[0].message.content
+    historial.append({"role": "assistant", "content": contenido})
+    return contenido
+```
+
+**Por qué importa:** preguntas ambiguas como "¿Y cómo se mide?" o "¿Cuál de esas métricas...?" funcionan porque el modelo tiene el contexto anterior. Sin historial, no sabría a qué se refiere "esas métricas".
+
+**Límite importante:** el historial consume tokens en cada llamada. Una conversación larga puede volverse cara. En producción se gestionan estrategias como truncar el historial antiguo o resumirlo.
+
+---
+
+### Parte 2 — System prompt avanzado
+
+El system prompt no solo da personalidad — controla formato, idioma, tono y límites del modelo.
+
+```python
+{"role": "system", "content": """Eres un asistente de riesgo financiero para un banco español.
+Reglas estrictas:
+- Responde SIEMPRE en español
+- Responde SOLO sobre temas de riesgo financiero y banca
+- Si te preguntan algo fuera de ese ámbito, di exactamente: "Solo puedo ayudarte con temas de riesgo financiero."
+- Máximo 3 frases por respuesta
+- Nunca uses bullet points, solo párrafos"""}
+```
+
+**Resultado:** al preguntar "¿Cuál es la capital de Francia?" responde exactamente: *"Solo puedo ayudarte con temas de riesgo financiero."*
+
+**Para qué sirve en producción:**
+- Chatbots internos de empresa: limitar el ámbito de respuestas
+- Definir el formato exacto de salida (JSON, markdown, texto plano)
+- Forzar un idioma o tono específico
+- Instrucciones de seguridad y compliance
+
+---
+
+### Parte 3 — Function calling
+
+Function calling permite que el LLM decida cuándo necesita datos externos y qué función de tu código debe llamar. El LLM **no ejecuta** la función — te dice qué ejecutar y con qué parámetros. Tú la ejecutas y le devuelves el resultado.
+
+**¿Por qué es la base de los agentes?** Porque un agente es exactamente esto pero con múltiples herramientas en bucle — el LLM decide qué herramienta usar, tú la ejecutas, el LLM ve el resultado y decide si necesita otra herramienta o ya puede responder.
+
+**Flujo completo:**
+```
+Usuario: "¿riesgo del cliente C001?"
+        ↓
+1ª llamada al LLM → "necesito llamar a obtener_riesgo_cliente(C001)"
+        ↓
+Tú ejecutas la función → {"nombre": "García", "pd": 0.15, "rating": "B"}
+        ↓
+2ª llamada al LLM con el resultado → respuesta en lenguaje natural
+        ↓
+"El cliente García tiene PD 15% y rating B — riesgo moderado"
+```
+
+**Código:**
+```python
+import json
+
+# 1. Función real de tu código (el LLM nunca la toca directamente)
+def obtener_riesgo_cliente(cliente_id: str) -> dict:
+    datos = {
+        "C001": {"nombre": "García", "pd": 0.15, "rating": "B"},
+        "C002": {"nombre": "Martínez", "pd": 0.03, "rating": "AA"},
+    }
+    return datos.get(cliente_id, {"error": "cliente no encontrado"})
+
+# 2. Descripción de la función para el LLM (en JSON — el LLM no lee Python)
+herramientas = [{
+    "type": "function",
+    "function": {
+        "name": "obtener_riesgo_cliente",
+        "description": "Obtiene el perfil de riesgo de un cliente dado su ID",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "cliente_id": {"type": "string", "description": "El ID del cliente, ej: C001"}
+            },
+            "required": ["cliente_id"]
+        }
+    }
+}]
+
+# 3. Primera llamada — el LLM decide si necesita llamar a una función
+respuesta_fc = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[...],
+    tools=herramientas,
+    tool_choice="auto"   # el LLM decide solo
+)
+
+# 4. Tú ejecutas la función con los argumentos que el LLM eligió
+if mensaje.tool_calls:
+    argumentos = json.loads(tool_call.function.arguments)
+    resultado = obtener_riesgo_cliente(**argumentos)
+
+# 5. Segunda llamada — el LLM genera respuesta con los datos reales
+respuesta_final = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        ...,
+        mensaje,                                                    # respuesta del paso 3
+        {"role": "tool", "tool_call_id": tool_call.id,
+         "content": json.dumps(resultado)}                          # resultado de tu función
+    ]
+)
+```
+
+**Puntos clave:**
+- El LLM describe qué quiere ejecutar, no lo ejecuta
+- Tú tienes control total sobre qué se ejecuta y cuándo
+- `tool_choice="auto"` → el LLM decide; `tool_choice="none"` → nunca llama funciones
+- El LLM no inventa datos — espera el resultado real de tu función
+
+---
+
+### Código del Día 2
+
+Ver [dia2/dia2_openai_api.py](dia2/dia2_openai_api.py)
+
+---
+
+### Preguntas y dudas del Día 2 — resueltas
+
+**¿Por qué el LLM entiende preguntas ambiguas como "¿Y cómo se mide?"?**
+
+Porque en cada llamada le mandas el historial completo de la conversación. El LLM ve todos los mensajes anteriores y puede inferir el contexto. Sin el historial, esa pregunta no tendría sentido para él.
+
+**¿El LLM ejecuta la función directamente?**
+
+No. El LLM solo decide qué función llamar y con qué argumentos. Tú eres quien ejecuta la función en tu código y le devuelves el resultado. El LLM nunca tiene acceso directo a tu sistema — todo pasa por ti.
+
+**¿Qué diferencia hay entre function calling y un agente?**
+
+Function calling es una llamada única donde el LLM decide usar una herramienta. Un agente es function calling en bucle — el LLM puede usar múltiples herramientas en secuencia, ver los resultados intermedios y decidir el siguiente paso hasta completar la tarea.
+
 <!-- El contenido de cada día se añade aquí conforme se completa -->
