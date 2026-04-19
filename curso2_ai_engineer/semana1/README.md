@@ -628,4 +628,328 @@ No. El LLM solo decide qué función llamar y con qué argumentos. Tú eres quie
 
 Function calling es una llamada única donde el LLM decide usar una herramienta. Un agente es function calling en bucle — el LLM puede usar múltiples herramientas en secuencia, ver los resultados intermedios y decidir el siguiente paso hasta completar la tarea.
 
+---
+
+## Día 3 — Prompting avanzado + RAG conceptual
+
+### Temas: few-shot prompting, chain-of-thought, mini RAG sin vectorstore
+
+---
+
+### Parte 1 — Few-shot prompting
+
+En vez de explicarle al LLM el formato que quieres con instrucciones, le das ejemplos directamente en el historial de mensajes. El modelo aprende el patrón de los ejemplos y lo aplica a casos nuevos.
+
+```python
+messages=[
+    {"role": "system",    "content": "Clasifica el riesgo de clientes bancarios."},
+    {"role": "user",      "content": "Cliente: Juan, PD: 0.02, deuda: 5000€"},
+    {"role": "assistant", "content": "RIESGO: BAJO | ACCIÓN: Aprobar automáticamente"},
+    {"role": "user",      "content": "Cliente: María, PD: 0.25, deuda: 50000€"},
+    {"role": "assistant", "content": "RIESGO: ALTO | ACCIÓN: Revisión manual urgente"},
+    {"role": "user",      "content": "Cliente: Pedro, PD: 0.12, deuda: 20000€"},  # ← nuevo caso
+]
+```
+
+**Resultado:** el modelo clasifica a Pedro como `RIESGO: MEDIO | ACCIÓN: Evaluar condiciones adicionales` — aprendió el formato y la escala de riesgo solo con 2 ejemplos.
+
+**Cuándo usarlo:** cuando necesitas un formato de salida muy específico y es más fácil mostrar ejemplos que describir el formato con palabras. También cuando quieres que el modelo aprenda el tono o estilo de respuesta de tu empresa.
+
+---
+
+### Parte 2 — Chain-of-thought
+
+Fuerza al LLM a razonar paso a paso antes de dar la respuesta final. Mejora la precisión en problemas que requieren lógica, cálculos o toma de decisiones.
+
+```python
+{"role": "system", "content": """Eres un analista de riesgo.
+Antes de responder, razona paso a paso:
+1. Calcula la pérdida esperada (PE = PD × LGD × EAD)
+2. Evalúa si PE es aceptable para el banco (umbral: 5000€)
+3. Da tu recomendación final"""}
+```
+
+**Comparativa:**
+
+| | Sin CoT | Con CoT |
+|---|---|---|
+| Cálculo | Correcto (3600€) | Correcto (3600€) |
+| Decisión | "Depende de varios factores..." | "Aprobar — PE por debajo del umbral" |
+
+Chain-of-thought no mejora el cálculo matemático — mejora la **toma de decisión final**. Al forzar el razonamiento paso a paso el modelo llega a conclusiones concretas en vez de respuestas ambiguas.
+
+**Para producción bancaria esto es crítico** — necesitas recomendaciones accionables, no "podría ser razonable considerar...".
+
+---
+
+### Parte 3 — Mini RAG sin vectorstore
+
+RAG implementado a mano sin ninguna librería, para entender exactamente qué ocurre por dentro.
+
+**Lo que hace:**
+1. Genera embeddings de todos los documentos (fase indexación)
+2. Genera el embedding de la pregunta
+3. Calcula similitud coseno entre la pregunta y cada documento
+4. Recupera los N chunks más similares
+5. Los manda al LLM como contexto
+
+```python
+# Calcular similitudes
+similitudes = [similitud_coseno(embedding_pregunta, emb) for emb in embeddings_docs]
+
+# Recuperar top N
+indices_top = np.argsort(similitudes)[-N:][::-1]
+chunks_relevantes = [documentos[i] for i in indices_top]
+```
+
+**`np.argsort` explicado:**
+```
+similitudes = [0.83, 0.75, 0.79, 0.75, 0.75]
+argsort     = [1,    2,    3,    4,    0   ]  ← índices ordenados menor→mayor
+[-3:]       = [4,    0   ]                    ← los 3 índices con mayor similitud
+[::-1]      = [0,    4   ]                    ← el más similar primero
+```
+Devuelve índices, no valores. El índice te dice qué documento recuperar.
+
+---
+
+### Problema real descubierto: fallo de retrieval
+
+Con la pregunta "¿Qué debo hacer con el cliente García?" las similitudes reales fueron:
+
+```
+[0] 0.8383 — García (3 impagos, PD 0.15)           ← recuperado ✅
+[1] 0.7534 — Política banco (revisión si PD > 0.10) ← NO recuperado ❌ (similitud más baja)
+[2] 0.7957 — Martínez (historial impecable)         ← recuperado ✅ (pero no útil)
+[3] 0.7548 — Préstamos hipotecarios                 ← recuperado con N=4
+[4] 0.7568 — Límite exposición                      ← recuperado con N=4
+```
+
+**El problema:** "¿Qué debo hacer con García?" es semánticamente más cercana a otros clientes que a una política interna. La búsqueda semántica no siempre recupera lo que lógicamente necesitas.
+
+Con N=2 el LLM respondió "No tengo esa información". Con N=5 respondió correctamente: "Debes realizar una revisión manual ya que PD 0.15 supera el umbral de 0.10."
+
+**Cómo se resuelve en producción:**
+
+```
+1. Re-ranking — recuperar top-10, luego un segundo modelo reordena 
+   por relevancia real
+
+2. Mejor chunking — separar datos de clientes y políticas en 
+   colecciones distintas del vectorstore
+
+3. HyDE (Hypothetical Document Embeddings) — generar una respuesta 
+   hipotética y buscar chunks similares a ella, no a la pregunta
+
+4. Query expansion — reformular la pregunta antes de buscar:
+   "¿Qué debo hacer con García?" → 
+   "política revisión manual cliente PD alto impagos"
+```
+
+Esto es lo que diferencia un RAG de prototipo de uno de producción.
+
+---
+
+### Código del Día 3
+
+Ver [dia3/dia3_prompting_rag.py](dia3/dia3_prompting_rag.py)
+
+---
+
+### Preguntas y dudas del Día 3 — resueltas
+
+**¿Qué hace `np.argsort(similitudes)[-2:][::-1]`?**
+
+- `np.argsort(similitudes)` → ordena las similitudes de menor a mayor y devuelve los **índices** de los documentos en ese orden (no los valores)
+- `[-2:]` → coge los últimos 2 elementos, es decir, los 2 índices con mayor similitud
+- `[::-1]` → invierte el orden para que el más similar vaya primero
+
+Ejemplo: si las similitudes son `[0.83, 0.75, 0.79, 0.75, 0.76]`, argsort devuelve `[1, 3, 4, 2, 0]`. Los últimos 2 son `[2, 0]` — el documento 2 y el documento 0 son los más similares.
+
+**¿Por qué el chunk de la política del banco tenía la similitud más baja si era el más relevante?**
+
+Porque la similitud coseno mide cercanía semántica, no relevancia lógica. "¿Qué debo hacer con García?" es semánticamente más parecido a frases sobre clientes bancarios que a frases sobre políticas internas. La búsqueda semántica no entiende que para responder esa pregunta necesitas la política — solo ve qué textos se parecen en significado.
+
+---
+
+## Día 4 — LangChain core
+
+### Temas: chains, prompts, parsers, memory + comparativa con código manual
+
+---
+
+### ¿Qué es LangChain?
+
+LangChain es una librería que abstrae todo lo que hiciste a mano los días 1-3. En vez de construir diccionarios de mensajes, calcular similitud coseno y gestionar historiales manualmente, LangChain lo hace por ti con menos código.
+
+**Lo importante:** los días 1-3 a mano te permiten entender exactamente qué hace LangChain por debajo. Muchos desarrolladores usan LangChain sin entender qué ocurre — si algo falla no saben debuggearlo. Tú sí.
+
+---
+
+### El operador `|` — cómo funciona LangChain
+
+LangChain encadena pasos con `|`. Cada paso recibe la salida del anterior:
+
+```python
+chain = prompt | llm | parser
+# prompt rellena la plantilla → llm genera respuesta → parser extrae el texto
+```
+
+---
+
+### Parte 1 — ChatModel + PromptTemplate
+
+Plantillas reutilizables con variables — en vez de construir el diccionario de mensajes a mano:
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "Eres un analista de riesgo financiero de {banco}."),
+    ("user", "Analiza el riesgo del cliente con PD={pd} y deuda de {deuda}€")
+])
+
+chain = prompt | llm
+respuesta = chain.invoke({"banco": "Santander", "pd": 0.15, "deuda": 50000})
+print(respuesta.content)
+```
+
+**vs Manual (Día 1/2):**
+```python
+# Manual
+messages=[
+    {"role": "system", "content": f"Eres analista de {banco}"},
+    {"role": "user", "content": f"PD={pd}, deuda={deuda}€"}
+]
+client.chat.completions.create(model="gpt-4o-mini", messages=messages)
+```
+
+---
+
+### Parte 2 — Chains encadenadas
+
+Salida de un LLM → entrada del siguiente. Dos llamadas en secuencia:
+
+```python
+chain_completa = (
+    prompt_analisis          # plantilla 1
+    | llm                    # primera llamada al LLM → análisis
+    | StrOutputParser()      # extrae el texto del AIMessage
+    | (lambda x: {"analisis": x})  # convierte string a dict para el siguiente prompt
+    | prompt_accion          # plantilla 2 usa {analisis}
+    | llm                    # segunda llamada → recomendación
+    | StrOutputParser()      # extrae texto final
+)
+```
+
+**El lambda explicado:**
+- `StrOutputParser()` devuelve un string
+- El siguiente prompt espera un diccionario con clave `{analisis}`
+- El lambda convierte: `"texto..."` → `{"analisis": "texto..."}`
+- Sin el lambda daría error porque el prompt no acepta strings directamente
+
+---
+
+### Parte 3 — Output parsers
+
+Forzar al LLM a devolver JSON estructurado directamente como diccionario Python:
+
+```python
+from langchain_core.output_parsers import JsonOutputParser
+
+parser = JsonOutputParser()
+
+chain_json = prompt_json | llm | parser
+
+resultado = chain_json.invoke({"pd": 0.15, "deuda": 50000})
+# resultado ya es un dict Python:
+# {'riesgo': 'bajo', 'pd_porcentaje': 15, 'accion': '...', 'aprobar': True}
+
+print(resultado['aprobar'])  # True — acceso directo, no parseo manual
+```
+
+**vs Manual:**
+```python
+# Sin parser: tienes que parsear tú
+import json
+texto = respuesta.choices[0].message.content
+datos = json.loads(texto)
+```
+
+**Cuándo usar `JsonOutputParser`:** cuando necesitas procesar la respuesta en código — tomar decisiones, actualizar BD, enviar alertas. Para texto libre no hace falta.
+
+---
+
+### Parte 4 — Memory
+
+LangChain gestiona el historial de conversación automáticamente por `session_id`:
+
+```python
+from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_core.runnables.history import RunnableWithMessageHistory
+
+sesiones = {}
+def get_session(session_id):
+    if session_id not in sesiones:
+        sesiones[session_id] = ChatMessageHistory()
+    return sesiones[session_id]
+
+chain_con_memoria = RunnableWithMessageHistory(
+    chain,
+    get_session,
+    input_messages_key="input",
+    history_messages_key="historial"
+)
+
+config = {"configurable": {"session_id": "sesion_001"}}
+chain_con_memoria.invoke({"input": "¿Qué es la PD?"}, config=config)
+chain_con_memoria.invoke({"input": "¿Y cómo se calcula?"}, config=config)
+# La segunda pregunta entiende el contexto automáticamente
+```
+
+**vs Manual (Día 2):** tú mantenías y pasabas la lista `historial` en cada llamada. Con `RunnableWithMessageHistory` cada `session_id` tiene su propio historial — útil en producción con múltiples usuarios simultáneos.
+
+---
+
+### ¿Puedo mezclar LangChain con código manual?
+
+Técnicamente sí, pero no es recomendable. LangChain usa sus propios objetos internos (`AIMessage`, etc.) que son incompatibles con los dicts de OpenAI sin conversión manual. 
+
+**Regla práctica:**
+- ¿Usas LangChain? → úsalo para todo en ese proyecto
+- ¿Estás en manual? → quédate en manual
+
+Lo que sí puedes mezclar sin problemas: librería `openai` para embeddings (devuelve arrays numpy) con LangChain para chains.
+
+---
+
+### Cuándo usar LangChain vs manual
+
+| | LangChain | Manual |
+|---|---|---|
+| Historial multi-sesión | ✅ Mucho mejor | Tienes que gestionar tú |
+| RAG con vectorstore | ✅ Mucho mejor | ~20 líneas más |
+| Few-shot con muchos ejemplos | ✅ Más limpio | Igual de válido |
+| Agentes con múltiples herramientas | ✅ Diseñado para eso | Muy complejo |
+| System prompt / CoT | ⚠️ Igual | Igual |
+| Embeddings simples | ⚠️ Igual | Igual |
+| Function calling simple | ❌ Añade complejidad | Más claro |
+| Sistemas críticos / debug | ❌ Demasiada abstracción | Más control |
+
+---
+
+### Lección importante del Mini RAG comparativo
+
+El Mini RAG con LangChain también falló el retrieval (respondió "No tengo esa información") igual que en el Día 3 con código manual. **LangChain no resuelve los problemas de diseño de RAG, solo abstrae el código.** El problema de retrieval — que la búsqueda semántica no siempre recupera lo que lógicamente necesitas — existe con o sin LangChain.
+
+---
+
+### Código del Día 4
+
+- [dia4/dia4_langchain_core.py](dia4/dia4_langchain_core.py) — ejercicios principales
+- [dia4/dia4_comparativa_langchain_vs_manual.py](dia4/dia4_comparativa_langchain_vs_manual.py) — comparativa completa días 1-3 con y sin LangChain
+
 <!-- El contenido de cada día se añade aquí conforme se completa -->
