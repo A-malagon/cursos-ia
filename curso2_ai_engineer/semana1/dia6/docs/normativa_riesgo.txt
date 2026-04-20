@@ -1,0 +1,28 @@
+POLÍTICA DE RIESGO CREDITICIO — BANCO EJEMPLO S.A.
+Versión 2024
+
+1. CLASIFICACIÓN DE CLIENTES POR RIESGO
+Los clientes se clasifican en tres categorías según su Probabilidad de Default (PD):
+- Riesgo bajo: PD inferior al 5%
+- Riesgo medio: PD entre 5% y 10%
+- Riesgo alto: PD superior al 10%
+
+2. PROCESO DE APROBACIÓN
+Los préstamos con clientes de riesgo bajo se aprueban automáticamente.
+Los préstamos con clientes de riesgo medio requieren validación del gestor.
+Los préstamos con clientes de riesgo alto requieren revisión del comité de riesgos.
+
+3. LÍMITES DE EXPOSICIÓN
+El límite máximo de exposición por cliente es de 500.000€.
+Para clientes con rating inferior a BB, el límite se reduce al 50%, es decir 250.000€.
+Los préstamos hipotecarios requieren garantía real como colateral obligatorio.
+
+4. PROVISIONES Y CAPITAL
+Según Basel III, el banco debe mantener provisiones del 8% sobre activos ponderados por riesgo.
+Las provisiones específicas se calculan como PD × LGD × EAD.
+El banco revisa las provisiones trimestralmente.
+
+5. CLIENTES EN VIGILANCIA ESPECIAL
+Los clientes con más de 2 impagos en los últimos 12 meses pasan a vigilancia especial.
+Los clientes en vigilancia especial no pueden solicitar nuevos préstamos.
+La salida de vigilancia especial requiere 12 meses consecutivos sin impagos.

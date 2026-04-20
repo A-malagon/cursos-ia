@@ -1129,4 +1129,183 @@ A lo largo de los días 3, 4 y 5 hemos visto que la pregunta "¿Qué debo hacer 
 
 Ver [dia5/dia5_vectorstores.py](dia5/dia5_vectorstores.py)
 
+---
+
+## Día 6 — Proyecto RAG completo
+
+### Pipeline completo: carga documentos → chunking → indexación → RAG con historial
+
+---
+
+### Arquitectura completa del proyecto
+
+```
+normativa_riesgo.txt
+        ↓  TextLoader
+Texto crudo (1 documento, 1305 caracteres)
+        ↓  RecursiveCharacterTextSplitter (chunk_size=300, overlap=50)
+5 chunks (uno por sección del documento)
+        ↓  OpenAIEmbeddings (text-embedding-ada-002)
+Vectores de 1536 dimensiones
+        ↓  Chroma.from_documents → persist_directory="./chroma_normativa"
+ChromaDB en disco
+        ↓  as_retriever(k=5)
+Chunks relevantes recuperados
+        ↓  LLM (gpt-4o-mini) + prompt RAG
+Respuesta fundamentada en la normativa
+```
+
+---
+
+### Parte 1 — Cargar y trocear documentos
+
+```python
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+loader = TextLoader("./docs/normativa_riesgo.txt", encoding="utf-8")
+documentos_raw = loader.load()
+
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=300,     # máximo 300 caracteres por chunk
+    chunk_overlap=50,   # 50 chars de solapamiento entre chunks consecutivos
+    separators=["\n\n", "\n", ". ", " "]  # orden de preferencia para cortar
+)
+chunks = splitter.split_documents(documentos_raw)
+```
+
+**¿Cómo decide dónde cortar `RecursiveCharacterTextSplitter`?**
+Aplica los separadores en orden de prioridad:
+1. Primero intenta cortar en párrafos (`\n\n`)
+2. Si el chunk sigue siendo muy grande, corta en líneas (`\n`)
+3. Si sigue siendo grande, corta en frases (`. `)
+4. Si sigue siendo grande, corta en palabras (` `)
+
+**¿Cómo saber si el chunking es correcto?**
+- Visual: imprimes los chunks y compruebas que cada uno tiene una idea completa
+- Prueba de preguntas: haces preguntas cuya respuesta conoces y ves si el RAG responde bien
+- Evaluación con RAGAS (framework específico, lo veremos en Semana 3)
+
+**¿Cuántos caracteres por chunk?**
+
+| Tipo de documento | Chunk size recomendado |
+|-------------------|----------------------|
+| Normativa, contratos densos | 300-500 chars |
+| Artículos, documentación | 500-1000 chars |
+| FAQs, fichas cortas | 150-300 chars |
+
+El `chunk_overlap` típico es el 10-20% del `chunk_size`.
+
+---
+
+### Parte 2 — Indexar en ChromaDB
+
+```python
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
+
+vectorstore = Chroma.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    collection_name="normativa_banco",
+    persist_directory="./chroma_normativa"
+)
+```
+
+**Problema de duplicados:** si ejecutas `from_documents` dos veces con la misma `persist_directory`, los documentos se duplican. En producción:
+- Dev: borra la carpeta antes de cada ejecución
+- Producción: separa el script de indexación del de consulta
+- Actualizaciones: usa IDs únicos por documento
+
+---
+
+### Parte 3 — RAG con retrieval mejorado
+
+**El problema de García (resuelto):** la pregunta "¿Qué hago con un cliente con PD 0.15?" no es semánticamente similar a "revisión del comité de riesgos". La solución fue:
+
+1. Usar `k=5` para recuperar todos los chunks (con documentos pequeños es lo más fiable)
+2. Cambiar el prompt para permitir razonamiento e inferencia, no solo búsqueda literal
+
+```python
+retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+
+prompt_rag = ChatPromptTemplate.from_messages([
+    ("system", """Eres un asistente experto en normativa bancaria.
+Usa el contexto proporcionado para responder. Puedes razonar e inferir conclusiones
+a partir de la información del contexto aunque la respuesta no esté escrita explícitamente.
+Si la información no está en el contexto ni se puede inferir, di: 'No encuentro esa información en la normativa.'
+Cita siempre de qué sección proviene la información."""),
+    ("human", "Contexto:\n{contexto}\n\nPregunta: {pregunta}")
+])
+```
+
+**Resultado:**
+```
+P: ¿Qué hago con un cliente con PD de 0.15?
+R: PD 0.15 > 10% → riesgo alto (sección 1) → revisión del comité de riesgos (sección 2)
+
+P: ¿Cuál es el tipo de cambio euro/dólar?
+R: No encuentro esa información en la normativa.
+```
+
+---
+
+### Parte 4 — Chatbot RAG con historial
+
+Combina RAG + memoria de conversación. El sistema recuerda el contexto de preguntas anteriores:
+
+```python
+def preguntar(pregunta, session_id="default"):
+    contexto = formatear_docs(retriever.invoke(pregunta))
+    return chain_con_historial.invoke(
+        {"contexto": contexto, "pregunta": pregunta},
+        config={"configurable": {"session_id": session_id}}
+    )
+
+preguntar("¿Qué hago con un cliente que tiene PD de 0.15?")
+# → riesgo alto, revisión del comité
+
+preguntar("¿Y si además tiene 3 impagos este año?")
+# → entiende que "además" se refiere al cliente anterior
+# → PD 0.15 + 3 impagos → vigilancia especial → no puede pedir préstamos
+
+preguntar("¿Puede ese cliente solicitar un nuevo préstamo?")
+# → recuerda todo el contexto → no, está en vigilancia especial
+```
+
+---
+
+### Tipos de retriever — cuándo usar cada uno
+
+| Retriever | Cómo funciona | Cuándo usarlo |
+|-----------|--------------|---------------|
+| `as_retriever(k=N)` | Similitud coseno, top N chunks | Caso base |
+| `MultiQueryRetriever` | Genera N versiones de la pregunta | Preguntas ambiguas |
+| `MMR` | Chunks relevantes y diversos | Chunks muy similares entre sí |
+| `Contextual Compression` | Extrae solo la parte relevante del chunk | Chunks con mucho ruido |
+| `Parent-Child` | Indexa chunks pequeños, devuelve el padre | Precisión en búsqueda + contexto amplio |
+| `Ensemble` | Semántica + palabras clave combinadas | Documentos con términos muy específicos |
+
+---
+
+### Vectorstores disponibles
+
+| Vectorstore | Cuándo usarlo |
+|------------|---------------|
+| **ChromaDB** | Desarrollo, prototipos, proyectos medianos |
+| **FAISS** | Velocidad máxima en memoria, millones de vectores |
+| **Milvus** | Producción enterprise, miles de millones de vectores |
+| **Azure AI Search** | Proyectos en Azure, managed service |
+| **Pinecone** | Cloud managed, fácil de escalar |
+| **pgvector** | Si ya usas PostgreSQL |
+
+---
+
+### Código del Día 6
+
+- [dia6/dia6_proyecto_rag.py](dia6/dia6_proyecto_rag.py)
+- [dia6/docs/normativa_riesgo.txt](dia6/docs/normativa_riesgo.txt)
+
 <!-- El contenido de cada día se añade aquí conforme se completa -->
