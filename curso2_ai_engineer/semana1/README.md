@@ -952,4 +952,181 @@ El Mini RAG con LangChain también falló el retrieval (respondió "No tengo esa
 - [dia4/dia4_langchain_core.py](dia4/dia4_langchain_core.py) — ejercicios principales
 - [dia4/dia4_comparativa_langchain_vs_manual.py](dia4/dia4_comparativa_langchain_vs_manual.py) — comparativa completa días 1-3 con y sin LangChain
 
+---
+
+## Día 5 — Vectorstores: ChromaDB y FAISS
+
+### Temas: indexar documentos, persistencia, RAG completo, comparativa vectorstores
+
+---
+
+### ¿Qué aporta ChromaDB sobre el InMemoryVectorStore del Día 4?
+
+`InMemoryVectorStore` desaparece al cerrar el programa. ChromaDB persiste en disco — los embeddings se guardan y no hay que recalcularlos en cada ejecución. Es una base de datos vectorial real con colecciones, metadatos y filtros.
+
+---
+
+### Metadatos
+
+Cada documento puede tener metadatos asociados — información adicional que no forma parte del texto pero que puedes usar para filtrar:
+
+```python
+metadatos = [
+    {"tipo": "cliente", "nombre": "García"},
+    {"tipo": "politica", "categoria": "riesgo"},
+    {"tipo": "normativa", "fuente": "Basel III"},
+]
+
+vectorstore = Chroma.from_texts(
+    texts=documentos,
+    embedding=embeddings,
+    metadatas=metadatos,
+    collection_name="banco_docs"
+)
+```
+
+En producción los metadatos permiten filtrar antes de buscar: "busca solo en documentos de tipo política" o "solo documentos de 2024".
+
+---
+
+### Búsqueda simple vs búsqueda con score
+
+```python
+# Búsqueda simple — devuelve documentos
+resultados = vectorstore.similarity_search("alto riesgo", k=3)
+
+# Búsqueda con score — devuelve (documento, distancia)
+resultados_score = vectorstore.similarity_search_with_score("normativa", k=3)
+for doc, score in resultados_score:
+    print(f"Score: {score:.4f} | {doc.page_content}")
+```
+
+**Importante:** en ChromaDB el score es **distancia**, no similitud.
+- `0` = idéntico
+- `2` = completamente opuesto
+
+Al contrario que la similitud coseno manual donde `1` = idéntico y `0` = sin relación.
+
+---
+
+### Persistencia en disco
+
+```python
+# Crear e indexar — genera embeddings y los guarda en ./chroma_db
+vectorstore = Chroma.from_texts(
+    texts=documentos,
+    embedding=embeddings,
+    persist_directory="./chroma_db"
+)
+
+# Cargar desde disco — NO recalcula embeddings, los lee del disco
+vectorstore = Chroma(
+    embedding_function=embeddings,
+    persist_directory="./chroma_db"
+)
+```
+
+---
+
+### Problema de duplicados en producción
+
+Si ejecutas `Chroma.from_texts()` dos veces con la misma `persist_directory`, los documentos se duplican — ChromaDB añade sin comprobar si ya existen.
+
+**Soluciones según el caso:**
+
+```python
+# Opción A — Borrar y recrear (batch completo)
+vectorstore.delete_collection()
+vectorstore = Chroma.from_texts(...)
+
+# Opción B — Separar indexación de consulta (producción)
+# indexar.py  → se ejecuta una vez o cuando cambian los docs
+# consultar.py → carga desde disco, no indexa
+
+# Opción C — IDs únicos (actualizaciones incrementales)
+Chroma.from_texts(texts=documentos, ids=["doc_1", "doc_2", ...])
+# Si el ID ya existe, actualiza en vez de duplicar
+```
+
+**Regla:**
+- Dev/prototipo → Opción A
+- Producción → Opción B
+- Actualizaciones incrementales → Opción C
+
+---
+
+### RAG completo con ChromaDB
+
+```python
+retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+
+def formatear_docs(docs):
+    return "\n".join(f"- {doc.page_content}" for doc in docs)
+
+chain_rag = (
+    {"contexto": retriever | formatear_docs, "pregunta": RunnablePassthrough()}
+    | prompt_rag
+    | llm
+    | StrOutputParser()
+)
+
+chain_rag.invoke("¿Qué normativa regula las provisiones bancarias?")
+# → "La normativa Basel III exige provisiones del 8%..."
+
+chain_rag.invoke("¿Cuál es el tipo de cambio euro/dólar hoy?")
+# → "No tengo esa información en la base de conocimiento."
+```
+
+El sistema responde solo con lo que está en los documentos. Si la información no existe, lo dice explícitamente en vez de inventar.
+
+---
+
+### FAISS — vectorstore en memoria
+
+```python
+from langchain_community.vectorstores import FAISS
+
+# Crear en memoria
+vectorstore_faiss = FAISS.from_texts(texts=documentos, embedding=embeddings)
+
+# Guardar a disco
+vectorstore_faiss.save_local("./faiss_index")
+
+# Cargar desde disco
+vectorstore_faiss = FAISS.load_local(
+    "./faiss_index",
+    embeddings,
+    allow_dangerous_deserialization=True
+)
+```
+
+---
+
+### Comparativa ChromaDB vs FAISS
+
+| | ChromaDB | FAISS |
+|---|---|---|
+| Persistencia | Base de datos en disco | Fichero binario |
+| Velocidad búsqueda | Media | Muy alta |
+| Filtros por metadatos | Sí | No |
+| Escalabilidad | Miles de docs | Millones (en RAM) |
+| Caso de uso | RAG en producción | Búsqueda de alta velocidad |
+| Cuándo usarlo | La mayoría de proyectos RAG | Cuando ChromaDB es lento |
+
+---
+
+### Problema persistente de retrieval — García
+
+A lo largo de los días 3, 4 y 5 hemos visto que la pregunta "¿Qué debo hacer con el cliente García?" no recupera el chunk de la política de revisión manual (PD > 0.10), que es el más relevante lógicamente.
+
+**Por qué ocurre:** "¿qué debo hacer?" es semánticamente más similar a otros clientes que a una política interna. La búsqueda semántica mide similitud de significado, no relevancia lógica.
+
+**La solución** — retriever más inteligente con reranking y query expansion — se implementa en el Día 6 (proyecto RAG completo).
+
+---
+
+### Código del Día 5
+
+Ver [dia5/dia5_vectorstores.py](dia5/dia5_vectorstores.py)
+
 <!-- El contenido de cada día se añade aquí conforme se completa -->
