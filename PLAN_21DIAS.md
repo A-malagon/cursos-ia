@@ -8,10 +8,25 @@
 
 ## Cómo retomar en sesión nueva
 
-1. Lee este archivo (`PLAN_21DIAS.md`)
-2. Lee `memory/project_course.md` para contexto completo
-3. Pregunta al usuario en qué día real está y qué completó ayer
-4. Retoma desde donde indica el tracking de abajo
+1. Lee este archivo (`PLAN_21DIAS.md`) — el estado exacto está en "PRÓXIMO PASO" abajo
+2. Di al usuario: "Seguimos por [lo que pone en PRÓXIMO PASO]"
+3. No preguntes nada — arranca directamente
+
+---
+
+## ► PRÓXIMO PASO (actualizado al cierre de cada sesión)
+
+**Día real:** 1 de 21  
+**Fecha:** 5 mayo 2026  
+**Tarea activa:** C2-D9 — LangChain Agents con AgentExecutor
+
+**Exactamente aquí:**
+- Archivo: `curso2_ai_engineer/semana2/dia8/dia8_langchain_agents.py`
+- Parte 1 (tools) ✅ — `obtener_cliente`, `consultar_normativa`, `calcular_provision` definidas
+- Parte 2 pendiente — añadir imports + LLM + prompt con `agent_scratchpad` + `AgentExecutor`
+- Los imports que tocan: `ChatOpenAI`, `create_openai_tools_agent`, `AgentExecutor`, `ChatPromptTemplate`, `MessagesPlaceholder`
+
+**Después de terminar D9:** pasar a C3-S1D2 Networking I (VNets, subnets, NSGs, peering)
 
 ---
 
@@ -20,8 +35,8 @@
 | Curso | Último completado | Siguiente |
 |-------|-------------------|-----------|
 | **C1 — MLOps** | D2 Dockerfile + D5b scikit-learn/PyTorch | D3 Docker Compose + FastAPI |
-| **C2 — AI Engineer** | D7 ReAct manual (dia7_agente_react.py) | D9 LangChain Agents — AgentExecutor (dia8_langchain_agents.py, tools definidas) |
-| **C3 — Cloud Engineer** | D1 Azure fundamentals (dia1_azure_fundamentos.md) | D2 Networking I: VNets, subnets, NSGs, peering |
+| **C2 — AI Engineer** | D8 ReAct manual (`dia7_agente_react.py`) | **D9 LangChain AgentExecutor** — `dia8_langchain_agents.py` (tools OK, falta Parte 2) |
+| **C3 — Cloud Engineer** | D1 Azure fundamentals | D2 Networking I: VNets, subnets, NSGs, peering |
 
 ---
 
