@@ -58,15 +58,20 @@ Este curso cubre la **infraestructura empresarial** que hay debajo — lo que KP
 | 3 | 15 | HA y DR: Availability Zones, Azure Backup, Site Recovery | ⬜ |
 | 3 | 16 | Azure SQL + Cosmos DB + PostgreSQL Flexible: cuándo usar cada uno | ⬜ |
 | 3 | 17 | Microsoft Defender for Cloud: postura de seguridad, alertas, compliance | ⬜ |
+| 3 | 17b | Microsoft Sentinel (SIEM/SOAR): analytics rules, Workbooks, UEBA + Microsoft Purview: data governance, clasificación, DLP | ⬜ |
 | 3 | 18 | Zero Trust en Azure: Conditional Access, PIM, Just-in-Time | ⬜ |
 | 3 | 19 | Monitorización empresarial: Azure Monitor, Log Analytics, App Insights | ⬜ |
 | 3 | 20 | Proyecto: arquitectura app bancaria con HA, DR y seguridad | ⬜ |
 | 3 | 21 | Test semana 3 + repaso AZ-305 bloque diseño | ⬜ |
 | 4 | 22 | GCP fundamentos: Compute Engine, GKE, IAM, Cloud Storage | ⬜ |
+| 4 | 22b | Azure API Management: políticas, throttling, seguridad OAuth2, Open Banking en FS | ⬜ |
 | 4 | 23 | Comparativa AWS vs Azure vs GCP para recomendar a clientes | ⬜ |
-| 4 | 24 | Azure Well-Architected Framework: los 5 pilares aplicados | ⬜ |
+| 4 | 24 | Azure Well-Architected Framework: los 5 pilares aplicados + TCO estimation para cliente | ⬜ |
+| 4 | 24b | Azure Service Bus + Event Hub: mensajería async, event streaming, patrones pub/sub para banca | ⬜ |
 | 4 | 25 | GitOps: ArgoCD o Flux en AKS para despliegue continuo | ⬜ |
-| 4 | 26 | Documentación y presentación de arquitecturas para cliente | ⬜ |
+| 4 | 25b | Microsoft Fabric + Power BI: Lakehouse unificado, Data Factory, reporting para cliente | ⬜ |
+| 4 | 26 | Documentación y presentación de arquitecturas: SOW, propuesta cliente, estimación de costes | ⬜ |
+| 4 | 26b | TOGAF básico aplicado a cloud: Architecture Development Method, capas de arquitectura | ⬜ |
 | 4 | 27-28 | Proyecto Final: arquitectura empresarial para cliente ficticio de banca | ⬜ |
 | 4 | 29 | Simulacro entrevista técnica KPMG + preguntas de arquitectura | ⬜ |
 | 4 | 30 | Repaso de gaps + preparación presentación del proyecto | ⬜ |

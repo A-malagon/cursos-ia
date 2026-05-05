@@ -52,17 +52,20 @@ Azure AI Foundry se gestiona desde el portal web, sin instalación local.
 | 2 | 10 | Semantic Kernel: kernels, plugins, functions, memoria semántica | ⬜ |
 | 2 | 11 | Semantic Kernel avanzado: planners, orquestación multi-step | ⬜ |
 | 2 | 12 | Multi-agent systems: coordinación, LangGraph intro | ⬜ |
+| 2 | 12b | LangGraph avanzado: graph state, conditional edges, human-in-the-loop | ⬜ |
 | 2 | 13 | Proyecto: Agente financiero con herramientas externas | ⬜ |
 | 2 | 14 | Test semana 2 + repaso | ⬜ |
 | 3 | 15 | Azure AI Foundry: arquitectura, hubs, proyectos, modelos | ⬜ |
 | 3 | 16 | Despliegue de modelos: endpoints, versiones, cuotas | ⬜ |
 | 3 | 17 | Azure OpenAI Service vs AI Foundry: cuándo usar cada uno | ⬜ |
 | 3 | 18 | MLflow en contexto LLM: tracking de prompts, evaluación | ⬜ |
-| 3 | 19 | Evaluación de LLMs: métricas, LLM-as-judge | ⬜ |
+| 3 | 19 | Evaluación de LLMs: métricas, benchmarks, RAGAS, LLM-as-judge | ⬜ |
+| 3 | 19b | Azure Prompt Flow: flows, evaluaciones, integración con CI/CD | ⬜ |
 | 3 | 20 | Proyecto: Agente financiero desplegado en Azure AI Foundry | ⬜ |
 | 3 | 21 | Test semana 3 + repaso | ⬜ |
 | 4 | 22 | Arquitecturas agentic: patrones, guardrails, manejo de errores | ⬜ |
 | 4 | 23 | Seguridad en LLMs: prompt injection, jailbreaking, datos sensibles | ⬜ |
+| 4 | 23b | Responsible AI + EU AI Act: categorías de riesgo, requisitos para Financial Services | ⬜ |
 | 4 | 24 | Observabilidad: trazas de agentes, LangSmith, Azure Monitor | ⬜ |
 | 4 | 25 | Escalabilidad: caching, rate limiting, costes de tokens | ⬜ |
 | 4 | 26 | Integración con sistemas financieros: APIs REST, compliance | ⬜ |

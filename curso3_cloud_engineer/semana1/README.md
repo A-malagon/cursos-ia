@@ -6,7 +6,7 @@
 
 | Día | Tema | Estado |
 |-----|------|--------|
-| 1 | Azure fundamentals: suscripciones, recursos, portal, CLI | ⬜ |
+| 1 | Azure fundamentals: suscripciones, recursos, portal, CLI | ✅ |
 | 2 | Networking I: VNets, subnets, NSGs, peering | ⬜ |
 | 3 | Networking II: VPN Gateway, ExpressRoute, Azure Firewall, Private Endpoints | ⬜ |
 | 4 | Identidad: Azure AD, RBAC, Managed Identities, Key Vault | ⬜ |
