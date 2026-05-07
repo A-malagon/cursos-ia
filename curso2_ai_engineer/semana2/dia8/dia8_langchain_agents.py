@@ -52,3 +52,32 @@ def calcular_provision(pd: float, lgd: float, ead: float) -> dict:
     return {"pd": pd, "lgd": lgd, "ead": ead, "provision_esperada": round(pe, 2)}
 
 tools = [obtener_cliente, consultar_normativa, calcular_provision]
+
+# ─────────────────────────────────────────
+# PARTE 2 — Crear el agente
+# ─────────────────────────────────────────
+
+from langchain_openai import ChatOpenAI
+from langgraph.prebuilt import create_react_agent
+
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+agent = create_react_agent(
+    model=llm,
+    tools=tools,
+    prompt="Eres un agente de riesgo bancario. Usa las herramientas disponibles para analizar clientes, consultar normativa y calcular provisiones. Siempre justifica tus decisiones con datos."
+)
+
+# ─────────────────────────────────────────
+# PARTE 3 — Ejecutar el agente
+# ─────────────────────────────────────────
+
+def preguntar(texto):
+    print(f"\n{'='*60}\nPREGUNTA: {texto}\n{'='*60}")
+    result = agent.invoke({"messages": [("user", texto)]})
+    print(f"\nRESPUESTA FINAL:\n{result['messages'][-1].content}")
+
+preguntar("¿Cuáles son los datos del cliente Martínez?")
+preguntar("¿Qué hago con el cliente García?")
+preguntar("¿Cuál es la provisión esperada para García asumiendo LGD de 0.45?")
+preguntar("¿Cuál es el tipo de cambio euro/dólar?")
