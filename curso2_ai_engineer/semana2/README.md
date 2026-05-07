@@ -7,7 +7,7 @@
 | Día | Tema | Estado |
 |-----|------|--------|
 | 7  | Agentes: ReAct pattern a mano | ✅ |
-| 8  | LangChain Agents: create_react_agent, AgentExecutor | ⬜ |
+| 8  | LangChain Agents: create_react_agent, AgentExecutor | ✅ |
 | 9  | Agente con RAG + tools combinadas | ⬜ |
 | 10 | Multi-agente: coordinador + agentes especializados | ⬜ |
 
@@ -171,5 +171,77 @@ límites de exposición o cálculo de provisiones. Sin esta tool no puedes dar u
 ### Código del Día 7
 
 - [dia7/dia7_agente_react.py](dia7/dia7_agente_react.py) — agente ReAct completo con 3 tools
+
+---
+
+## Día 8 — LangChain Agents: create_react_agent
+
+### Lo mismo que el Día 7, pero con el framework
+
+El D7 implementó el bucle ReAct a mano (~50 líneas). El D8 delega ese bucle a LangGraph. El resultado es idéntico — el aprendizaje del D7 es entender qué hace el framework por debajo.
+
+---
+
+### `@tool` decorator vs schema JSON manual
+
+**D7 — schema a mano:**
+```python
+{"type": "function", "function": {"name": "obtener_cliente", "parameters": {...}}}
+```
+
+**D8 — decorator:**
+```python
+@tool
+def obtener_cliente(nombre: str) -> dict:
+    """Obtiene los datos de un cliente bancario: PD, impagos, rating y deuda."""
+    ...
+```
+
+LangChain extrae el nombre, los tipos de parámetros y la descripción automáticamente del decorator + docstring. El docstring sigue siendo prompt engineering — el LLM lo lee para decidir cuándo usar la tool.
+
+---
+
+### Estructura del agente en LangGraph
+
+```python
+from langgraph.prebuilt import create_react_agent
+
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+agent = create_react_agent(
+    model=llm,
+    tools=tools,
+    prompt="Eres un agente de riesgo bancario..."
+)
+
+result = agent.invoke({"messages": [("user", "¿Qué hago con García?")]})
+print(result["messages"][-1].content)
+```
+
+**Comparativa:**
+
+| D7 — Manual | D8 — LangGraph |
+|-------------|----------------|
+| Tools como dicts JSON | `@tool` decorator |
+| Bucle `for` escrito a mano | `create_react_agent` |
+| Historial de mensajes manual | Gestionado internamente |
+| `TOOLS_MAP` para ejecutar | LangGraph ejecuta por nombre |
+| ~50 líneas de bucle | 5 líneas |
+
+---
+
+### Nota sobre versiones
+
+`create_react_agent` en LangChain 1.x viene de `langgraph.prebuilt`, no de `langchain.agents`. El warning de deprecación que aparece es informativo — el código funciona correctamente.
+
+```python
+from langgraph.prebuilt import create_react_agent  # correcto en LangChain 1.x
+```
+
+---
+
+### Código del Día 8
+
+- [dia8/dia8_langchain_agents.py](dia8/dia8_langchain_agents.py) — mismo agente bancario con LangGraph
 
 ---
