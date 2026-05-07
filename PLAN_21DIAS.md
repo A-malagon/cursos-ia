@@ -17,16 +17,15 @@
 ## ► PRÓXIMO PASO (actualizado al cierre de cada sesión)
 
 **Día real:** 1 de 21  
-**Fecha:** 5 mayo 2026  
-**Tarea activa:** C2-D9 — LangChain Agents con AgentExecutor
+**Fecha:** 7 mayo 2026  
+**Tarea activa:** C3-S1D2 — Networking I: VNets, subnets, NSGs, peering
 
-**Exactamente aquí:**
-- Archivo: `curso2_ai_engineer/semana2/dia8/dia8_langchain_agents.py`
-- Parte 1 (tools) ✅ — `obtener_cliente`, `consultar_normativa`, `calcular_provision` definidas
-- Parte 2 pendiente — añadir imports + LLM + prompt con `agent_scratchpad` + `AgentExecutor`
-- Los imports que tocan: `ChatOpenAI`, `create_openai_tools_agent`, `AgentExecutor`, `ChatPromptTemplate`, `MessagesPlaceholder`
+**C2-D8 ✅ completado:** `dia8_langchain_agents.py` — LangGraph `create_react_agent` con 3 tools bancarias. Mismo agente que D7 pero con framework. Commit: `34fb15a`
 
-**Después de terminar D9:** pasar a C3-S1D2 Networking I (VNets, subnets, NSGs, peering)
+**Siguiente bloque:** C3-S1D2 Networking I
+- Archivo destino: `curso3_cloud_engineer/semana1/dia2_networking_I.md`
+- Temas: VNets, subnets, NSGs (reglas inbound/outbound), VNet peering
+- Después: C1-D3 Docker Compose + FastAPI serving
 
 ---
 
@@ -35,7 +34,7 @@
 | Curso | Último completado | Siguiente |
 |-------|-------------------|-----------|
 | **C1 — MLOps** | D2 Dockerfile + D5b scikit-learn/PyTorch | D3 Docker Compose + FastAPI |
-| **C2 — AI Engineer** | D8 ReAct manual (`dia7_agente_react.py`) | **D9 LangChain AgentExecutor** — `dia8_langchain_agents.py` (tools OK, falta Parte 2) |
+| **C2 — AI Engineer** | D8 ✅ LangChain Agents (`dia8_langchain_agents.py`) | D10 Semantic Kernel |
 | **C3 — Cloud Engineer** | D1 Azure fundamentals | D2 Networking I: VNets, subnets, NSGs, peering |
 
 ---
@@ -44,7 +43,7 @@
 
 | Día real | Fecha | Bloque 1 (mañana) | Bloque 2 (tarde) | Estado |
 |----------|-------|-------------------|------------------|--------|
-| 1 | 4-5 mayo | C2-D9: LangChain Agents (AgentExecutor) | C3-S1D2: Networking I — VNets, NSGs, peering | ⏳ |
+| 1 | 4-7 mayo | C2-D8: LangChain Agents (AgentExecutor) | C3-S1D2: Networking I — VNets, NSGs, peering | ⏳ |
 | 2 | 5-6 mayo | C1-D3: Docker Compose + FastAPI serving | C3-S1D3: Networking II — VPN, Firewall, Private Endpoints | ⬜ |
 | 3 | 6-7 mayo | C3-S1D4: Azure AD, RBAC, Key Vault | C1-D4: Azure CLI + ACR + AKS overview | ⬜ |
 | 4 | 7-8 mayo | C3-S1D5: Storage — Blob, Files, lifecycle | C1-D6: Proyecto Docker + FastAPI + MLflow + ACR | ⬜ |
