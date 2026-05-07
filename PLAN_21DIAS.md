@@ -1,78 +1,73 @@
 # Plan 21 días — KPMG Ready (4 mayo → 24 mayo 2026)
 
 > **Inicio KPMG:** 25 mayo 2026 como Manager en Financial Services
-> **Objetivo:** Cubrir los 3 cursos al máximo posible en 21 días reales a jornada completa
-> **Ritmo:** ~3.5 días de curso por día real → ~73 días de curso = ~80% del programa
+> **Objetivo:** Cubrir los 3 cursos completos en 21 días reales a jornada completa
+> **Ritmo:** 4 bloques/día × 21 días = 84 bloques ≈ 86 pendientes → ~98% del programa
 
 ---
 
 ## Cómo retomar en sesión nueva
 
-1. Lee este archivo (`PLAN_21DIAS.md`) — el estado exacto está en "PRÓXIMO PASO" abajo
-2. Di al usuario: "Seguimos por [lo que pone en PRÓXIMO PASO]"
-3. No preguntes nada — arranca directamente
+1. Lee este archivo — el estado exacto está en **► PRÓXIMO PASO**
+2. Di al usuario directamente qué toca sin preguntar nada
+3. Al cerrar cada bloque: actualizar README del curso, marcar ✅ aquí, commit+push
 
 ---
 
 ## ► PRÓXIMO PASO (actualizado al cierre de cada sesión)
 
-**Día real:** 1 de 21  
-**Fecha:** 7 mayo 2026  
-**Tarea activa:** C3-S1D2 — Networking I: VNets, subnets, NSGs, peering
+**Día real:** 2 de 21
+**Tarea:** C1-D3 — Docker Compose + FastAPI model serving
 
-**C2-D8 ✅ completado:** `dia8_langchain_agents.py` — LangGraph `create_react_agent` con 3 tools bancarias. Mismo agente que D7 pero con framework. Commit: `34fb15a`
+**Estado del Día 1:**
+- C2-D8 ✅ LangChain Agents — `dia8_langchain_agents.py` con LangGraph `create_react_agent`
+- C3-S1D2 ✅ Networking I — `dia2_networking_I.md` (VNets, subnets, NSGs, peering)
 
-**Siguiente bloque:** C3-S1D2 Networking I
-- Archivo destino: `curso3_cloud_engineer/semana1/dia2_networking_I.md`
-- Temas: VNets, subnets, NSGs (reglas inbound/outbound), VNet peering
-- Después: C1-D3 Docker Compose + FastAPI serving
+**Bloques pendientes del Día 2:**
+1. C1-D3: Docker Compose + FastAPI model serving → `curso1_mlops/semana1/`
+2. C3-S1D3: Networking II — VPN Gateway, ExpressRoute, Azure Firewall, Private Endpoints
+3. C2-D9: Agente RAG + tools combinadas → `curso2_ai_engineer/semana2/dia9/`
+4. C1-D4: Azure fundamentos para MLOps — Resource Groups, AKS, ACR, Azure ML overview
 
 ---
 
 ## Estado actual de cada curso
 
-| Curso | Último completado | Siguiente |
-|-------|-------------------|-----------|
-| **C1 — MLOps** | D2 Dockerfile + D5b scikit-learn/PyTorch | D3 Docker Compose + FastAPI |
-| **C2 — AI Engineer** | D8 ✅ LangChain Agents (`dia8_langchain_agents.py`) | D10 Semantic Kernel |
-| **C3 — Cloud Engineer** | D1 Azure fundamentals | D2 Networking I: VNets, subnets, NSGs, peering |
+| Curso | Completados | Siguiente |
+|-------|-------------|-----------|
+| **C1 — MLOps** | D1✅ D2✅ D5b✅ | D3 Docker Compose |
+| **C2 — AI Engineer** | D1-D7✅ D8✅ | D9 Agente RAG+tools |
+| **C3 — Cloud Engineer** | D1✅ D2✅ | D3 Networking II |
 
 ---
 
-## Plan día a día
+## Plan completo — 21 días × 4 bloques
 
-| Día real | Fecha | Bloque 1 (mañana) | Bloque 2 (tarde) | Estado |
-|----------|-------|-------------------|------------------|--------|
-| 1 | 4-7 mayo | C2-D8: LangChain Agents (AgentExecutor) | C3-S1D2: Networking I — VNets, NSGs, peering | ⏳ |
-| 2 | 5-6 mayo | C1-D3: Docker Compose + FastAPI serving | C3-S1D3: Networking II — VPN, Firewall, Private Endpoints | ⬜ |
-| 3 | 6-7 mayo | C3-S1D4: Azure AD, RBAC, Key Vault | C1-D4: Azure CLI + ACR + AKS overview | ⬜ |
-| 4 | 7-8 mayo | C3-S1D5: Storage — Blob, Files, lifecycle | C1-D6: Proyecto Docker + FastAPI + MLflow + ACR | ⬜ |
-| 5 | 8-9 mayo | C3-S1D6: Proyecto Hub-Spoke | C1-D7: Test S1 + DVC básico | ⬜ |
-| 6 | 9-10 mayo | C3-S2D8: Governance, Management Groups, Azure Policy | C2-D10: Semantic Kernel — kernels, plugins | ⬜ |
-| 7 | 10-11 mayo | C3-S2D9: Landing Zones + Cloud Adoption Framework | C2-D11: Semantic Kernel avanzado — planners | ⬜ |
-| 8 | 11-12 mayo | C3-S2D10: FinOps + Cost Management + tagging | C1-S2D8: K8s — Control Plane, Nodes, etcd | ⬜ |
-| 9 | 12-13 mayo | C3-S2D11: Bicep — sintaxis, módulos | C1-S2D9: K8s — Pods, Deployments, Services | ⬜ |
-| 10 | 13-14 mayo | C3-S2D12: Terraform avanzado — remote state, workspaces | C1-S2D10: K8s — ConfigMaps, Secrets | ⬜ |
-| 11 | 14-15 mayo | C3-S2D13: Proyecto Landing Zone con Terraform | C1-S2D11-12: Ingress + Helm | ⬜ |
-| 12 | 15-16 mayo | C3-S3D15: HA/DR — Availability Zones, Backup, Site Recovery | C1-S2D13: Proyecto K8s local con Helm | ⬜ |
-| 13 | 16-17 mayo | C3-S3D16: Azure SQL + Cosmos DB + PostgreSQL | C2-D12: Multi-agent + LangGraph intro | ⬜ |
-| 14 | 17-18 mayo | C3-S3D17: Defender for Cloud + C3-S3D17b: Sentinel + Purview | C2-D12b: LangGraph avanzado | ⬜ |
-| 15 | 18-19 mayo | C3-S3D18: Zero Trust — Conditional Access, PIM, JIT | C2-D13: Proyecto agente financiero con tools externas | ⬜ |
-| 16 | 19-20 mayo | C3-S3D19: Azure Monitor + Log Analytics + App Insights | C1-S3D15: AKS cluster + ACR integración | ⬜ |
-| 17 | 20-21 mayo | C3-S3D20: Proyecto bancario HA+DR+Seguridad | C2-D15: Azure AI Foundry — hubs, proyectos, modelos | ⬜ |
-| 18 | 21-22 mayo | C3-S4D22b: Azure API Management (Open Banking) | C3-S4D24: Well-Architected + TCO estimation | ⬜ |
-| 19 | 22-23 mayo | C3-S4D24b: Service Bus + Event Hub | C2-D19: Evaluación LLMs + RAGAS + benchmarks | ⬜ |
-| 20 | 23-24 mayo | C3-S4D25b: Microsoft Fabric + Power BI | C2-D19b: Azure Prompt Flow | ⬜ |
-| 21 | 24 mayo | C3-S4D26: SOW + propuesta cliente + C3-S4D26b: TOGAF | C2-D23b: Responsible AI + EU AI Act (FS) | ⬜ |
+| Día | Bloque 1 | Bloque 2 | Bloque 3 | Bloque 4 | Estado |
+|-----|----------|----------|----------|----------|--------|
+| **1** | C2-D8 LangChain Agents | C3-S1D2 VNets/NSGs/Peering | — | — | ✅ |
+| **2** | C1-D3 Docker Compose+FastAPI | C3-S1D3 VPN/Firewall/PrivateEP | C2-D9 Agente RAG+tools | C1-D4 Azure CLI+ACR | ⬜ |
+| **3** | C3-S1D4 Azure AD/RBAC/KeyVault | C3-S1D5 Storage Blob/lifecycle | C1-D6 Proyecto Docker+MLflow | C2-D10 Semantic Kernel | ⬜ |
+| **4** | C3-S1D6 Proyecto Hub-Spoke | C3-S1D7 Test S1 | C1-D7 Test S1+DVC | C2-D11 SK planners | ⬜ |
+| **5** | C3-S2D8 Governance/Policy | C3-S2D9 Landing Zones+CAF | C1-S2D8 K8s Control Plane | C2-D12 Multi-agent+LangGraph | ⬜ |
+| **6** | C3-S2D10 FinOps | C3-S2D11 Bicep | C1-S2D9 Pods/Deployments/Services | C2-D12b LangGraph avanzado | ⬜ |
+| **7** | C3-S2D12 Terraform avanzado | C3-S2D13 Proyecto Landing Zone | C1-S2D10 ConfigMaps/Secrets | C2-D13 Agente financiero | ⬜ |
+| **8** | C3-S2D14 Test S2 | C3-S3D15 HA/DR/Backup | C1-S2D11 Ingress/NetworkPolicies | C2-D14 Test S2 | ⬜ |
+| **9** | C3-S3D16 Azure SQL/Cosmos/PG | C3-S3D17 Defender for Cloud | C1-S2D12 Helm | C2-D15 Azure AI Foundry | ⬜ |
+| **10** | C3-S3D17b Sentinel+Purview | C3-S3D18 Zero Trust/PIM/JIT | C1-S2D13 Proyecto K8s local | C2-D16 Deploy modelos Foundry | ⬜ |
+| **11** | C3-S3D19 Monitor/LogAnalytics | C3-S3D20 Proyecto bancario HA+Seg | C1-S3D15 AKS cluster+ACR | C2-D17 OpenAI vs AI Foundry | ⬜ |
+| **12** | C3-S3D21 Test S3 | C3-S4D22 GCP fundamentos | C1-S3D15b Kubeflow conceptual | C2-D18 MLflow en LLMs | ⬜ |
+| **13** | C3-S4D22b Azure API Management | C3-S4D23 Comparativa clouds | C1-S3D16 Azure DevOps vs GH Actions | C2-D19 Evaluación LLMs+RAGAS | ⬜ |
+| **14** | C3-S4D24 Well-Architected+TCO | C3-S4D24b Service Bus+Event Hub | C1-S3D17 CI/CD ML+GreatExpectations | C2-D19b Azure Prompt Flow | ⬜ |
+| **15** | C3-S4D25 GitOps ArgoCD/Flux | C3-S4D25b Fabric+Power BI | C1-S3D17b Airflow DAGs | C2-D20 Proyecto AI Foundry | ⬜ |
+| **16** | C3-S4D26 SOW+propuesta+TCO | C3-S4D26b TOGAF básico | C1-S3D18 Azure ML workspaces | C2-D21 Test S3 | ⬜ |
+| **17** | C3-S4D27-28 Proyecto final bancario | C3-S4D29 Simulacro KPMG | C1-S3D19 MLflow+DVC avanzado | C2-D22 Arquitecturas agentic | ⬜ |
+| **18** | C3-S4D30 Repaso gaps | C1-S3D20 Proyecto CI/CD completo | C1-S3D21 Test S3 | C2-D23 Seguridad LLMs | ⬜ |
+| **19** | C1-S4D22 Evidently drift | C1-S4D23 Prometheus+Grafana | C2-D23b Responsible AI+EU AI Act | C2-D24 Observabilidad agentes | ⬜ |
+| **20** | C1-S4D24 Logging Azure Monitor | C1-S4D25 Gobierno ML/A-B testing | C2-D25 Escalabilidad/costes tokens | C2-D26 Integración sistemas FS | ⬜ |
+| **21** | C1-S4D26 IaC Terraform stack AKS | C1-S4D27-28 Proyecto MLOps final | C2-D27-28 Proyecto Final plataforma | C2-D29-30 Test final+repaso | ⬜ |
 
----
-
-## Lo que se queda para después del 25 de mayo (on-the-job)
-
-- C1 S3 completa: Kubeflow, Airflow, Great Expectations, CI/CD AKS (contenido ya escrito en semana3/README.md)
-- C1 S4 completa: Evidently, Prometheus+Grafana, proyecto final MLOps
-- C2 S4: arquitecturas agentic, escalabilidad, proyecto final
-- C3 S4: GCP fundamentos, GitOps ArgoCD, proyecto final bancario
+**Cobertura estimada al día 21:** C3 100% · C2 100% · C1 ~93%
 
 ---
 
@@ -81,6 +76,7 @@
 | Tema | Curso | Día |
 |------|-------|-----|
 | LangGraph avanzado (graph state, conditional edges) | C2 | D12b |
+| Evaluación LLMs ampliada (RAGAS, benchmarks) | C2 | D19 |
 | Azure Prompt Flow | C2 | D19b |
 | Responsible AI + EU AI Act para FS | C2 | D23b |
 | Microsoft Sentinel + Microsoft Purview | C3 | D17b |
@@ -93,20 +89,22 @@
 
 ---
 
-## Flujo de fin de día
+## Reglas de cierre de cada bloque
+
+1. Actualizar README de la semana correspondiente: ⬜ → ✅ + contenido del día
+2. Actualizar este archivo: marcar bloque como ✅ y actualizar PRÓXIMO PASO
+3. Commit + push con mensaje descriptivo
 
 ```bash
 git add .
-git commit -m "Plan DíaX — temas completados"
+git commit -m "CursoX SYdZ — tema completado"
 git push
 ```
-
-Actualizar el estado en este archivo: ⏳ → ✅ cuando el día esté completo.
 
 ---
 
 ## Azure Free Account
 
-- Crear cuando lleguemos a C3-S1D2 (Día real 1, bloque tarde) o antes
-- URL: `azure.microsoft.com/free` — 200€ crédito 30 días + tarjeta para verificar
+- Crear al llegar a C3-S1D3 (Día 2, Bloque 2) — necesaria para labs de VPN y Firewall
+- `azure.microsoft.com/free` — 200€ crédito 30 días + tarjeta para verificar
 - Microsoft Learn Sandboxes como complemento gratuito sin tarjeta
