@@ -24,10 +24,56 @@ Para cada pieza de código o concepto:
 El plan completo día a día está en `PLAN_21DIAS.md` (raíz del repo).
 **Leerlo siempre al inicio de sesión** para saber en qué día real estamos y qué toca.
 
-Al cerrar cada bloque:
-1. Actualizar README de la semana correspondiente (⬜ → ✅ + contenido)
-2. Marcar el bloque en PLAN_21DIAS.md y actualizar "PRÓXIMO PASO"
-3. Commit + push
+## Cierre de cada bloque — obligatorio
+
+Al terminar cada bloque (sin esperar a que el usuario lo pida):
+
+1. **Actualizar la tabla de estado** del README de la semana correspondiente: ⬜ → ✅
+2. **Añadir la sección del día** al README con: arquitectura, conceptos clave, trade-offs, código relevante
+3. **Actualizar PLAN_21DIAS.md**: marcar bloque ✅ y actualizar "PRÓXIMO PASO"
+4. **Commit + push**:
+   ```bash
+   git add .
+   git commit -m "CursoX SYdZ — tema completado"
+   git push
+   ```
+
+## Dónde documentar cada bloque
+
+| Bloque | README a actualizar |
+|--------|---------------------|
+| C1 Semana 1 (D1-D7) | `curso1_mlops/semana1/README.md` |
+| C1 Semana 2 (D8-D14) | `curso1_mlops/semana2/README.md` |
+| C1 Semana 3 (D15-D21) | `curso1_mlops/semana3/README.md` |
+| C1 Semana 4 (D22-D28) | `curso1_mlops/semana4/README.md` |
+| C2 Semana 1 (D1-D6) | `curso2_ai_engineer/semana1/README.md` |
+| C2 Semana 2 (D7-D14) | `curso2_ai_engineer/semana2/README.md` |
+| C3 Semana 1 (D1-D7) | `curso3_cloud_engineer/semana1/README.md` |
+| C3 Semana 2 (D8-D14) | `curso3_cloud_engineer/semana2/README.md` |
+| C3 Semana 3 (D15-D21) | `curso3_cloud_engineer/semana3/README.md` |
+| C3 Semana 4 (D22-D30) | `curso3_cloud_engineer/semana4/README.md` |
+
+## Formato del README por día
+
+Cada día completado añade una sección al README de su semana con esta estructura:
+
+```markdown
+## Día N — Título
+
+### Arquitectura / Diagrama (si aplica)
+
+### Conceptos clave
+Tabla o lista con componentes, qué hacen y por qué se usan
+
+### Trade-offs y decisiones
+Por qué esta solución y no otra (coste, complejidad, escalabilidad)
+
+### Aplicación en KPMG
+Cómo aplica esto en proyectos reales de banca/consultoría
+
+### Código / Archivos
+Referencias a los archivos creados
+```
 
 ## Los 3 cursos
 
