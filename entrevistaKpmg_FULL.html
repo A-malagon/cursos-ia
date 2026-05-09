@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preparación Entrevista KPMG</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; }
+.cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #00338D, #0055A5, #005EB8); color: white; text-align: center; padding: 40px; }
+.cover h1 { font-size: 32px; font-weight: 700; margin-bottom: 16px; }
+.cover h2 { font-size: 18px; font-weight: 300; opacity: 0.85; margin-bottom: 40px; }
+.cover .meta { font-size: 13px; opacity: 0.6; line-height: 2; }
+.cover .badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 6px 18px; margin: 6px; font-size: 12px; }
+nav { position: sticky; top: 0; z-index: 100; background: #00338D; display: flex; flex-wrap: wrap; gap: 2px; padding: 8px 16px; }
+nav button { background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 600; }
+nav button:hover, nav button.active { background: rgba(255,255,255,0.3); }
+.section { display: none; padding: 40px 60px; max-width: 960px; margin: 0 auto; }
+.section.active { display: block; }
+h2.st { font-size: 22px; color: #00338D; border-bottom: 3px solid #00338D; padding-bottom: 10px; margin-bottom: 28px; }
+h3 { font-size: 16px; color: #0055A5; margin: 24px 0 10px; }
+h4 { font-size: 14px; color: #00338D; margin: 16px 0 8px; }
+p { line-height: 1.7; margin-bottom: 10px; color: #333; }
+ul, ol { padding-left: 20px; margin: 8px 0; }
+li { line-height: 1.7; margin-bottom: 4px; color: #333; }
+.qa { background: #f0f4ff; border-left: 4px solid #00338D; border-radius: 0 8px 8px 0; padding: 18px 20px; margin: 20px 0; }
+.qa .q { font-weight: 700; color: #00338D; font-size: 14px; margin-bottom: 10px; }
+.qa .q::before { content: "P: "; color: #0055A5; }
+.qa .a { color: #333; line-height: 1.7; }
+.qa .a::before { content: "R: "; font-weight: 700; color: #0055A5; }
+.tip { background: #e8f4f8; border: 1px solid #b3d9ea; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; color: #003366; }
+.tip::before { content: "💡 "; }
+.warn { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; }
+.warn::before { content: "⚠️ "; }
+.strat { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 8px; padding: 14px 18px; margin: 16px 0; font-size: 12px; color: #1b5e20; }
+.strat::before { content: "🎯 "; }
+.star { background: #f0f4ff; border: 1px solid #c7d7f7; border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
+.star strong { color: #00338D; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 12px; }
+th { background: #00338D; color: white; padding: 10px 12px; text-align: left; }
+td { padding: 9px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+tr:nth-child(even) td { background: #f8f9fa; }
+.arch { background: #0a1628; color: #7ec8e3; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.8; margin: 16px 0; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; margin: 2px; }
+.tg { background: #e8f5e9; color: #2e7d32; }
+.tb { background: #e3f2fd; color: #1565c0; }
+.to { background: #fff3e0; color: #e65100; }
+.frase { background: #00338D; color: #fff; border-radius: 8px; padding: 16px 20px; margin-top: 20px; font-style: italic; line-height: 1.6; font-size: 14px; }
+.noexp { background: #f3e5f5; border-left: 4px solid #7b1fa2; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 12px; }
+.noexp::before { content: "🗣️ Cómo responder sin experiencia directa: "; font-weight: 700; color: #7b1fa2; display: block; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+<h1>Preparación Entrevista KPMG</h1>
+<h2>Consultor Senior / Manager — Cloud + Inteligencia Artificial</h2>
+<div style="margin:30px 0">
+<span class="badge">Javier González — Director</span>
+<span class="badge">Miércoles 22 abril</span>
+<span class="badge">Microsoft · Cloud · IA</span>
+</div>
+<div style="margin:20px 0">
+<span class="badge">LLMs & RAG</span>
+<span class="badge">Agentes IA</span>
+<span class="badge">Azure AI</span>
+<span class="badge">Cloud Architecture</span>
+<span class="badge">MLOps</span>
+<span class="badge">FinOps</span>
+</div>
+<div class="meta">
+<div>Alejandro Malagón López-Páez</div>
+<div>HPE · Santander · Telefónica | 9 años experiencia</div>
+<div>Máster Cloud Computing + Máster Data Science & IA</div>
+</div>
+</div>
+
+<nav>
+<button class="active" onclick="show('s0')">🎯 Estrategia</button>
+<button onclick="show('s1')">⭐ Historias STAR</button>
+<button onclick="show('s2')">☁️ Cloud & Arquitectura</button>
+<button onclick="show('s3')">🔵 Microsoft & Azure</button>
+<button onclick="show('s4')">🤖 IA & MLOps</button>
+<button onclick="show('s5')">💼 Consultoría</button>
+<button onclick="show('s6')">❓ Preguntas Trampa</button>
+<button onclick="show('s7')">🙋 Tus Preguntas</button>
+</nav>
+
+<!-- S0: ESTRATEGIA -->
+
+<div id="s0" class="section active">
+<h2 class="st">Estrategia para la entrevista</h2>
+
+<p>Javier González — Director KPMG — trabaja principalmente con <strong>tecnologías Microsoft, combinando seguridad, cloud e IA</strong>. Ha participado en CopilotDays de Microsoft con KPMG. El rol es Manager, no puramente técnico: busca alguien que <strong>entienda conceptos, sepa recomendar soluciones y pueda hablar con clientes</strong>.</p>
+
+<h3>Tu propuesta de valor — ábrete con esto</h3>
+<div class="frase">"Soy Ingeniero de Telecomunicaciones con más de 9 años de experiencia en Cloud Engineering, DevOps y automatización. He pasado por Telefónica I+D, Santander Global Tech y llevo casi 4 años en HPE, donde he evolucionado de Cloud & DevOps Engineer a Data Science & IA Engineer. Mi valor diferencial es que junto profundidad técnica en infraestructura cloud con capacidades reales de IA y MLOps — no es un perfil habitual. He trabajado directamente con Inditex, Roche y Santander."</div>
+
+<h3>Los tres pilares que debes proyectar</h3>
+<table>
+<tr><th>Pilar</th><th>Qué transmitir</th><th>Cómo anclarlo</th></tr>
+<tr><td><strong>Credibilidad técnica</strong></td><td>Entiendes los conceptos en profundidad</td><td>Explica con ejemplos reales de Inditex, Roche, Santander</td></tr>
+<tr><td><strong>Mentalidad consultor</strong></td><td>Razonas trade-offs, no solo recitas tecnologías</td><td>"Dependería de... si el cliente tiene X, recomendaría Y porque..."</td></tr>
+<tr><td><strong>Orientación a negocio</strong></td><td>Hablas el idioma del cliente, no solo el técnico</td><td>CapEx vs OpEx, time-to-market, ROI, impacto en ingresos</td></tr>
+</table>
+
+<div class="warn">Ir recomendado es una ventaja enorme — la entrevista es más una conversación de encaje que un filtro duro. Pero eso no significa relajarse. Las preguntas serán más abiertas y estratégicas.</div>
+
+<h3>Tu narrativa si te preguntan por el gap de IA</h3>
+<div class="strat">"En HPE he dado el salto a Data Science & IA Engineer desde enero 2025 — estoy entrenando modelos de ML, desplegando con MLOps en cloud y automatizando pipelines de datos. Además tengo el Máster en Data Science & IA activo. No tengo 5 años de IA pura, pero tengo la base de infraestructura que muchos AI Engineers no tienen, y la formación activa para cerrar cualquier gap rápido."</div>
+</div>
+
+<!-- S1: HISTORIAS STAR -->
+
+<div id="s1" class="section">
+<h2 class="st">Tus Historias STAR</h2>
+<p>Estas son tus 4 historias ancladas en experiencia real. Úsalas para responder cualquier pregunta conductual.</p>
+
+<h3>⭐ HPE — Migración 36.000 VMs (Roche Pharma)</h3>
+<div class="star">
+<strong>Úsala para:</strong> proyectos complejos, automatización, escala, liderazgo técnico<br><br>
+<span class="tag tb">Situación</span> Roche Pharma necesitaba migrar más de 36.000 máquinas virtuales de hardware HPE Gen10 a Gen11 con hipervisores Nutanix y VMware.<br><br>
+<span class="tag to">Tarea</span> Diseñar e implementar el proceso de migración — manualmente habría llevado años y el riesgo de error en sistemas críticos de una farmacéutica era inaceptable.<br><br>
+<span class="tag tg">Acción</span> Desarrollé un sistema de automatización completo en Python con validación automática en cada paso, trazabilidad total y manejo de errores.<br><br>
+<span class="tag tg">Resultado</span> Migración completada sin incidencias en producción, en una fracción del tiempo que habría llevado manualmente.
+</div>
+
+<h3>⭐ HPE — FinOps con Inditex</h3>
+<div class="star">
+<strong>Úsala para:</strong> FinOps, gestión de cliente, impacto en negocio, formación<br><br>
+<span class="tag tb">Situación</span> Inditex tenía recursos cloud sin gobernanza de costes — nadie sabía exactamente qué gastaba cada equipo.<br><br>
+<span class="tag to">Tarea</span> Implementar prácticas FinOps y conseguir que el equipo de Inditex las interiorizara.<br><br>
+<span class="tag tg">Acción</span> Implementé tagging estructurado, alertas de presupuesto y revisiones de rightsizing. Diseñé e impartí un workshop completo para el cliente.<br><br>
+<span class="tag tg">Resultado</span> El equipo de Inditex interiorizó la cultura FinOps — no solo les dejé un dashboard, les cambié la forma de trabajar con cloud.
+</div>
+
+<h3>⭐ HPE — MLOps en producción</h3>
+<div class="star">
+<strong>Úsala para:</strong> IA, MLOps, despliegue de modelos, producción<br><br>
+<span class="tag tb">Situación</span> HPE necesitaba desplegar modelos de ML en entornos cloud con monitorización real en producción.<br><br>
+<span class="tag to">Tarea</span> Implementar el ciclo completo MLOps — desde entrenamiento hasta serving y monitorización.<br><br>
+<span class="tag tg">Acción</span> Desplegué modelos con Flask y Model Serving, implementé monitorización de drift, versionado de modelos y pipelines automatizados de reentrenamiento.<br><br>
+<span class="tag tg">Resultado</span> "El reto de MLOps no es entrenar el modelo — es garantizar que sigue funcionando bien semanas después. Eso es lo que implementé."
+</div>
+
+<h3>⭐ Santander — Cloud Privada con OpenStack</h3>
+<div class="star">
+<strong>Úsala para:</strong> arquitectura cloud, banca, sector regulado, stakeholders<br><br>
+<span class="tag tb">Situación</span> Santander Global Tech necesitaba una plataforma cloud privada completa con los más altos estándares de seguridad y compliance bancario.<br><br>
+<span class="tag to">Tarea</span> Diseñar y desplegar la plataforma end-to-end.<br><br>
+<span class="tag tg">Acción</span> Diseñé la arquitectura completa: OpenStack + RedHat CloudForms como orquestador, servicios XaaS sobre vSphere con vRealize Automation, monitorización con Grafana, aprovisionamiento automatizado con Ansible. Trabajé directamente con stakeholders en Agile/Scrum.<br><br>
+<span class="tag tg">Resultado</span> Plataforma productiva en uno de los bancos más exigentes de España en términos de seguridad y regulación.
+</div>
+
+<h3>Gap: liderazgo de personas</h3>
+<div class="warn">Si te preguntan "¿has liderado equipos?": "He liderado proyectos técnicos coordinando equipos multidisciplinares — en Santander con stakeholders y cliente final en Scrum, en HPE coordinando con equipos de Inditex y Roche. He sido referente técnico tomando decisiones de arquitectura. El paso a gestión formal de equipo es parte de lo que busco en KPMG."</div>
+</div>
+
+<!-- S2: CLOUD & ARQUITECTURA -->
+
+<div id="s2" class="section">
+<h2 class="st">Cloud & Arquitectura</h2>
+
+<div class="qa">
+<div class="q">¿Cuál es tu visión sobre la adopción cloud en España?</div>
+<div class="a">España está en un momento de aceleración real. Banca, telco y utilities llevan años con estrategias híbridas pero ahora están dando el salto definitivo. El driver ya no es solo coste, es velocidad de innovación. Lo que veo es que muchas empresas tienen la infraestructura migrada pero no han transformado realmente sus procesos ni su cultura. Ahí es donde hay más trabajo, y donde KPMG aporta más valor.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo justificarías a un CFO la migración a cloud?</div>
+<div class="a">Con su idioma: CapEx vs OpEx. On-premise implica inversión inicial elevada con ciclos de renovación cada 4-5 años. Cloud convierte eso en gasto operativo predecible. Pero el argumento más potente es el time-to-market: una empresa que tarda 6 meses en desplegar infraestructura no puede competir con una que lo hace en horas. Eso tiene impacto directo en ingresos, no solo en costes.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cloud-first vs Hybrid Cloud?</div>
+<div class="a">Depende del contexto. Cloud-first tiene sentido para empresas nuevas o con poca deuda tecnológica. Hybrid cloud es la realidad de la mayoría de grandes empresas en España, especialmente en banca y telco, donde hay regulación estricta y sistemas legacy que no se migran de un día para otro. La clave no es elegir uno u otro, sino tener una estrategia clara de qué cargas van a dónde y por qué.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo abordarías un cliente con miedo al vendor lock-in?</div>
+<div class="a">Es un miedo legítimo. Mi enfoque es triple: diseñar con capas de abstracción desde el principio — Kubernetes, Terraform, contenedores. Adoptar estrategia multi-cloud para cargas críticas. Y ser honesto: algo de lock-in siempre existe, la clave es gestionarlo conscientemente, no ignorarlo.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo diseñarías una arquitectura multi-cloud para un banco?</div>
+<div class="a">Partiría de una Landing Zone en cada cloud con governance centralizado — políticas, seguridad, costes. Terraform para IaC agnóstico al proveedor, Kubernetes para las aplicaciones, identidad federada con Azure AD. Las cargas más sensibles — core bancario — se quedan on-premise o en cloud privada, como hice en Santander. Las analíticas y de innovación van a cloud pública. Y modelo FinOps desde el día uno, como apliqué en Inditex.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué es FinOps y cómo lo has aplicado?</div>
+<div class="a">FinOps es gestionar el gasto cloud de forma colaborativa entre finanzas, negocio y tecnología. Lo apliqué en HPE con Inditex: tagging riguroso, alertas de presupuesto, revisión periódica de rightsizing. Y diseñé e impartí un workshop para que el equipo de Inditex lo interiorizara. El objetivo es optimizar sin frenar la innovación.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué es una Landing Zone?</div>
+<div class="a">La base estructurada sobre la que construyes todo en cloud — una plantilla de suscripción/cuenta bien configurada con governance, seguridad, networking e identidad desde el principio. En Azure el framework de referencia es el Cloud Adoption Framework. En vez de que cada equipo cree suscripciones como quiera, la Landing Zone garantiza que todo parte de los mismos estándares.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo garantizas seguridad y compliance en cloud para banca?</div>
+<div class="a">En banca hay que cumplir ENS, DORA y guías del Banco de España. Mi enfoque es security by design: IAM con mínimo privilegio, cifrado en tránsito y en reposo, segmentación de red, auditoría continua. Y compliance as code — las políticas se definen en código y se validan en el pipeline CI/CD antes de que nada llegue a producción. Lo implementé en Santander donde el escrutinio regulatorio era máximo.</div>
+</div>
+</div>
+
+<!-- S3: MICROSOFT & AZURE -->
+
+<div id="s3" class="section">
+<h2 class="st">Microsoft & Azure — Crítico con Javier</h2>
+<p>Javier González trabaja principalmente con tecnologías Microsoft. Esto es lo que más peso tendrá.</p>
+
+<div class="qa">
+<div class="q">¿Qué experiencia tienes con Azure?</div>
+<div class="a">Tengo el Máster en Cloud Computing con Azure como uno de los tres pilares junto a AWS y GCP. He trabajado con los servicios core — Azure DevOps para CI/CD, AKS para Kubernetes, Azure ML para MLOps. Mi stack principal en proyectos ha sido AWS con Terraform, pero el ecosistema Azure lo conozco bien y en entornos enterprise españoles es donde más oportunidad veo, precisamente por la penetración de Microsoft en ese segmento.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué opinas de Microsoft Copilot y la IA generativa en empresas?</div>
+<div class="a">Es un cambio real, no hype. Lo más interesante no es Copilot en sí sino la plataforma — Azure AI Foundry, los modelos de OpenAI integrados en el ecosistema Microsoft. Para una empresa que ya vive en M365 y Azure, la barrera de adopción es mínima. El reto no es técnico, es de governance: cómo garantizas que la IA no filtre datos sensibles, cómo mides el ROI, cómo formas a los equipos. Ahí es donde una consultora marca la diferencia.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué es Azure AI Foundry?</div>
+<div class="a">La plataforma de Microsoft para desarrollar y desplegar aplicaciones de IA generativa de forma empresarial. Integra modelos de OpenAI, Hugging Face y otros, con herramientas de evaluación, seguridad y governance. Para una empresa que ya está en Azure es la forma más natural de implementar IA generativa sin salirse del ecosistema. Es una de las apuestas más interesantes de Microsoft para el mercado enterprise.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Azure DevOps vs GitHub Actions?</div>
+<div class="a">Azure DevOps es más maduro para entornos enterprise — gestión de proyectos, repositorios, pipelines y artefactos integrados, con buena integración con Active Directory. GitHub Actions es más moderno y flexible, ideal si el código ya está en GitHub. En empresas grandes que vienen del mundo Microsoft recomiendo Azure DevOps por la integración nativa. En proyectos más ágiles o cloud-native, GitHub Actions.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué sabes de DORA y su impacto en cloud?</div>
+<div class="a">DORA — Digital Operational Resilience Act — obliga a entidades financieras a garantizar resiliencia operativa digital incluyendo sus proveedores cloud. Implica gestión de riesgos de terceros, planes de continuidad, pruebas de resiliencia y reporting regulatorio. Para un banco que usa Azure, significa que no puede depender ciegamente del proveedor — necesita estrategias de backup, multi-cloud o hybrid cloud con failover real. Es un driver enorme de proyectos de arquitectura en banca ahora mismo.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué opinas de la seguridad en IA generativa?</div>
+<div class="a">Es el principal freno de adopción en empresas grandes, y con razón. Los riesgos son reales: filtración de datos sensibles, alucinaciones en procesos críticos, falta de trazabilidad. Las soluciones pasan por RAG con datos propios en lugar de enviar información sensible a modelos externos, políticas de DLP en Microsoft Purview, y governance claro de qué puede y no puede hacer la IA en cada contexto. Sin eso, ningún CIO de un banco va a firmar la adopción.</div>
+</div>
+</div>
+
+<!-- S4: IA & MLOPS -->
+
+<div id="s4" class="section">
+<h2 class="st">IA & MLOps</h2>
+
+<div class="qa">
+<div class="q">¿Qué es un LLM y cómo funciona?</div>
+<div class="a">Un LLM es un modelo de lenguaje entrenado con enormes cantidades de texto para predecir qué token viene a continuación. En inferencia, dada una entrada genera una respuesta token a token. Los modelos actuales como GPT-4o tienen ventanas de contexto de 128K tokens. Lo relevante para un consultor: el coste de la API se mide en tokens — coste = (tokens entrada + salida) × precio. Para un cliente con millones de llamadas, la gestión de tokens puede suponer diferencias de decenas de miles de euros al mes.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué son los embeddings y para qué sirven?</div>
+<div class="a">Un embedding es la representación numérica de un texto como vector en alta dimensión. Textos con significado similar tienen vectores cercanos. Se usan en RAG (encontrar documentos relevantes), búsqueda semántica (por significado, no por palabras clave) y clasificación de textos. Para un banco: "impago" y "riesgo de crédito" estarán cerca en el espacio vectorial — la búsqueda semántica sobre normativa regulatoria o contratos es transformacional.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cuándo recomiendas RAG y cuándo fine-tuning?</div>
+<div class="a">RAG para la mayoría de casos empresariales: documentos que cambian, normativa, bases de conocimiento. Barato, actualizable al instante, auditable. Fine-tuning cuando necesitas cambiar el estilo o formato de respuesta, o la terminología es muy especializada y el modelo base la desconoce. Regla de consultor: di RAG salvo que haya una razón muy específica — es lo que da un consultor experimentado.</div>
+</div>
+
+<h3>Arquitectura RAG</h3>
+<div class="arch">
+[FASE INDEXACIÓN — se hace una vez]
+Documentos (PDFs, contratos, normativa...)
+↓
+Dividir en chunks (~500 tokens con overlap)
+↓
+Generar embedding de cada chunk (Azure OpenAI: text-embedding-ada-002)
+↓
+Guardar en Vectorstore (Azure AI Search / ChromaDB / FAISS)
+
+[FASE CONSULTA — en tiempo real]
+Usuario hace una pregunta
+↓
+Generar embedding de la pregunta
+↓
+Buscar los N chunks más similares (búsqueda semántica)
+↓
+Construir prompt: “Pregunta: X | Contexto: chunk1, chunk2, chunk3”
+↓
+Enviar al LLM (Azure OpenAI GPT-4o)
+↓
+LLM responde basándose SOLO en el contexto proporcionado</div>
+
+<div class="qa">
+<div class="q">¿Qué es MLOps y cuándo lo aplicarías?</div>
+<div class="a">MLOps es aplicar prácticas DevOps al ciclo de vida de modelos de ML — versionado de datos y modelos, pipelines de entrenamiento automatizados, monitorización de drift en producción. Lo he aplicado en HPE desplegando modelos con Flask y Model Serving en cloud. Lo aplicaría en cualquier cliente que quiera escalar más allá de un modelo en un notebook. Sin MLOps, los modelos llegan tarde a producción y nadie sabe cuándo se degradan.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué es un agente de IA?</div>
+<div class="a">Un LLM que puede tomar decisiones y usar herramientas externas. Con el patrón ReAct, el LLM razona (Thought), decide qué tool usar (Action), recibe el resultado (Observation) y repite hasta responder. En producción empresarial hay que gestionar riesgos: prompt injection, scope creep, costes impredecibles si entra en bucle, y trazabilidad para auditoría — crítico en sectores regulados como banca.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo ves el impacto de la IA en infraestructura cloud?</div>
+<div class="a">De formas muy concretas. AIOps para detectar anomalías antes de que causen incidencias. Optimización de costes automática con rightsizing inteligente. Y generación de código IaC con LLMs, que acelera el trabajo de los equipos de plataforma. La IA no reemplaza al cloud engineer, pero multiplica su productividad. En KPMG veo una oportunidad enorme de llevar esto a clientes que todavía gestionan infraestructura de forma reactiva.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo venderías IA a un cliente tradicional?</div>
+<div class="a">Sin hablar de IA los primeros 10 minutos. Primero entiendo su problema de negocio — reducir costes operativos, mejorar experiencia de cliente, reducir fraude. Luego presento la solución, que resulta que usa IA por debajo. Los clientes tradicionales compran resultados, no tecnología. Con un ROI estimado y un caso de uso concreto, la conversación cambia completamente.</div>
+</div>
+</div>
+
+<!-- S5: CONSULTORÍA -->
+
+<div id="s5" class="section">
+<h2 class="st">Consultoría & Negocio</h2>
+
+<div class="qa">
+<div class="q">¿Por qué KPMG y no Accenture o Deloitte?</div>
+<div class="a">Las tres son referencias, pero KPMG tiene un posicionamiento diferenciador en cloud + advisory con foco en sectores regulados — banca y telco — que es exactamente donde tengo más experiencia. Además veo que KPMG está apostando fuerte por capacidades tecnológicas propias con foco en Microsoft, no solo hacer advisory puro. Eso encaja con lo que quiero: combinar profundidad técnica con impacto en negocio.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo desarrollarías negocio con un cliente existente?</div>
+<div class="a">Primero entregando excelencia en el proyecto actual — la mejor puerta de entrada es que el cliente esté contento. Luego manteniendo conversaciones estratégicas más allá del proyecto en curso. Si consigo entender hacia dónde va el cliente en los próximos 12-18 meses, puedo proponer el siguiente paso antes de que me lo pidan.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Qué sectores tienen más oportunidad cloud en España?</div>
+<div class="a">Banca y seguros — deuda tecnológica enorme y presión regulatoria como DORA que acelera la modernización. Sector público — fondos Next Generation EU para transformación digital. Retail — acelerado post-pandemia, Inditex es el ejemplo perfecto. Y salud — incipiente pero con mucho potencial.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo gestionas un cliente que frena la adopción tecnológica?</div>
+<div class="a">Primero entiendo por qué frena — normalmente es miedo al riesgo, falta de entendimiento o política interna. No intento convencer con argumentos técnicos. Lo que funciona es mostrar valor rápido con un piloto pequeño, involucrar a los early adopters internos como aliados, y hablar siempre en términos de impacto en negocio. La resistencia se gestiona con victorias tempranas, no con PowerPoints.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo priorizas con varios proyectos en paralelo?</div>
+<div class="a">Con impacto, urgencia y recursos disponibles. Uso frameworks tipo MoSCoW para clasificar tareas. Lo más importante es comunicación proactiva — si hay un riesgo de retraso, lo escalo antes de que sea un problema. Y delego con claridad, sin microgestionar.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cómo te ves en 3 años en KPMG?</div>
+<div class="a">Consolidado como referente en arquitectura cloud e IA para clientes del sector financiero, con un equipo propio que haya desarrollado, y habiendo liderado proyectos de referencia que KPMG pueda usar como casos de éxito. Y con visibilidad para influir en la propuesta de valor que KPMG lleva al mercado en cloud e IA — especialmente en el ecosistema Microsoft.</div>
+</div>
+</div>
+
+<!-- S6: TRAMPAS -->
+
+<div id="s6" class="section">
+<h2 class="st">Preguntas Trampa — Cuidado</h2>
+
+<div class="warn">Nunca inventes experiencia que no tienes. En KPMG hay consultores técnicos que saben exactamente qué preguntar para verificarlo.</div>
+
+<h3>Fine-tuning vs RAG — pregunta clásica de consultor</h3>
+<div class="qa">
+<div class="q">¿Cuándo recomiendas fine-tuning y cuándo RAG?</div>
+<div class="a">Fine-tuning: modificas los pesos del modelo con tus propios datos. Caro, difícil de actualizar — si cambia la información, tienes que reentrenar. RAG: el modelo base no cambia, le das contexto relevante en el prompt en tiempo real. Mucho más barato, actualizable al instante y auditable. Para la mayoría de casos empresariales, RAG es la respuesta correcta. Fine-tuning solo si necesitas cambiar el estilo de respuesta o la terminología es muy especializada.</div>
+</div>
+
+<h3>Preguntas de experiencia</h3>
+<div class="noexp">Si te preguntan algo que no has hecho en producción: "No lo he implementado en producción todavía, pero conozco el concepto en profundidad y sé cómo se haría. Mi background DevOps me da la base para operarlo — la mayoría de AI Engineers no saben montar la infraestructura que sus modelos necesitan."</div>
+
+<div class="qa">
+<div class="q">¿Has liderado equipos grandes?</div>
+<div class="a">He liderado proyectos técnicos complejos coordinando equipos multidisciplinares — en Santander con stakeholders y cliente final en Scrum, en HPE con equipos de Inditex y Roche. He sido el referente técnico tomando decisiones de arquitectura y formando a compañeros. El paso a gestión formal de equipo es parte de lo que busco en KPMG — tengo la base y quiero desarrollar esa dimensión.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Por qué dejar HPE?</div>
+<div class="a">En HPE he aprendido mucho y he tenido proyectos muy interesantes. Pero quiero dar el salto a un entorno donde pueda combinar la parte técnica con la parte de cliente y negocio, liderar proyectos de transformación y crecer hacia una posición de mayor responsabilidad. KPMG es exactamente ese entorno.</div>
+</div>
+
+<div class="qa">
+<div class="q">¿Cuánto tardas en ser productivo?</div>
+<div class="a">En cloud architecture y el ecosistema Microsoft estoy operativo desde el primer día. En los detalles específicos de KPMG — metodología, clientes, procesos internos — un mes para estar completamente cómodo. He arrancado en proyectos complejos antes y sé adaptarme rápido.</div>
+</div>
+</div>
+
+<!-- S7: TUS PREGUNTAS -->
+
+<div id="s7" class="section">
+<h2 class="st">Preguntas que TÚ le haces a Javier</h2>
+<p>Siempre pregunta al final. Demuestra interés real y mentalidad estratégica.</p>
+
+<div class="star">
+<ul>
+<li>"¿Cuál es el tipo de proyecto cloud que más demanda el mercado en España ahora mismo para KPMG?"</li>
+<li>"¿Cómo está estructurado el equipo y qué stack tecnológico usan principalmente?"</li>
+<li>"¿Cuál sería mi primer reto en los primeros 90 días?"</li>
+<li>"¿Qué perfil de cliente es el más habitual — banca, telco, sector público?"</li>
+<li>"¿Cómo está evolucionando la práctica de IA dentro de KPMG España — es transversal o está en un área específica?"</li>
+<li>"¿Qué oportunidades de certificación y formación ofrece KPMG en el área de Microsoft Azure?"</li>
+</ul>
+</div>
+
+<h3>Para cerrar la entrevista</h3>
+<div class="frase">"Mi valor es que junto infraestructura cloud enterprise con IA real aplicada en producción. No es un perfil habitual — la mayoría de cloud engineers no saben de IA y la mayoría de AI engineers no saben operar infraestructura. Y tengo experiencia directa con los sectores que más invierten en esto en España: banca, farma y retail."</div>
+</div>
+
+<script>
+function show(id) {
+document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+event.target.classList.add('active');
+window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>

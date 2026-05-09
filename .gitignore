@@ -32,6 +32,3 @@ chroma_*/
 faiss_index/
 chroma_db/
 
-# Documentos de entrevista (personales, no van al repo)
-entrevista_*.html
-entrevistaKpmg_*.html

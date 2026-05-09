@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrevista Jotelulu — AI Engineer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; line-height: 1.7; }
+  .hero { background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%); border-bottom: 2px solid #3b82f6; padding: 40px; text-align: center; }
+  .hero h1 { font-size: 2rem; color: #60a5fa; margin-bottom: 8px; }
+  .hero p { color: #94a3b8; font-size: 1.1rem; }
+  .badge { display: inline-block; background: #1e3a5f; color: #60a5fa; border: 1px solid #3b82f6; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin: 4px; }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+  h2 { color: #60a5fa; font-size: 1.3rem; border-left: 4px solid #3b82f6; padding-left: 12px; margin: 32px 0 16px; }
+  h3 { color: #93c5fd; font-size: 1rem; margin: 20px 0 8px; }
+  p { color: #cbd5e1; margin-bottom: 12px; }
+  ul { padding-left: 20px; color: #cbd5e1; }
+  ul li { margin-bottom: 8px; }
+  .card { background: #1e2433; border: 1px solid #2d3748; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+  .card.green { border-left: 4px solid #10b981; }
+  .card.yellow { border-left: 4px solid #f59e0b; }
+  .card.red { border-left: 4px solid #ef4444; }
+  .card.blue { border-left: 4px solid #3b82f6; }
+  .card.purple { border-left: 4px solid #8b5cf6; }
+  code { background: #0d1117; color: #86efac; padding: 2px 8px; border-radius: 4px; font-size: 0.88rem; font-family: 'Courier New', monospace; }
+  pre { background: #0d1117; border: 1px solid #2d3748; border-radius: 8px; padding: 16px; overflow-x: auto; margin: 12px 0; }
+  pre code { background: none; padding: 0; color: #86efac; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .tag-green { color: #10b981; font-weight: bold; }
+  .tag-yellow { color: #f59e0b; font-weight: bold; }
+  .tag-red { color: #ef4444; font-weight: bold; }
+  .tag-blue { color: #60a5fa; font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th { background: #1e3a5f; color: #60a5fa; padding: 10px; text-align: left; }
+  td { padding: 10px; border-bottom: 1px solid #2d3748; color: #cbd5e1; }
+  tr:hover td { background: #1e2433; }
+  .answer { background: #0d2818; border-left: 4px solid #10b981; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 8px 0; color: #86efac; font-style: italic; }
+  .warning { background: #2d1a00; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 8px 0; color: #fcd34d; }
+  .section { border-top: 1px solid #2d3748; padding-top: 8px; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Entrevista Jotelulu — AI Engineer</h1>
+  <p>Martes 22 de abril · 50-60k€ · Híbrido Madrid</p>
+  <br>
+  <span class="badge">Python / FastAPI</span>
+  <span class="badge">LangChain</span>
+  <span class="badge">RAG Pipelines</span>
+  <span class="badge">AI Agents</span>
+  <span class="badge">Vector DBs</span>
+  <span class="badge">Redis / RabbitMQ</span>
+  <span class="badge">OpenAI API</span>
+</div>
+
+<div class="container">
+
+  <!-- EMPRESA -->
+  <h2>01 · La empresa</h2>
+  <div class="card blue">
+    <h3>¿Qué es Jotelulu?</h3>
+    <p>Plataforma cloud española que transforma empresas de TI en proveedores Cloud. Su negocio es el <strong>Cloud-as-a-Service para partners</strong>: una empresa de TI se integra con Jotelulu y revende sus servicios (escritorio remoto, servidores, almacenamiento, Disaster Recovery) a sus propios clientes bajo su marca.</p>
+    <p><strong>Diferencial:</strong> no compiten con AWS/Azure directamente — son un "cloud para el canal IT español". Más cercano, con soporte en español y pensado para PYMEs.</p>
+  </div>
+  <div class="card green">
+    <h3>Por qué meten AI Engineer ahora</h3>
+    <p>Quieren integrar IA dentro de su plataforma cloud — tanto en producto (recomendaciones, asistentes para sus partners) como en procesos internos (automatización, análisis). Es un perfil nuevo para ellos, lo que significa <strong>mucha autonomía y capacidad de impacto real</strong>.</p>
+  </div>
+
+  <!-- EL ROL -->
+  <h2>02 · El rol en detalle</h2>
+  <div class="grid2">
+    <div class="card green">
+      <h3>Lo que harás</h3>
+      <ul>
+        <li>APIs de IA con FastAPI</li>
+        <li>Pipelines RAG sobre documentos/datos internos</li>
+        <li>Agentes de IA con LangChain</li>
+        <li>Sistemas de recomendación</li>
+        <li>Modelos predictivos</li>
+        <li>Integrar OpenAI / Google GenAI</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <h3>Stack que mencionan</h3>
+      <ul>
+        <li>Python — FastAPI / Django / Flask</li>
+        <li>BBDDs relacionales + vectoriales</li>
+        <li>Redis, RabbitMQ, NATS</li>
+        <li>OpenAI, Google GenAI</li>
+        <li>LangChain / Haystack</li>
+        <li>Diseño de APIs escalables</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MATCH CON TU PERFIL -->
+  <h2>03 · Tu match con la oferta</h2>
+  <table>
+    <tr><th>Requisito</th><th>Tu situación</th><th>Estado</th></tr>
+    <tr>
+      <td>Python</td>
+      <td>Sí — uso diario en MLOps y AI Engineer</td>
+      <td><span class="tag-green">✅ Fuerte</span></td>
+    </tr>
+    <tr>
+      <td>FastAPI</td>
+      <td>Conoces el concepto, pendiente de práctica profunda</td>
+      <td><span class="tag-yellow">⚠️ Mencionar</span></td>
+    </tr>
+    <tr>
+      <td>LangChain</td>
+      <td>Semana 1 completa: chains, retrievers, memory, RAG</td>
+      <td><span class="tag-green">✅ Fuerte</span></td>
+    </tr>
+    <tr>
+      <td>RAG pipelines</td>
+      <td>Día 6 completo: chunking, ChromaDB, retrieval mejorado, chatbot</td>
+      <td><span class="tag-green">✅ Fuerte</span></td>
+    </tr>
+    <tr>
+      <td>Agentes de IA</td>
+      <td>Días 7-8 Semana 2: ReAct pattern, tools, LangChain Agents</td>
+      <td><span class="tag-green">✅ Fuerte</span></td>
+    </tr>
+    <tr>
+      <td>OpenAI API</td>
+      <td>Días 1-2: embeddings, function calling, historial, system prompt</td>
+      <td><span class="tag-green">✅ Fuerte</span></td>
+    </tr>
+    <tr>
+      <td>Vector DBs</td>
+      <td>ChromaDB y FAISS en Días 5-6</td>
+      <td><span class="tag-green">✅ Sólido</span></td>
+    </tr>
+    <tr>
+      <td>Redis / async</td>
+      <td>Redis cache en MLOps Curso 1</td>
+      <td><span class="tag-yellow">⚠️ Básico</span></td>
+    </tr>
+    <tr>
+      <td>RabbitMQ / NATS</td>
+      <td>Conocimiento teórico, sin práctica real</td>
+      <td><span class="tag-red">❌ Estudiar</span></td>
+    </tr>
+    <tr>
+      <td>Cloud (plataforma propia)</td>
+      <td>DevOps/Cloud Engineer de fondo + Curso Azure</td>
+      <td><span class="tag-green">✅ Diferencial</span></td>
+    </tr>
+  </table>
+
+  <!-- PREGUNTAS TÉCNICAS -->
+  <h2>04 · Preguntas técnicas que te harán</h2>
+
+  <div class="card blue">
+    <h3>RAG — las más probables</h3>
+
+    <p><strong>¿Qué es RAG y para qué lo usarías en Jotelulu?</strong></p>
+    <div class="answer">
+      RAG — Retrieval Augmented Generation — combina un vectorstore con un LLM. En lugar de hacer fine-tuning, indexas tus documentos en embeddings, y cuando llega una pregunta recuperas los chunks más relevantes y los metes en el contexto del LLM. En Jotelulu lo usaría para un asistente que responda preguntas sobre su documentación, incidencias o contratos de partners, sin que el LLM tenga que memorizar nada.
+    </div>
+
+    <p><strong>¿Qué es chunking y por qué importa?</strong></p>
+    <div class="answer">
+      Dividir documentos en trozos manejables antes de indexarlos. El tamaño importa: chunks muy grandes pierden precisión en el retrieval; muy pequeños pierden contexto. Uso RecursiveCharacterTextSplitter con chunk_size ~300-500 y chunk_overlap ~50 para que los cortes no rompan frases. En producción ajustaría según el tipo de documento.
+    </div>
+
+    <p><strong>¿Qué problema tiene el retrieval por similitud semántica?</strong></p>
+    <div class="answer">
+      Que similitud semántica no es lo mismo que relevancia lógica. El chunk más similar a la pregunta no siempre es el que contiene la respuesta. Lo resolví usando k más alto (recuperar más chunks) y un prompt que permite al LLM razonar e inferir, no solo citar literalmente.
+    </div>
+  </div>
+
+  <div class="card purple">
+    <h3>Agentes — muy probable dado el rol</h3>
+
+    <p><strong>¿Qué es un agente y en qué se diferencia de un RAG o una chain?</strong></p>
+    <div class="answer">
+      Una chain es un flujo fijo: tú defines los pasos. Un agente deja que el LLM decida qué hacer en cada paso. Con el patrón ReAct, el LLM razona (Thought), decide qué tool usar (Action), recibe el resultado (Observation) y repite hasta tener suficiente información para responder. En Jotelulu lo usaría para un asistente que pueda consultar el estado de una instancia, buscar en la documentación Y calcular costes en la misma conversación, según lo que necesite.
+    </div>
+
+    <p><strong>¿Cómo le dices al agente qué tools tiene disponibles?</strong></p>
+    <div class="answer">
+      A través del schema JSON de cada función — nombre, descripción y parámetros. El LLM decide qué tool llamar basándose en esas descripciones. La descripción es crítica: si es vaga, el LLM se la salta. En LangChain el decorator @tool genera el schema automáticamente desde el docstring de la función.
+    </div>
+  </div>
+
+  <div class="card green">
+    <h3>LangChain</h3>
+
+    <p><strong>¿Cuándo usarías LangChain y cuándo código manual?</strong></p>
+    <div class="answer">
+      LangChain aporta mucho en RAG con vectorstore, historial de conversación con múltiples sesiones, few-shot dinámico y agentes con múltiples tools. Para function calling simple con 1-2 funciones o en sistemas críticos donde necesitas control total, el código manual es más legible y fácil de debugar. No es religión — mezclo según lo que aporta claridad al caso.
+    </div>
+  </div>
+
+  <div class="card yellow">
+    <h3>Arquitectura y APIs</h3>
+
+    <p><strong>¿Cómo expondrías un agente de IA como API en producción?</strong></p>
+    <div class="answer">
+      FastAPI con un endpoint POST /agent que recibe pregunta y session_id. El agente tiene su bucle ReAct internamente. Para escalar: el estado de sesión en Redis (no en memoria del proceso), async con asyncio para no bloquear workers, y un sistema de cola (RabbitMQ / NATS) si las peticiones son pesadas para procesarlas de forma asíncrona. Containerizado con Docker, orquestado en Kubernetes.
+    </div>
+
+    <p><strong>¿Para qué sirve Redis en un sistema de IA?</strong></p>
+    <div class="answer">
+      Principalmente para dos cosas: caché de respuestas del LLM (misma pregunta → misma respuesta sin llamar a OpenAI de nuevo, ahorra coste y latencia) y almacenamiento de historial de conversación por session_id entre múltiples instancias del servicio.
+    </div>
+  </div>
+
+  <!-- PREGUNTAS CONDUCTUALES -->
+  <h2>05 · Preguntas conductuales / de encaje</h2>
+
+  <div class="card blue">
+    <p><strong>"¿Por qué AI Engineer y no DevOps/Cloud?"</strong></p>
+    <div class="answer">
+      Mi fondo es DevOps/Cloud — sé desplegar, escalar y operar sistemas. Lo que me lleva a AI Engineer es que quiero estar en la capa donde se genera valor, no solo donde se despliega. Y mi perfil cloud es un diferencial real: la mayoría de AI Engineers no saben montar la infraestructura que sus modelos necesitan. Yo puedo hacer las dos cosas.
+    </div>
+
+    <p><strong>"¿Qué has construido con IA?"</strong></p>
+    <div class="answer">
+      En los últimos meses he construido un pipeline RAG completo: carga de documentos con TextLoader, chunking con RecursiveCharacterTextSplitter, indexación en ChromaDB con embeddings de OpenAI, retrieval mejorado con k configurable y un chatbot con historial de conversación. También un agente bancario con patrón ReAct que encadena tools — consulta BD, busca normativa y calcula provisiones — usando tanto OpenAI API directa como LangChain Agents.
+    </div>
+
+    <p><strong>"¿Cómo te mantienes al día en un campo que cambia tan rápido?"</strong></p>
+    <div class="answer">
+      Combino formación estructurada con práctica diaria. Tengo tres cursos activos: MLOps, AI Engineer y Cloud. Pero lo que me funciona es construir cosas reales, no solo consumir tutoriales. Cuando aprendo RAG, monto el pipeline completo y lo rompo para entender por qué falla.
+    </div>
+
+    <p><strong>"¿Cómo trabajas con incertidumbre técnica?" (campo muy nuevo)</strong></p>
+    <div class="answer">
+      Es lo normal en IA generativa — la mitad de lo que funciona hoy en producción no existía hace un año. Mi enfoque es prototipar rápido, medir, y no sobreingeniería en el primer intento. Si algo no está claro, construyo la versión más simple que resuelve el problema y luego la itero.
+    </div>
+  </div>
+
+  <!-- TRAMPAS -->
+  <h2>06 · Preguntas trampa — cuidado</h2>
+
+  <div class="card red">
+    <p><strong>"¿Tienes experiencia real en producción con IA?"</strong></p>
+    <div class="warning">
+      No finjas lo que no tienes. Di: "Mis proyectos actuales son formativos pero con código real y problemas reales — RAG, agentes, APIs. No tengo sistemas en producción con millones de usuarios, pero tengo la base técnica sólida para construirlos y el fondo DevOps para operarlos."
+    </div>
+
+    <p><strong>"¿Conoces RabbitMQ / NATS?"</strong></p>
+    <div class="warning">
+      No digas que sí si no es verdad. Di: "Conozco los conceptos de colas de mensajes y los he usado con Redis. RabbitMQ y NATS son nuevos para mí a nivel práctico, pero el patrón es el mismo y lo asumiría rápido." — Honestidad + disposición a aprender.
+    </div>
+
+    <p><strong>"¿Cuánto tardas en ser productivo?"</strong></p>
+    <div class="warning">
+      No digas "dos semanas". Di algo como: "En el stack de IA (LangChain, OpenAI, RAG, agentes) estoy operativo desde el día uno. En los detalles de vuestra plataforma y en RabbitMQ/NATS, un mes para estar cómodo."
+    </div>
+  </div>
+
+  <!-- PREGUNTAS QUE DEBES HACER TÚ -->
+  <h2>07 · Preguntas que debes hacer tú</h2>
+
+  <div class="card green">
+    <ul>
+      <li>"¿Cuál es el primer proyecto concreto en el que trabajaría?"</li>
+      <li>"¿Hay equipo de IA ya formado o sería el primero en este rol?"</li>
+      <li>"¿Cómo es el proceso de decisión técnica — tengo autonomía para proponer arquitecturas?"</li>
+      <li>"¿Usáis Azure, AWS o vuestra propia infraestructura para los modelos?"</li>
+      <li>"¿Cuál es el mayor reto técnico que tiene el equipo ahora mismo?"</li>
+      <li>"¿Cómo son los 2 días de presencialidad — reuniones o trabajo normal en oficina?"</li>
+    </ul>
+  </div>
+
+  <!-- SALARIO -->
+  <h2>08 · Negociación salarial</h2>
+
+  <div class="card yellow">
+    <p>Dicen "más o menos 50/60k€" — eso significa que el rango real puede llegar a 65k si te vendes bien.</p>
+    <h3>Estrategia</h3>
+    <ul>
+      <li>No des una cifra primero. Si te preguntan: <em>"¿Qué rango estáis manejando?"</em></li>
+      <li>Si te presionan: apunta a <strong>58-62k€</strong> — dentro de su rango pero en la parte alta.</li>
+      <li>Tu diferencial para justificarlo: perfil cloud + IA es menos común que solo IA. No necesitan contratar un DevOps aparte.</li>
+      <li>Pregunta también por el bonus de formación — si es 1.000-2.000€/año en certificaciones, suma al total.</li>
+    </ul>
+  </div>
+
+  <!-- RESUMEN EJECUTIVO -->
+  <h2>09 · Tu pitch de 2 minutos</h2>
+
+  <div class="card blue">
+    <div class="answer" style="font-style: normal; color: #e2e8f0;">
+      "Soy DevOps/Cloud Engineer con experiencia en infraestructura y en los últimos meses me he especializado en AI Engineering. He construido sistemas RAG completos — desde chunking de documentos hasta chatbots con historial usando LangChain y ChromaDB — y agentes de IA con patrón ReAct que encadenan múltiples herramientas para razonar y responder. Integro directamente la API de OpenAI y LangChain según lo que aporta más valor en cada caso.
+      <br><br>
+      Lo que me diferencia de otros AI Engineers es que puedo hacer las dos capas: diseñar la solución de IA y también desplegarla y operarla en producción en cloud. Eso en una empresa como Jotelulu, que es cloud-first, me parece especialmente relevante."
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <h2>10 · Checklist pre-entrevista</h2>
+
+  <div class="card green">
+    <ul>
+      <li>☐ Revisar qué es Jotelulu y cómo funciona su modelo de negocio (canal IT)</li>
+      <li>☐ Repasar el código del Día 6 (RAG) y Día 7 (Agente ReAct) — puedes compartir pantalla</li>
+      <li>☐ Preparar ejemplos concretos: "hice X, encontré el problema Y, lo resolví así"</li>
+      <li>☐ Tener claro tu rango salarial objetivo (58-62k€)</li>
+      <li>☐ Revisar qué es RabbitMQ/NATS en 10 minutos — para no quedarte en blanco</li>
+      <li>☐ Tener las preguntas para ellos preparadas (sección 07)</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
