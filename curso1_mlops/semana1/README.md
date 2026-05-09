@@ -8,7 +8,7 @@
 |-----|------|--------|
 | 1 | Docker: conceptos, arquitectura, VM vs contenedor | ✅ Completado |
 | 2 | Dockerfile, imágenes, capas, build y optimización | ✅ Completado |
-| 3 | Docker Compose, redes, volúmenes, multi-container + FastAPI model serving | ⏳ En curso |
+| 3 | Docker Compose, redes, volúmenes, multi-container + FastAPI model serving | ✅ Completado |
 | 4 | Azure fundamentos: Resource Groups, AKS, ACR, Azure ML overview | ⬜ Pendiente |
 | 5 | Azure CLI + Terraform provider Azure | ⬜ Pendiente |
 | 5b | Python ML: scikit-learn + PyTorch básico — entrenar modelos para dockerizar | ⬜ Pendiente |
@@ -478,6 +478,78 @@ with mlflow.start_run():
 
     mlflow.log_metric("accuracy", acc)
     mlflow.sklearn.log_model(modelo, "model")   # guarda en el registry
+```
+
+---
+
+## Día 3 — Docker Compose + FastAPI model serving
+
+### Arquitectura
+
+```
+Cliente (curl/Postman)
+       │
+       ▼
+┌─────────────────┐
+│   FastAPI       │  contenedor: api (puerto 8000)
+│   model serving │
+│                 │──── cache hit  ──▶ Redis devuelve resultado
+│                 │──── cache miss ──▶ model.predict() → guarda en Redis
+└─────────────────┘
+       │  red interna Docker Compose
+       ▼
+┌─────────────────┐
+│   Redis 7       │  contenedor: redis (puerto 6379)
+└─────────────────┘
+```
+
+### Conceptos clave
+
+| Concepto | Qué hace | Por qué se usa |
+|----------|----------|----------------|
+| `docker-compose.yml` | Orquesta múltiples contenedores con un solo comando | Sin él habría que arrancar cada contenedor a mano con sus flags de red |
+| `depends_on: condition: service_healthy` | La API no arranca hasta que Redis pasa el healthcheck | Evita errores de conexión en el arranque |
+| `healthcheck` | Comprueba periódicamente que Redis responde | Docker Compose lo usa para saber cuándo el servicio está listo |
+| `lifespan` (FastAPI) | Carga el modelo una sola vez al arrancar | Si se cargase en cada petición añadiría 200ms+ por llamada |
+| Redis TTL (`setex`) | El resultado expira automáticamente tras 1h | Sin TTL el caché crece indefinidamente |
+| Variables de entorno | `REDIS_HOST`, `MODEL_PATH` configuran el contenedor sin tocar código | El mismo contenedor funciona en local, staging y producción |
+
+### Trade-offs y decisiones
+
+**¿Por qué Redis y no guardar en memoria de la API?**
+Con Redis el caché es compartido entre todas las réplicas de la API. Si escalaas a 10 pods en AKS, todas comparten el mismo caché. Si fuera memoria local, cada pod tendría su propio caché y el primer hit en cada pod sería siempre un miss.
+
+**¿Por qué entrenar el modelo en el Dockerfile (`RUN python model.py`)?**
+Para este ejercicio es lo más simple — el contenedor nace con el modelo dentro. En producción real el modelo viene de un Model Registry (MLflow, AzureML) y se descarga en el arranque o se monta como volumen. Lo veremos en D6.
+
+**¿Por qué FastAPI y no Flask?**
+FastAPI valida los tipos automáticamente vía Pydantic, genera documentación automática en `/docs`, y es async-first (mejor rendimiento bajo carga). Flask requiere más código manual para lo mismo.
+
+### Aplicación en KPMG
+
+Scoring crediticio, detección de fraude, modelos de riesgo: el patrón es siempre este. El modelo sklearn/XGBoost está detrás de FastAPI, Redis cachea los scores de clientes ya evaluados recientemente, y el frontend bancario llama a esta API. En AKS se despliegan 10 réplicas de `api` detrás de un Load Balancer — todas comparten el mismo Redis.
+
+### Archivos
+
+| Archivo | Descripción |
+|---------|-------------|
+| [dia3/app/model.py](dia3/app/model.py) | Entrena LinearRegression y guarda `modelo.pkl` |
+| [dia3/app/main.py](dia3/app/main.py) | FastAPI: `/health` y `/predict` con caché Redis |
+| [dia3/Dockerfile](dia3/Dockerfile) | Build de la imagen API (instala deps + entrena modelo) |
+| [dia3/docker-compose.yml](dia3/docker-compose.yml) | Orquesta api + redis |
+
+### Comandos
+
+```bash
+# Arrancar todo
+docker compose up --build
+
+# Probar
+curl http://localhost:8000/health
+curl -X POST http://localhost:8000/predict -H "Content-Type: application/json" -d '{"x": 25.0}'
+
+# Parar
+docker compose down
 ```
 
 ---
