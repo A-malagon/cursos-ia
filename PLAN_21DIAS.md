@@ -17,7 +17,7 @@
 ## ► PRÓXIMO PASO (actualizado al cierre de cada sesión)
 
 **Día real:** 2 de 21
-**Tarea:** C3-S1D3 — Networking II (VPN Gateway, ExpressRoute, Azure Firewall, Private Endpoints)
+**Tarea:** C2-D9 — Agente RAG + tools combinadas
 
 **Estado del Día 1:**
 - C2-D8 ✅ LangChain Agents — `dia8_langchain_agents.py` con LangGraph `create_react_agent`
@@ -46,7 +46,7 @@
 | Día | Bloque 1 | Bloque 2 | Bloque 3 | Bloque 4 | Estado |
 |-----|----------|----------|----------|----------|--------|
 | **1** | C2-D8 LangChain Agents | C3-S1D2 VNets/NSGs/Peering | — | — | ✅ |
-| **2** | C1-D3 Docker Compose+FastAPI ✅ | C3-S1D3 VPN/Firewall/PrivateEP | C2-D9 Agente RAG+tools | C1-D4 Azure CLI+ACR | ⬜ |
+| **2** | C1-D3 Docker Compose+FastAPI ✅ | C3-S1D3 VPN/Firewall/PrivateEP ✅ | C2-D9 Agente RAG+tools | C1-D4 Azure CLI+ACR | ⬜ |
 | **3** | C3-S1D4 Azure AD/RBAC/KeyVault | C3-S1D5 Storage Blob/lifecycle | C1-D6 Proyecto Docker+MLflow | C2-D10 Semantic Kernel | ⬜ |
 | **4** | C3-S1D6 Proyecto Hub-Spoke | C3-S1D7 Test S1 | C1-D7 Test S1+DVC | C2-D11 SK planners | ⬜ |
 | **5** | C3-S2D8 Governance/Policy | C3-S2D9 Landing Zones+CAF | C1-S2D8 K8s Control Plane | C2-D12 Multi-agent+LangGraph | ⬜ |
